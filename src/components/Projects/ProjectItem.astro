@@ -1,10 +1,16 @@
 ---
+import { GithubIcon } from "@/icons/index";
+
 interface Props {
   title: string;
   class: string;
+  repo: string;
+  href: string;
+  onLive: boolean;
+  id: string;
 }
 
-const { title } = Astro.props;
+const { title, href, repo, onLive, id } = Astro.props;
 ---
 
 <article
@@ -16,18 +22,39 @@ const { title } = Astro.props;
   shadow-inner shadow-white/10
   overflow-hidden
   group
-`
+  `
 >
   <div
     class="absolute bottom-0 top-0 z-10 h-full w-full
-bg-gradient-to-b from-transparent from-40% via-[#121212]/50 to-[#121212]/80"
+  bg-gradient-to-b from-transparent from-40% via-[#121212]/50 to-[#121212]/80"
   >
   </div>
   <slot name="image" />
   <div
-    class="relative select-none flex flex-col gap-1 p-6 text-lg z-20 h-full justify-end transform transition-transform duration-700"
+    class="relative select-none flex flex-col gap-1 p-6 text-lg z-20 h-full justify-between transform transition-transform duration-700"
   >
-    <h2 class=`font-semibold`>{title}</h2>
-    <slot name="description" />
+    <div>
+      {
+        onLive && (
+          <a
+            href={href}
+            target="_blank"
+            class="absolute right-5 bg-[#121212]/50 px-2 py-1 rounded-md text-sm hover:underline"
+          >
+            En produccion <span>🚀</span>
+          </a>
+        )
+      }
+    </div>
+    <div>
+      <div class="flex justify-between items-center">
+        <a href={`/projects/${id}`} class="cursor-pointer hover:underline">
+          <h2 class=`font-semibold`>{title}</h2></a
+        >
+        <a href={repo} target="_blank"><GithubIcon class="size-6" /></a>
+      </div>
+      <slot name="description" />
+      <slot name="stack" />
+    </div>
   </div>
 </article>

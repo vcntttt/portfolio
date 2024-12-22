@@ -5,5 +5,5 @@ import BriefcaseIcon from "./Briefcase.astro";
 import NextJSIcon from "./NextJS.astro";
 import TailwindIcon from "./TailwindCSS.astro"
 import UserIcon from "./User.astro";
-
-export { CodeIcon, LinkedinIcon, GithubIcon, BriefcaseIcon, NextJSIcon, TailwindIcon, UserIcon };
+import RocketIcon from "./Rocket.astro";
+export { CodeIcon, LinkedinIcon, GithubIcon, BriefcaseIcon, NextJSIcon, TailwindIcon, UserIcon, RocketIcon };
