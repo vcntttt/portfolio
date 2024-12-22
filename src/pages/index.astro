@@ -1,44 +1,68 @@
 ---
-import Layout from '../layouts/Layout.astro'
-import { LinkedinIcon, BriefcaseIcon, CodeIcon, GithubIcon } from '@/icons/index.ts'
-import SocialCard from '@/components/SocialCard.astro'
-import Experience from '@/components/Experience/Experience.astro'
-import Section from '@/components/Section.astro'
-import Projects from '@/components/Projects/Projects.astro'
-import Footer from '@/components/Footer.astro'
+import Layout from "../layouts/Layout.astro";
+import {
+  LinkedinIcon,
+  BriefcaseIcon,
+  CodeIcon,
+  GithubIcon,
+	UserIcon
+} from "@/icons/index.ts";
+import SocialCard from "@/components/SocialCard.astro";
+import Experience from "@/components/Experience/Experience.astro";
+import Section from "@/components/Section.astro";
+import Projects from "@/components/Projects/Projects.astro";
+import Footer from "@/components/Footer.astro";
+import AboutMe from "@/components/AboutMe.astro";
 ---
 
-<Layout 
-	title='Portfolio de Vicente Rivera - Desarrollador y Programador Web'
-	description = 'paypal.me/vcntttt'
+<Layout
+  title="Portfolio de Vicente Rivera - Desarrollador y Programador Web"
+  description="paypal.me/vcntttt"
 >
-	<main>
-		<!-- TODO: mejorar texto -->
-		<Section class="pt-64 pb-40">
-			<h1 class='text-5xl font-bold flex gap-x-4 pb-4'>
-				Hey, soy Vicente Rivera.
-			</h1>
-			<h2 class='text-xl text-wrap opacity-80'>
-				<span class='text-yellow-300'>Desarrollador Web.</span>
-				Actualmente estudiante de Ing. Informatica en la <span class='text-blue-500/80'>UCT<span/>.
+  <main>
+    <!-- TODO: mejorar texto -->
+    <Section class="pt-64 pb-40">
+      <h1 class="text-5xl font-bold flex gap-x-4 pb-4">
+        Hola!, soy Vicente Rivera.
+      </h1>
+      <h2 class="text-xl text-wrap opacity-80">
+        <span class="text-yellow-300">Desarrollador Web.</span>
+        Estudiante de Ingenieria Civil en Informatica. 2 años de experiencia desarrollando. <br>Temuco, Chile <img
+				alt="United States"
+				src="http://purecatamphetamine.github.io/country-flag-icons/3x2/CL.svg"
+				class="size-8 inline-block"/> .
+			
+      </h2>
+      <Section class="flex gap-x-8 py-4 w-1/6">
+        <SocialCard href="https://github.com/vcntttt">
+          <GithubIcon class="size-12" />
+        </SocialCard>
+        <SocialCard href="https://github.com/vcntttt">
+          <LinkedinIcon class="size-12" />
+        </SocialCard>
+      </Section>
+    </Section>
+    <!-- <Section id="experience">
+      <h2 class="flex items-center gap-x-2 text-4xl font-semibold pb-2">
+        <BriefcaseIcon class="size-8" /> Experiencia Laboral
+      </h2>
+      <Experience />
+    </Section> -->
+    <Section id="proyects">
+      <h2 class="flex items-center gap-x-2 text-4xl font-semibold pb-2">
+        <CodeIcon class="size-8" /> Proyectos
+      </h2>
+      <Projects />
+    </Section>
+		<Section>
+			<h2 class="flex items-center gap-x-2 text-4xl font-semibold pb-2">
+				<UserIcon class="size-8" /> Acerca de mí
 			</h2>
-			<Section class='flex gap-x-8 p-4 w-1/6'>
-				<SocialCard href='https://github.com/vcntttt'>
-					<GithubIcon class='size-12'/>
-				</SocialCard>
-				<SocialCard href='https://github.com/vcntttt'>
-					<LinkedinIcon class='size-12'/>
-				</SocialCard>
-			</Section>
+			<AboutMe/>
 		</Section>
-		<Section id="experience" >
-			<h2 class='flex items-center gap-x-2 text-4xl font-semibold pb-2'><BriefcaseIcon class="size-8"/> Experiencia Laboral</h2>
-			<Experience/>
-		</Section>
-		<Section id="proyects">
-			<h2 class='flex items-center gap-x-2 text-4xl font-semibold pb-2'><CodeIcon class="size-8"/> Proyectos</h2>
-			<Projects/>
-		</Section>
-	</main>
-	<Footer/>
-</Layout>../icons
+    <Section>
+      Contacto
+    </Section>
+  </main>
+  <Footer />
+</Layout>

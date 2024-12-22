@@ -1,55 +1,37 @@
 ---
-import { NextJSIcon, TailwindIcon } from "@/icons/index.ts"
-
-const TAGS = {
-  NEXT: {
-    name: "Next.js",
-    class: "bg-black text-white",
-    icon: NextJSIcon,
-  },
-  TAILWIND: {
-    name: "Tailwind CSS",
-    class: "bg-[#003159] text-white",
-    icon: TailwindIcon,
-  },
-}
-
-const PROJECTS = [
-  {
-    title: "SVGL - A beautiful library with SVG logos",
-    description:
-      "Created from scratch with Next.js and Tailwind CSS. It's a library with SVG logos from the most popular brands. Optimized for SEO and performance.",
-    link: "https://svgl.vercel.app/",
-    github: "https://github.com/pheralb/svgl",
-    image: "https://animated-churros-60739d.netlify.app/projects/svgl.webp",
-    tags: [TAGS.NEXT, TAGS.TAILWIND],
-  },
-]
+import ProjectItem from "./ProjectItem.astro";
+const imgStyle =
+  "transition-scale absolute bottom-0 left-0 top-0 -z-10 h-full w-full rounded-xl opacity-90 bg-blend-luminosity duration-1000 ease-in-out group-hover:opacity-40 bg-cover scale-[100%] group-hover:scale-[110%]";
 ---
 
-{
-  PROJECTS.map(({ image, title, description, tags }) => (
-    <article>
-      <h3 class="text-2xl font-semibold text-yellow-200 mb-2">{title}</h3>
-      <p class="text-lg mb-4 text-pretty">{description}</p>
-      <ul class="flex gap-x-2 flex-row mb-2">
-        {tags.map((tag) => (
-          <li>
-            <span
-              class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2`}
-            >
-              <tag.icon class="size-4" />
-              {tag.name}
-            </span>
-          </li>
-        ))}
-      </ul>
-      <img
-        loading="lazy"
-        class="rounded shadow-2xl shadow-white/10 aspect-video"
-        src={image}
-        alt={`Captura de pantalla del proyecto ${image}`}
-      />
-    </article>
-  ))
-}
+<div
+  class=`
+  w-full max-w-[1400px]
+  grid grid-cols-12 auto-rows-[25rem] gap-4
+  mx-auto
+`
+>
+  <ProjectItem class="col-span-5" title="Url Shortener">
+    <div
+      slot="image"
+      style="background-image: url(url-shortener.png)"
+      class=`${imgStyle}`
+    />
+    <p slot="description" class="text-balance">
+      Acortador de urls.
+    </p>
+
+  </ProjectItem>
+  <ProjectItem class="col-span-7" title="Agenda Medica" />
+  <ProjectItem class="col-span-7" title="Sellify">
+    <div
+      slot="image"
+      style="background-image: url(sellify.png)"
+      class=`${imgStyle}`
+    />
+    <p slot="description" class="text-balance">
+      Sistema de gestión de inventario y punto de venta.
+    </p>
+  </ProjectItem>
+  <ProjectItem class="col-span-5" title="Recetas" />
+</div>
