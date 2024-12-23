@@ -1,46 +1,35 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import {
-  LinkedinIcon,
-  BriefcaseIcon,
-  CodeIcon,
-  GithubIcon,
-	UserIcon
-} from "@/icons/index.ts";
-import SocialCard from "@/components/SocialCard.astro";
+import { Icon } from "astro-icon/components";
 import Experience from "@/components/Experience/Experience.astro";
 import Section from "@/components/Section.astro";
 import Projects from "@/components/Projects/Projects.astro";
 import Footer from "@/components/Footer.astro";
 import AboutMe from "@/components/AboutMe.astro";
+import Cursos from "@/components/Cursos/Cursos.astro";
+import SocialSection from "@/components/Social/SocialSection.astro";
 ---
 
 <Layout
   title="Portfolio de Vicente Rivera - Desarrollador y Programador Web"
-  description="paypal.me/vcntttt"
+  description="Vicente Rivera - Desarrollador y Programador Web. Chile. Web Developer."
 >
   <main>
-    <!-- TODO: mejorar texto -->
-    <Section class="pt-64 pb-40">
+    <Section class="py-40 md:pt-64">
+      <img src="avatar.jpg" alt="Avatar" class="w-32 h-32 rounded-full mb-6" />
       <h1 class="text-5xl font-bold flex gap-x-4 pb-4">
         Hola!, soy Vicente Rivera.
       </h1>
-      <h2 class="text-xl text-wrap opacity-80">
-        <span class="text-yellow-300">Desarrollador Web.</span>
-        Estudiante de Ingenieria Civil en Informatica. 2 años de experiencia desarrollando. <br>Temuco, Chile <img
-				alt="United States"
-				src="https://purecatamphetamine.github.io/country-flag-icons/3x2/CL.svg"
-				class="size-8 inline-block"/> .
-			
+      <h2 class="text-xl text-wrap opacity-80 max-w-3xl">
+        <span class="">Desarrollador Web.</span>
+        Estudiante de Ingeniería Civil en Informática. 2 años de experiencia desarrollando
+        paginas webs interactivas desde Temuco, Chile <img
+          alt="Chile"
+          src="https://purecatamphetamine.github.io/country-flag-icons/3x2/CL.svg"
+          class="size-8 inline-block"
+        /> .
       </h2>
-      <Section class="flex gap-x-8 py-4 w-1/6">
-        <SocialCard href="https://github.com/vcntttt">
-          <GithubIcon class="size-12" />
-        </SocialCard>
-        <SocialCard href="https://github.com/vcntttt">
-          <LinkedinIcon class="size-12" />
-        </SocialCard>
-      </Section>
+      <SocialSection/>
     </Section>
     <!-- <Section id="experience">
       <h2 class="flex items-center gap-x-2 text-4xl font-semibold pb-2">
@@ -50,19 +39,27 @@ import AboutMe from "@/components/AboutMe.astro";
     </Section> -->
     <Section id="proyects">
       <h2 class="flex items-center gap-x-2 text-4xl font-semibold pb-2">
-        <CodeIcon class="size-8" /> Proyectos
+        <Icon name={"Code"} class="size-8" /> Proyectos
       </h2>
       <Projects />
     </Section>
-		<Section>
-			<h2 class="flex items-center gap-x-2 text-4xl font-semibold pb-2">
-				<UserIcon class="size-8" /> Acerca de mí
-			</h2>
-			<AboutMe/>
-		</Section>
-    <Section>
-      Contacto
+    <Section id="cursos">
+      <h2 class="flex items-center gap-x-2 text-4xl font-semibold pb-2">
+        <Icon name={"notebook"} class="size-8" /> Cursos
+      </h2>
+      <Cursos/>
     </Section>
+    <Section id="about">
+      <h2 class="flex items-center gap-x-2 text-4xl font-semibold pb-2">
+        <Icon name={"User"} class="size-8" /> Acerca de mí
+      </h2>
+      <AboutMe />
+    </Section>
+    <Section id="contact">
+      <h2 class="flex items-center gap-x-2 text-4xl font-semibold pb-2">
+        <Icon name={"send"} class="size-8" />Contacto
+      </h2>
+      <SocialSection/>
   </main>
   <Footer />
 </Layout>

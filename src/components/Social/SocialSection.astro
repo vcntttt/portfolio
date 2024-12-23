@@ -1,0 +1,23 @@
+---
+import SocialCard from "@/components/Social/SocialCard.astro";
+import { Icon } from "astro-icon/components";
+import Section from "@/components/Section.astro";
+
+---
+<Section class="flex flex-wrap gap-4 py-4 w-full">
+  <SocialCard href="https://github.com/vcntttt">
+    <Icon name={"Github"} class="size-8" />
+    <span class="ml-2">vcntttt</span>
+  </SocialCard>
+  <SocialCard href="https://www.linkedin.com/in/vicente-rivera-67559328b/">
+    <Icon name={"Linkedin"} class="size-8" />
+  </SocialCard>
+  <SocialCard href="mailto:vrivera.dev@gmail.com">
+    <Icon name={"Mail"} class="size-8" />
+    <span class="ml-2">vrivera.dev@gmail.com</span>
+  </SocialCard>
+  <SocialCard href="CV.pdf" download="CV - Vicente Rivera.pdf">
+    <Icon name={"cv"} class="size-8" />
+    <span class="ml-2">Descargar CV</span>
+  </SocialCard>
+</Section>

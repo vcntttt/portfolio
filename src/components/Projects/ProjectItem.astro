@@ -1,5 +1,5 @@
 ---
-import { GithubIcon } from "@/icons/index";
+import { Icon } from "astro-icon/components";
 
 interface Props {
   title: string;
@@ -51,7 +51,7 @@ const { title, href, repo, onLive, id } = Astro.props;
         <a href={`/projects/${id}`} class="cursor-pointer hover:underline">
           <h2 class=`font-semibold`>{title}</h2></a
         >
-        <a href={repo} target="_blank"><GithubIcon class="size-6" /></a>
+        <a href={repo} target="_blank"><Icon name={"Github"} class="size-6" /></a>
       </div>
       <slot name="description" />
       <slot name="stack" />

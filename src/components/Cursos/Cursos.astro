@@ -1,0 +1,17 @@
+---
+import Card from "./Card.astro";
+import { cursos } from "./cursos";
+---
+
+<div
+  class="flex w-full max-w-[1400px] gap-8 flex-col md:flex-row"
+>
+  {
+    cursos.map((curso) => (
+      <Card
+        class="col-span-5"
+        {...curso}
+      />
+    ))
+  }
+</div>

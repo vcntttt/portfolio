@@ -1,60 +1,8 @@
 ---
 import BentoImg from "./BentoImg.astro";
 import ProjectItem from "./ProjectItem.astro";
-
-interface Project {
-  title: string;
-  description: string;
-  link: string;
-  github: string;
-  image: string;
-  id: string;
-  class: string;
-  live: boolean;
-}
-
-const projects: Project[] = [
-  {
-    title: "Url Shortener",
-    description: "Acortador de urls.",
-    link: "https://url-shorteneer.vercel.app/",
-    github: "https://github.com/vcntttt/url-shortener",
-    image: "url-shortener.png",
-    id: "url-shortener",
-    class: "col-span-5",
-    live: true,
-  },
-  {
-    title: "Agenda Medica",
-    description: "",
-    link: "",
-    github: "",
-    image: "",
-    id: "",
-    class: "col-span-7",
-    live: false,
-  },
-  {
-    title: "Sellify",
-    description: "Sistema de gestión de inventario y punto de venta.",
-    link: "",
-    github: "https://github.com/vcntttt/Sellify-TI2",
-    image: "sellify.png",
-    id: "sellify",
-    class: "col-span-7",
-    live: false,
-  },
-  {
-    title: "Recetas Sin Gluten",
-    description: "Blog de recetas sin gluten.",
-    link: "#",
-    github: "https://github.com/vcntttt/recetas-sin-gluten",
-    image: "",
-    id: "recetas-sin-gluten",
-    class: "col-span-5",
-    live: false,
-  },
-];
+import { Icon } from "astro-icon/components";
+import { projects } from "./projects";
 ---
 
 <div
@@ -67,7 +15,7 @@ const projects: Project[] = [
   {
     projects.map((project, index) => (
       <ProjectItem
-        class={`${project.class}`}
+        class={`col-span-12`}
         title={project.title}
         href={project.link}
         repo={project.github}
@@ -78,11 +26,21 @@ const projects: Project[] = [
         <p slot="description" class="text-balance">
           {project.description}
         </p>
+        <div slot="stack" class="flex gap-x-2 flex-row mb-2">
+          {project.tags.map((tag) => (
+            <span
+              class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2`}
+            >
+              <Icon name={tag.icon} class="size-4" />
+              {tag.name}
+            </span>
+          ))}
+        </div>
       </ProjectItem>
     ))
   }
 </div>
 
-<a href="/projects" class="flex w-full justify-end py-2 underline"
+<!-- <a href="/projects" class="flex w-full justify-end py-2 underline"
   >Ver lista completa</a
->
+> -->

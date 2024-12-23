@@ -1,0 +1,19 @@
+---
+import { Icon } from "astro-icon/components";
+import type { Curso } from "./cursos";
+
+interface Props extends Curso {
+  class?: string;
+}
+
+const { title, author, image, finished } = Astro.props;
+---
+
+<article class="flex flex-col gap-y-4 p-6 bg-blue-500/10 rounded-md w-full">
+  <h2 class="text-2xl font-semibold">
+    {title}
+    <Icon name={image} class="size-8 inline-block ml-2" />
+  </h2>
+  <p class="text-md flex justify-between">{author}</p>
+  <p>{finished ? "Terminado" : "En progreso"}</p>
+</article>
