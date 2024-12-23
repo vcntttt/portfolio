@@ -1,16 +1,32 @@
-<div class="flex gap-x-8 flex-col md:flex-row">
+---
+console.log(import.meta.env.BASE_URL)
+---
 
+<div class="flex gap-x-8 flex-col md:flex-row">
   <article class="flex flex-col gap-y-4 md:order-1 order-2">
-    <p>Mi nombre es Vicente, la mayoría me dice vicho. Desde niño siempre me ha interesado el tema de como funcionan las cosas por debajo, por lo que no me costó demasiado escoger una carrera que estudiar.
+    <p>
+      Mi nombre es Vicente, la mayoría me dice vicho. Desde niño siempre me ha
+      interesado el tema de como funcionan las cosas por debajo, por lo que no
+      me costó demasiado escoger una carrera que estudiar.
     </p>
     <p>
-      Mi primer acercamiento a este mundo (aunque en ese momento no lo sabia) fue el Minecraft, me dedicaba mas a jugar con la redstone que a explorar o hacer lo típico.
+      Mi primer acercamiento a este mundo (aunque en ese momento no lo sabia)
+      fue el Minecraft, me dedicaba mas a jugar con la redstone que a explorar o
+      hacer lo típico.
     </p>
+    <p>Por cierto, uso Arch.</p>
+
     <p>
-      Por cierto, uso Arch.
+      Si me quieres conocer un poco mas, te dejo mi maxima obra de sabiduría: <a
+        class="underline cursor-pointer"
+        href="https://open.spotify.com/playlist/03gLwSeuCv12Vgnv9ce1Gt?si=3cd4eb7e7086426b"
+        target="_blank">mi playlist de spotify</a
+      >.
     </p>
-    
-    <p>Si me quieres conocer un poco mas, te dejo mi maxima obra de sabiduría: <a class="underline cursor-pointer" href="https://open.spotify.com/playlist/03gLwSeuCv12Vgnv9ce1Gt?si=3cd4eb7e7086426b" target="_blank">mi playlist de spotify</a>.</p>
   </article>
-  <img src="portfolio/avatar2.png" alt="playlist" class="md:w-full rounded-full md:rounded-lg md:order-2 order-1 w-1/2 m-auto pb-4 md:pb-0">
+  <img
+    src={`${import.meta.env.BASE_URL}avatar2.png`}
+    alt="avatar"
+    class="md:w-full rounded-full md:rounded-lg md:order-2 order-1 w-1/2 m-auto pb-4 md:pb-0"
+  />
 </div>
