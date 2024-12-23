@@ -18,6 +18,7 @@ const { title, description } = Astro.props;
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
+    <meta name="og:title" content={title} />
     <title>{title}</title>
   </head>
   <!-- <body class="bg-gradient-to-b from-[#0f172a]  to-[#101925]"> -->
@@ -42,6 +43,7 @@ const { title, description } = Astro.props;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    color: #fbfbfb
   }
 
   main {
