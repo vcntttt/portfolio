@@ -8,5 +8,5 @@ import icon from "astro-icon";
 export default defineConfig({
   integrations: [tailwind(), icon()],
   site: 'https://vcntttt.github.io',
-  base: import.meta.env.MODE === 'development' ? '/' : 'portfolio',
+  base: '/',
 });
