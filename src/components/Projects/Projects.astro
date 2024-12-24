@@ -26,7 +26,7 @@ import { projects } from "./projects";
         <p slot="description" class="text-balance">
           {project.description}
         </p>
-        <div slot="stack" class="flex gap-x-2 flex-row my-2">
+        <div slot="stack" class="flex gap-x-2 flex-row my-2 flex-wrap">
           {project.tags.map((tag) => (
             <span
               class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2`}

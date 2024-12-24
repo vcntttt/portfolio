@@ -6,7 +6,7 @@ export const sections = [
   },
   // {
   //   name: "Experiencia",
-  //   href: "/#experience",
+  //   href: "#experience",
   //   icon: "Briefcase"
   // },
   {
