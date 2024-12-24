@@ -1,38 +1,7 @@
 ---
 import { Icon } from "astro-icon/components";
 import clsx from "clsx";
-const sections = [
-  {
-    name: "Inicio",
-    href: "/#",
-    icon: "Home",
-  },
-  // {
-  //   name: "Experiencia",
-  //   href: "/#experience",
-  //   icon: "Briefcase"
-  // },
-  {
-    name: "Proyectos",
-    href: "/#proyects",
-    icon: "Code",
-  },
-  {
-    name: "Cursos",
-    href: "/#cursos",
-    icon: "notebook",
-  },
-  {
-    name: "Acerca de mí",
-    href: "/#about",
-    icon: "User",
-  },
-  {
-    name: "Contacto",
-    href: "/#contact",
-    icon: "Mail",
-  },
-];
+import { sections } from "./sections";
 ---
 
 <!-- <header class="sticky top-0 w-full px-6 py-4 z-10">
@@ -51,15 +20,15 @@ const sections = [
   </nav>
 </header> -->
 <nav
-  class="hidden md:fixed right-5 top-1/2 transform -translate-y-1/2 md:flex flex-col items-center gap-4 bg-blue-500/10 rounded-xl p-4"
+  class="hidden lg:fixed right-5 top-1/2 transform -translate-y-1/2 lg:flex flex-col items-center gap-4 bg-blue-500/10 rounded-xl p-4"
 >
   {
     sections.map((section) => (
       <a
         aria-label={section.name}
-        href={`portfolio/${section.href}`}
+        href={`${import.meta.env.BASE_URL}${section.href}`}
         class={clsx("", {
-          "text-cyan-500": Astro.url.pathname === section.href,
+          // "text-cyan-500": Astro.url.pathname === section.href,
         })}
       >
         <Icon name={section.icon} class="size-6" />

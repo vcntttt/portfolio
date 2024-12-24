@@ -9,4 +9,9 @@ export const TAGS = {
     class: "bg-[#003159] text-white",
     icon: "TailwindCSS",
   },
+  REACT: {
+    name: "React",
+    class: "bg-green-500 text-white",
+    icon: "React",
+  }
 }
