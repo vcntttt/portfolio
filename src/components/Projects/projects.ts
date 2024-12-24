@@ -19,14 +19,14 @@ interface Project {
 export const projects: Project[] = [
   {
     title: "Url Shortener",
-    description: "Acortador de urls.",
+    description: "Acortador de urls de código abierto desarrollado con fines educativos utilizando tecnologías web modernas.",
     link: "https://url-shorteneer.vercel.app/",
     github: "https://github.com/vcntttt/url-shortener",
     image: "url-shortener.png",
     id: "url-shortener",
     class: "col-span-5",
     live: true,
-    tags: [TAGS.NEXT, TAGS.TAILWIND],
+    tags: [TAGS.NEXT, TAGS.TAILWIND, TAGS.TYPESCRIPT, TAGS.PRISMA],
   },
   // {
   //   title: "Agenda Medica",
