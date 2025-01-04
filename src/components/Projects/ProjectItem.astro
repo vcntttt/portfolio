@@ -6,7 +6,7 @@ interface Props extends Project {
   class: string;
 }
 
-const { title, description, link, github, image, id, status } = Astro.props;
+const { title, link, github, status } = Astro.props;
 
 const map = {
   live: {
@@ -22,7 +22,6 @@ const map = {
     icon: "✅",
   },
 };
-
 ---
 
 <article
@@ -47,7 +46,7 @@ const map = {
   >
     <div>
       <a
-        href={link}
+        href={status === "live" ? link : github}
         target="_blank"
         class="absolute right-5 bg-[#121212]/50 px-2 py-1 rounded-md text-sm hover:underline"
       >
@@ -57,10 +56,8 @@ const map = {
     </div>
     <div>
       <div class="flex justify-between items-center">
-        <a href={`/projects/${id}`} class="cursor-pointer hover:underline">
-          <h2 class=`font-semibold`>{title}</h2></a
-        >
-        <a href={github} target="_blank"
+        <h2 class=`font-semibold`>{title}</h2>
+        <a aria-label=`Ir al repositorio del proyecto ${title}` href={github} target="_blank"
           ><Icon name={"Github"} class="size-6" /></a
         >
       </div>

@@ -6,7 +6,7 @@ export interface Project {
   link: string;
   github: string;
   image: string;
-  id: string;
+  slug: string;
   class: string;
   status: "live" | "soon" | "finished";
   tags: {
@@ -24,7 +24,7 @@ export const projects: Project[] = [
     link: "https://url-shorteneer.vercel.app/",
     github: "https://github.com/vcntttt/url-shortener",
     image: "url-shortenerv2.png",
-    id: "url-shortener",
+    slug: "url-shortener",
     class: "col-span-5",
     status: "live",
     tags: [TAGS.NEXT, TAGS.TAILWIND, TAGS.TYPESCRIPT, TAGS.PRISMA],
@@ -35,7 +35,7 @@ export const projects: Project[] = [
     link: "",
     github: "https://github.com/vcntttt/Sellify-TI2",
     image: "sellifyv2.png",
-    id: "sellify",
+    slug: "sellify",
     class: "col-span-7",
     status: "finished",
     tags: [
@@ -52,7 +52,7 @@ export const projects: Project[] = [
     link: "",
     github: "https://github.com/vcntttt/agenda-medica",
     image: "on-develop.webp",
-    id: "",
+    slug: "",
     class: "col-span-7",
     status: "soon",
     tags: [TAGS.NEXT, TAGS.TAILWIND, TAGS.TYPESCRIPT, TAGS.PRISMA, TAGS.SHADCN],
@@ -63,7 +63,7 @@ export const projects: Project[] = [
   //   link: "#",
   //   github: "https://github.com/vcntttt/recetas-sin-gluten",
   //   image: "",
-  //   id: "recetas-sin-gluten",
+  //   slug: "recetas-sin-gluten",
   //   class: "col-span-5",
   //   status: false,
   // },
