@@ -1,16 +1,28 @@
 ---
 import { Icon } from "astro-icon/components";
+import type { Project } from "./projects";
 
-interface Props {
-  title: string;
+interface Props extends Project {
   class: string;
-  repo: string;
-  href: string;
-  onLive: boolean;
-  id: string;
 }
 
-const { title, href, repo, onLive, id } = Astro.props;
+const { title, description, link, github, image, id, status } = Astro.props;
+
+const map = {
+  live: {
+    title: "En producción",
+    icon: "🚀",
+  },
+  soon: {
+    title: "Próximamente",
+    icon: "🚧",
+  },
+  finished: {
+    title: "Finalizado",
+    icon: "✅",
+  },
+};
+
 ---
 
 <article
@@ -34,24 +46,23 @@ const { title, href, repo, onLive, id } = Astro.props;
     class="relative select-none flex flex-col gap-1 p-6 text-lg z-20 h-full justify-between transform transition-transform duration-700"
   >
     <div>
-      {
-        onLive && (
-          <a
-            href={href}
-            target="_blank"
-            class="absolute right-5 bg-[#121212]/50 px-2 py-1 rounded-md text-sm hover:underline"
-          >
-            En produccion <span>🚀</span>
-          </a>
-        )
-      }
+      <a
+        href={link}
+        target="_blank"
+        class="absolute right-5 bg-[#121212]/50 px-2 py-1 rounded-md text-sm hover:underline"
+      >
+        {map[status].title}
+        <span>{map[status].icon}</span>
+      </a>
     </div>
     <div>
       <div class="flex justify-between items-center">
         <a href={`/projects/${id}`} class="cursor-pointer hover:underline">
           <h2 class=`font-semibold`>{title}</h2></a
         >
-        <a href={repo} target="_blank"><Icon name={"Github"} class="size-6" /></a>
+        <a href={github} target="_blank"
+          ><Icon name={"Github"} class="size-6" /></a
+        >
       </div>
       <slot name="description" />
       <slot name="stack" />
