@@ -1,5 +1,5 @@
 ---
-import Layout from "../layouts/Layout.astro";
+import Layout from "@/layouts/Layout.astro";
 import { Icon } from "astro-icon/components";
 import Experience from "@/components/Experience/Experience.astro";
 import Section from "@/components/Section.astro";
@@ -8,6 +8,7 @@ import Footer from "@/components/Footer.astro";
 import AboutMe from "@/components/AboutMe.astro";
 import Cursos from "@/components/Cursos/Cursos.astro";
 import SocialSection from "@/components/Social/SocialSection.astro";
+import Hero from "@/components/Hero.astro";
 ---
 
 <Layout
@@ -16,20 +17,7 @@ import SocialSection from "@/components/Social/SocialSection.astro";
 >
   <main class="mx-4 md:mx-auto max-w-[60rem]">
     <Section class="py-40 md:pt-64" id="welcome">
-      <img src={`avatar.jpg`} alt="Avatar" class="w-32 h-32 rounded-full mb-6" />
-      <h1 class="text-5xl font-bold flex gap-x-4 pb-4">
-        Hola!, soy Vicente Rivera.
-      </h1>
-      <h2 class="text-xl text-wrap opacity-80 max-w-3xl">
-        <span class="">Desarrollador Web.</span>
-        Estudiante de Ingeniería Civil en Informática. 2 años de experiencia desarrollando
-        paginas webs interactivas desde Temuco, Chile <img
-          alt="Chile"
-          src="https://purecatamphetamine.github.io/country-flag-icons/3x2/CL.svg"
-          class="size-8 inline-block"
-        /> .
-      </h2>
-      <SocialSection/>
+      <Hero />
     </Section>
     <!-- <Section id="experience">
       <h2 class="flex items-center gap-x-2 text-4xl font-semibold pb-2">
