@@ -26,7 +26,7 @@ import { sections } from "./sections";
     sections.map((section) => (
       <a
         aria-label={section.name}
-        href={`${import.meta.env.BASE_URL}${section.href}`}
+        href={`${section.href}`}
         class={clsx("", {
           // "text-cyan-500": Astro.url.pathname === section.href,
         })}
