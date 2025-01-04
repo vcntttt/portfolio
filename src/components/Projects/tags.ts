@@ -11,7 +11,7 @@ export const TAGS = {
   },
   REACT: {
     name: "React",
-    class: "bg-green-500 text-white",
+    class: "bg-green-950 text-white",
     icon: "React",
   },
   TYPESCRIPT: {
@@ -23,6 +23,11 @@ export const TAGS = {
     name: "Prisma",
     class: "bg-slate-900 text-white",
     icon: "Prisma",
+  },
+  TANSTACKQUERY: {
+    name: "TanStack Query",
+    class: "bg-red-900 text-white",
+    icon: "tanstack",
   },
   SHADCN: {
     name: "ShadCN",
