@@ -1,4 +1,4 @@
-import { TAGS } from "./tags";
+import { TAGS, type Tag } from "./tags";
 
 export interface Project {
   title: string;
@@ -9,11 +9,7 @@ export interface Project {
   slug: string;
   class: string;
   status: "live" | "soon" | "finished";
-  tags: {
-    name: string;
-    class: string;
-    icon: string;
-  }[];
+  tags: Tag[];
 }
 
 export const projects: Project[] = [
