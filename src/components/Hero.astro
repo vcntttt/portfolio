@@ -1,0 +1,29 @@
+---
+import SocialSection from "@/components/Social/SocialSection.astro";
+import { Image } from "astro:assets";
+import avatar from "@/assets/avatar.jpg";
+---
+
+<Image
+  src={avatar}
+  alt="yo"
+  class="w-32 h-32 rounded-full mb-6"
+  width={128}
+  height={128}
+  loading={"eager"}
+/>
+
+<h1 class="text-5xl font-bold flex gap-x-4 pb-4">Hola!, soy Vicente Rivera.</h1>
+<h2 class="text-xl text-wrap opacity-80 max-w-3xl">
+  <span class="">Desarrollador Web.</span>
+  Estudiante de Ingeniería Civil en Informática. 2 años de experiencia desarrollando
+  paginas webs interactivas desde Temuco, Chile <Image
+    alt="Chile"
+    src="https://purecatamphetamine.github.io/country-flag-icons/3x2/CL.svg"
+    class="size-8 inline-block"
+    width={24}
+    height={24}
+    loading={"eager"}
+  /> .
+</h2>
+<SocialSection />

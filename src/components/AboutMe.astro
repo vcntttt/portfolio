@@ -1,3 +1,8 @@
+---
+import { Image } from "astro:assets";
+import me from "@/assets/avatar2.png";
+---
+
 <div class="flex gap-x-8 flex-col md:flex-row">
   <article class="flex flex-col gap-y-4 md:order-1 order-2">
     <p>
@@ -20,9 +25,12 @@
       >.
     </p>
   </article>
-  <img
-    src={`avatar2.png`}
+  <Image
+    src={me}
     alt="avatar"
-    class="md:w-full rounded-full md:rounded-lg md:order-2 order-1 w-1/2 m-auto pb-4 md:pb-0"
+    loading={"lazy"}
+    width={350}
+    height={350}
+    class="md:w-full rounded-full md:rounded-lg md:order-2 order-1 w-1/2 m-auto pb-4 md:pb-0 max-w-[360px]"
   />
 </div>

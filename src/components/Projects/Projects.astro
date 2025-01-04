@@ -15,12 +15,8 @@ import { projects } from "./projects";
   {
     projects.map((project) => (
       <ProjectItem
-        class={`col-span-12`}
-        title={project.title}
-        href={project.link}
-        repo={project.github}
-        onLive={project.live}
-        id={project.id}
+      {...project}
+      class={`col-span-12`}
       >
         <BentoImg slot="image" imgPath={project.image} />
         <p slot="description" class="text-balance">
@@ -29,9 +25,9 @@ import { projects } from "./projects";
         <div slot="stack" class="flex gap-x-2 flex-row my-2 flex-wrap">
           {project.tags.map((tag) => (
             <span
-              class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2`}
+              class={`flex gap-x-2 rounded-full text-xs text-white ${tag.class} py-1 px-2`}
             >
-              <Icon name={tag.icon} class="size-4" />
+              <Icon name={tag.icon} class={`size-4 ${tag.iconClass}`} />
               {tag.name}
             </span>
           ))}

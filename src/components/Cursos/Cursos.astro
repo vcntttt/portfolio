@@ -1,17 +1,13 @@
 ---
+import { Icon } from "astro-icon/components";
 import Card from "./Card.astro";
 import { cursos } from "./cursos";
 ---
 
-<div
-  class="flex w-full max-w-[1400px] gap-8 flex-col md:flex-row"
->
-  {
-    cursos.map((curso) => (
-      <Card
-        class="col-span-5"
-        {...curso}
-      />
-    ))
-  }
+<div class="flex w-full max-w-[1400px] gap-8 flex-col md:flex-row">
+  {cursos.map((curso) => <Card {...curso} />)}
 </div>
+<p class="bg-black/60 text-sm rounded-md py-4 px-6 mt-2 flex items-center gap-x-2">
+  Actualmente estudiando: Next.js
+  <Icon name={"NextJS"} class="size-6 text-black" />
+</p>
