@@ -2,7 +2,7 @@
 import BentoImg from "./BentoImg.astro";
 import ProjectItem from "./ProjectItem.astro";
 import { Icon } from "astro-icon/components";
-import { projects } from "./projects";
+import { bestProjects } from "./projects";
 ---
 
 <div
@@ -13,7 +13,7 @@ import { projects } from "./projects";
 `
 >
   {
-    projects.map((project) => (
+    bestProjects.map((project) => (
       <ProjectItem
       {...project}
       class={`col-span-12`}
@@ -37,6 +37,6 @@ import { projects } from "./projects";
   }
 </div>
 
-<!-- <a href="/projects" class="flex w-full justify-end py-2 underline"
+<a href="/proyectos" class="flex w-full justify-end py-2 underline"
   >Ver lista completa</a
-> -->
+>
