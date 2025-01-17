@@ -7,6 +7,11 @@ interface Props {
 }
 
 const { title, description } = Astro.props;
+const basePath = "portfolio/proyectos"
+const domain = "vcntttt.github.io";
+const websiteUrl = `https://${domain}/${basePath}`;
+const imgPath = "overview-proyects.png";
+const imgUrl = `https://vcntttt.github.io/portfolio/${imgPath}`;
 ---
 
 <!doctype html>
@@ -16,8 +21,25 @@ const { title, description } = Astro.props;
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
-    <meta name="description" content={description}/>
+       <!-- HTML Meta Tags -->
+       <title>{title}</title>
+       <meta name="description" content={description} />
+   
+       <!-- Facebook Meta Tags -->
+       <meta property="og:url" content={websiteUrl} />
+       <meta property="og:type" content="website" />
+       <meta property="og:title" content={title} />
+       <meta property="og:description" content={description} />
+       <meta property="og:image" content={imgUrl} />
+       <meta name="og:image:url" content={imgUrl} />
+   
+       <!-- Twitter Meta Tags -->
+       <meta name="twitter:card" content="summary_large_image" />
+       <meta property="twitter:domain" content={domain} />
+       <meta property="twitter:url" content={websiteUrl} />
+       <meta name="twitter:title" content={title} />
+       <meta name="twitter:description" content={description} />
+       <meta name="twitter:image" content={imgUrl} />
   </head>
   <body
     class="bg-[conic-gradient(at_bottom,_var(--tw-gradient-stops))] from-[#0f172a] via-[#1e1a78] to-[#0f172a]"
