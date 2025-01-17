@@ -1,4 +1,8 @@
+import type { ImageMetadata } from "astro";
 import { TAGS, type Tag } from "./tags";
+import urlShortenerImg from "@/assets/url-shortener-full.png.jpg";
+import sellifyImg from "@/assets/sellify-full.png.jpg";
+import EcommerceImg from "@/assets/ecommerce-full.png.jpg";
 
 export interface Project {
   title: string;
@@ -6,7 +10,8 @@ export interface Project {
   longDescription: string;
   link: string;
   github: string;
-  images: string[];
+  bgImage: string;
+  image: ImageMetadata;
   slug: string;
   class: string;
   status: "live" | "soon" | "finished";
@@ -25,7 +30,8 @@ export const bestProjects: Project[] = [
       "Herramienta de código abierto para simplificar enlaces largos.",
     link: "https://url-shorteneer.vercel.app/",
     github: "https://github.com/vcntttt/url-shortener",
-    images: ["url-shortenerv2.jpg", "url-shortener-full.png"],
+    bgImage: "url-shortenerv2.jpg",
+    image: urlShortenerImg,
     slug: "url-shortener",
     class: "col-span-5",
     status: "live",
@@ -40,7 +46,8 @@ export const bestProjects: Project[] = [
       "Sistema privado de gestión de ventas diseñado para ayudar a pymes a optimizar sus operaciones en puntos de venta físicos.",
     link: "",
     github: "https://github.com/vcntttt/Sellify-TI2",
-    images: ["sellifyv2.jpg", "sellify-full.png"],
+    bgImage: "sellifyv2.jpg",
+    image: sellifyImg,
     slug: "sellify",
     class: "col-span-7",
     status: "finished",
@@ -76,7 +83,8 @@ export const projects: Project[] = [
       "Ecommerce basada en 'Teslo Shop', proyecto desarrollado en el curso de Next.js de Fernando Herrera. ",
     link: "https://cursos.devtalles.com/certificates/lsef9snnrv",
     github: "https://github.com/vcntttt/next14-ecommerce",
-    images: ["on-develop.jpg", "ecommerce-full.png"],
+    bgImage: "on-develop.jpg",
+    image: EcommerceImg,
     slug: "cursos-web",
     class: "col-span-5",
     status: "soon",
