@@ -1,7 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
 import type { Curso } from "./cursos";
-import { Image } from "astro:assets";
 
 interface Props extends Curso {
   class?: string;
@@ -11,15 +10,6 @@ const { title, instructor, icon, link } = Astro.props;
 ---
 
 <article class="flex flex-col gap-y-4 p-5 rounded-md bg-black/60 flex-1">
-  <!-- <Image
-    src={image}
-    alt=`certificado ${title}`
-    loading={"lazy"}
-    width={350}
-    height={350}
-    class="rounded-md object-cover h-60 mx-auto"
-  /> -->
-
   <div class="flex">
     <Icon name={icon} class="size-8 text-black" />
     <div class="flex justify-between w-full items-center">
