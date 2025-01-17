@@ -1,26 +1,34 @@
 ---
 import { Icon } from "astro-icon/components";
-import { Project } from "./projects";
+import type { Project } from "./projects";
 import { Image } from "astro:assets";
 
 interface Props extends Project {}
 
-const { title, tags, image } = Astro.props;
+const { title, tags, image, status, link, github, features, longDescription } = Astro.props;
 ---
 
-<article class="flex gap-y-4 p-5 rounded-md bg-black/60 flex-1 gap-4 justify-between">
-  <div class="flex flex-col gap-y-2 h-full justify-between">
+<article class="p-5 rounded-md bg-black/60 grid grid-cols-1 md:grid-cols-3 gap-6">
+  <div class="flex flex-col gap-y-2 h-full justify-between md:col-span-2 order-2 md:order-1">
     <div>
-      <h2 class="text-xl font-semibold mb-4">{title}</h2>
+      <div class="flex items-center mb-4 gap-x-4">
+        <h2 class="text-xl font-semibold">{title}</h2>
+        <a href={github}><Icon name="Github" size={20} class="text-white"/></a>
+      </div>
       <p class="text-balance">
-        lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat.
+        {longDescription}
       </p>
+      {
+        features && (
+        <p class="mt-2 font-semibold text-lg">Características:</p>
+        <ul class="list-disc ml-4 text-balance">
+          {features.map((feature) => <li class="text-balance">{feature}</li>)}
+        </ul>
+        )
+      }
     </div>
     <div>
-      <div class="flex gap-x-2 flex-row my-2 flex-wrap">
+      <div class="flex gap-2 flex-row my-2 flex-wrap">
         {
           tags.map((tag) => (
             <span
@@ -33,15 +41,47 @@ const { title, tags, image } = Astro.props;
         }
       </div>
     </div>
-      {title === "Sellify" && (
-        <div class="bg-red-800 p-2 text-sm">Mensaje</div>
-      )}
   </div>
-  <Image
-    alt={title}
-    src={`/${image}`}
-    width={350}
-    height={350}
-    class="rounded-md object-cover"
-  />
+  <div class="md:col-span-1 flex flex-col my-auto order-1 md:order-2">
+    <Image
+      alt={title}
+      src={`/${image}`}
+      width={350}
+      height={350}
+      class="rounded-md object-cover w-full"
+    />
+    {
+      status === "live" && (
+        <a
+          target="_blank"
+          href={link}
+          class="flex flex-1 text-white hover:underline bg-green-500/70 p-2 text-sm mt-2 justify-center w-full"
+        >
+          En producción
+        </a>
+      )
+    }
+    {
+      status === "finished" && (
+        <a
+          target="_blank"
+          href={github}
+          class="flex flex-1 text-white hover:underline bg-yellow-500/70 p-2 text-sm mt-2 justify-center w-full"
+        >
+          Terminado
+        </a>
+      )
+    }
+    {
+      status === "soon" && (
+        <a
+          target="_blank"
+          href={github}
+          class="flex flex-1 text-white hover:underline bg-blue-500/70 p-2 text-sm mt-2 justify-center w-full"
+        >
+          Desarrollo en progreso
+        </a>
+      )
+    }
+  </div>
 </article>
