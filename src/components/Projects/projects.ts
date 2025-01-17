@@ -1,8 +1,8 @@
 import type { ImageMetadata } from "astro";
 import { TAGS, type Tag } from "./tags";
-import urlShortenerImg from "@/assets/url-shortener-full.png.jpg";
-import sellifyImg from "@/assets/sellify-full.png.jpg";
-import EcommerceImg from "@/assets/ecommerce-full.png.jpg";
+import urlShortenerImg from "@/assets/url-shortener-full.png";
+import sellifyImg from "@/assets/sellify-full.png";
+import EcommerceImg from "@/assets/ecommerce-full.png";
 
 export interface Project {
   title: string;
