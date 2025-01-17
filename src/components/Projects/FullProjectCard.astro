@@ -5,16 +5,18 @@ import { Image } from "astro:assets";
 
 interface Props extends Project {}
 
-const { title, tags, image, status, link, github, features, longDescription } = Astro.props;
+const { title, tags, images, status, link, github, features, longDescription, date } = Astro.props;
+const imgUrl = images[1] ? `/src/assets/${images[1]}` : "https://placehold.co/400x300?text=placeholder";
 ---
 
 <article class="p-5 rounded-md bg-black/60 grid grid-cols-1 md:grid-cols-3 gap-6">
   <div class="flex flex-col gap-y-2 h-full justify-between md:col-span-2 order-2 md:order-1">
     <div>
-      <div class="flex items-center mb-4 gap-x-4">
+      <div class="flex items-center gap-x-4">
         <h2 class="text-xl font-semibold">{title}</h2>
         <a href={github}><Icon name="Github" size={20} class="text-white"/></a>
       </div>
+      <p class="mb-4 text-xs">{date}</p>
       <p class="text-balance">
         {longDescription}
       </p>
@@ -22,7 +24,7 @@ const { title, tags, image, status, link, github, features, longDescription } = 
         features && (
         <p class="mt-2 font-semibold text-lg">Características:</p>
         <ul class="list-disc ml-4 text-balance">
-          {features.map((feature) => <li class="text-balance">{feature}</li>)}
+          {features.map((feature) => <li class="text-balance">{feature}.</li>)}
         </ul>
         )
       }
@@ -45,7 +47,8 @@ const { title, tags, image, status, link, github, features, longDescription } = 
   <div class="md:col-span-1 flex flex-col my-auto order-1 md:order-2">
     <Image
       alt={title}
-      src={`/${image}`}
+      src={imgUrl}
+      format="webp"
       width={350}
       height={350}
       class="rounded-md object-cover w-full"
@@ -66,7 +69,7 @@ const { title, tags, image, status, link, github, features, longDescription } = 
         <a
           target="_blank"
           href={github}
-          class="flex flex-1 text-white hover:underline bg-yellow-500/70 p-2 text-sm mt-2 justify-center w-full"
+          class="flex flex-1 text-white hover:underline bg-slate-500/70 p-2 text-sm mt-2 justify-center w-full"
         >
           Terminado
         </a>

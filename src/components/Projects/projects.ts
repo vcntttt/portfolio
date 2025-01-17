@@ -2,39 +2,45 @@ import { TAGS, type Tag } from "./tags";
 
 export interface Project {
   title: string;
-  description: string
-  longDescription: string
+  description: string;
+  longDescription: string;
   link: string;
   github: string;
-  image: string;
+  images: string[];
   slug: string;
   class: string;
   status: "live" | "soon" | "finished";
   tags: Tag[];
   features?: string[];
+  date: string
 }
 
 export const bestProjects: Project[] = [
   {
     title: "Url Shortener",
+    date: "Febrero 2024",
     description:
-      "Acortador de urls de código abierto desarrollado con fines educativos utilizando tecnologías web modernas.",
-      longDescription: "Acortador de urls de código abierto desarrollado con fines educativos utilizando tecnologías web modernas.",
+      "Herramienta de código abierto para simplificar enlaces largos.",
+    longDescription:
+      "Herramienta de código abierto para simplificar enlaces largos.",
     link: "https://url-shorteneer.vercel.app/",
     github: "https://github.com/vcntttt/url-shortener",
-    image: "url-shortenerv2.jpg",
+    images: ["url-shortenerv2.jpg", "url-shortener-full.png"],
     slug: "url-shortener",
     class: "col-span-5",
     status: "live",
     tags: [TAGS.NEXT, TAGS.TAILWIND, TAGS.TYPESCRIPT, TAGS.PRISMA],
+    features: ["NextUI", "SearchParams", "RESTful API Handlers"],
   },
   {
     title: "Sellify",
-    description: "Sistema de gestión de inventario y punto de venta.",
-    longDescription: "Sistema privado de ventas diseñado para pequeñas y medianas empresas, específicamente para aquellos que necesitan gestionar sus productos y ventas de manera eficiente. Nuestro sistema se compone de dos partes fundamentales. La primera es el panel de administración, que es donde el jefe o el dueño va a gestionar su negocio. La segunda es la parte del cajero, diseñada específicamente para las operaciones diarias en el punto de venta. En este panel se ingresaran los productos, se procesaran las ventas y posteriormente se emitirán las boletas.",
+    date: "Noviembre 2024",
+    description: "Sistema privado de gestión de ventas diseñado para ayudar a pymes a optimizar sus operaciones en puntos de venta físicos.",
+    longDescription:
+      "Sistema privado de gestión de ventas diseñado para ayudar a pymes a optimizar sus operaciones en puntos de venta físicos.",
     link: "",
     github: "https://github.com/vcntttt/Sellify-TI2",
-    image: "sellifyv2.jpg",
+    images: ["sellifyv2.jpg", "sellify-full.png"],
     slug: "sellify",
     class: "col-span-7",
     status: "finished",
@@ -45,6 +51,7 @@ export const bestProjects: Project[] = [
       TAGS.TAILWIND,
       TAGS.SHADCN,
     ],
+    features: ["soon..."],
   },
   // {
   //   title: "Agenda Medica",
@@ -63,15 +70,24 @@ export const projects: Project[] = [
   ...bestProjects,
   {
     title: "Ecommerce",
+    date: "Enero 2025",
     description: "Ecommerce basada en 'Teslo Shop'",
-    longDescription: "Ecommerce basada en 'Teslo Shop', proyecto desarrollado en el curso de Next.js de Fernando Herrera. ",
+    longDescription:
+      "Ecommerce basada en 'Teslo Shop', proyecto desarrollado en el curso de Next.js de Fernando Herrera. ",
     link: "https://cursos.devtalles.com/certificates/lsef9snnrv",
     github: "https://github.com/vcntttt/next14-ecommerce",
-    image: "on-develop.jpg",
+    images: ["on-develop.jpg", "ecommerce-full.png"],
     slug: "cursos-web",
     class: "col-span-5",
     status: "soon",
     tags: [TAGS.NEXT, TAGS.TAILWIND, TAGS.TYPESCRIPT, TAGS.PRISMA],
-    features: ["Server Actions"],
+    features: [
+      "Server Actions",
+      "Busqueda indexada de productos",
+      "Carrito de compras",
+      "OAuth",
+      "Pasarela de Pago (Paypal)",
+      "Funciones de administración (CRUD)",
+    ],
   },
-]
+];
