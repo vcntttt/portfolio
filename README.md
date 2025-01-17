@@ -1,1 +1,1 @@
-![Portofolio](public/overview.png)
+![Portofolio](public/overview.jpg)
