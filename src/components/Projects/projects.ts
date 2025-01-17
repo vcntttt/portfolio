@@ -2,7 +2,7 @@ import { TAGS, type Tag } from "./tags";
 
 export interface Project {
   title: string;
-  description: string;
+  description: string
   link: string;
   github: string;
   image: string;
@@ -12,7 +12,9 @@ export interface Project {
   tags: Tag[];
 }
 
-export const projects: Project[] = [
+export interface FullProject extends Project {}
+
+export const bestProjects: Project[] = [
   {
     title: "Url Shortener",
     description:
@@ -55,7 +57,7 @@ export const projects: Project[] = [
 //  },
   // {
   //   title: "Recetas Sin Gluten",
-  //   description: "Blog de recetas sin gluten.",
+  //   shortDescription: "Blog de recetas sin gluten.",
   //   link: "#",
   //   github: "https://github.com/vcntttt/recetas-sin-gluten",
   //   image: "",
@@ -64,3 +66,18 @@ export const projects: Project[] = [
   //   status: false,
   // },
 ];
+
+export const projects: FullProject[] = [
+  ...bestProjects,
+  {
+    title: "Ecommerce",
+    description: "Cursos de Desarrollo Web",
+    link: "https://cursos.devtalles.com/certificates/lsef9snnrv",
+    github: "https://github.com/vcntttt/cursos-web",
+    image: "on-develop.jpg",
+    slug: "cursos-web",
+    class: "col-span-5",
+    status: "live",
+    tags: [TAGS.NEXT, TAGS.TAILWIND, TAGS.TYPESCRIPT, TAGS.PRISMA],
+  },
+]

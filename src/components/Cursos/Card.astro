@@ -7,26 +7,25 @@ interface Props extends Curso {
   class?: string;
 }
 
-const { title, instructor, image, icon, link } = Astro.props;
+const { title, instructor, icon, link } = Astro.props;
 ---
 
-<article class="flex flex-col gap-y-4 p-6 rounded-md bg-black/60 flex-1">
-  <Image
+<article class="flex flex-col gap-y-4 p-5 rounded-md bg-black/60 flex-1">
+  <!-- <Image
     src={image}
     alt=`certificado ${title}`
     loading={"lazy"}
     width={350}
     height={350}
     class="rounded-md object-cover h-60 mx-auto"
-  />
+  /> -->
 
   <div class="flex">
-    <Icon name={icon} class="size-8 text-white" />
-    <div class="flex justify-between w-full">
-      <h3 class="text-xl font-semibold ml-2">{title}</h3>
-      <a href={link} target="_blank" class="underline flex">
-        Ver certificado
-        <Icon name={"external-link"} class="ml-2 size-6 text-white" />
+    <Icon name={icon} class="size-8 text-black" />
+    <div class="flex justify-between w-full items-center">
+      <h3 class="text-xl font-semibold ml-1">{title}</h3>
+      <a href={link} target="_blank">
+        <Icon name={"external-link"} class="ml-1 size-6 text-white" aria-label="Ir a certificado" />
       </a>
     </div>
   </div>
