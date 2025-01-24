@@ -4,21 +4,36 @@ import me from "@/assets/avatar2.png";
 ---
 
 <div class="flex gap-x-8 flex-col md:flex-row">
-  <article class="flex flex-col gap-y-4 md:order-1 order-2">
+  <article class="flex flex-col gap-y-4 md:order-1 order-2 text-balance">
     <p>
-      Mi nombre es Vicente, la mayoría me dice vicho. Desde niño siempre me ha
-      interesado el tema de como funcionan las cosas por debajo, por lo que no
-      me costó demasiado escoger una carrera que estudiar.
+      Mi nombre es Vicente, la mayoría me dice vicho. Desde niño siempre he
+      curiosidad por comprender cómo funcionan las cosas: lo que comenzó
+      experimentando con circuitos de redstone en Minecraft evolucionó hacia un
+      <span>interés profesional por la arquitectura de software</span>.
     </p>
-    <p>
-      Mi primer acercamiento a este mundo (aunque en ese momento no lo sabia)
-      fue el Minecraft, me dedicaba mas a jugar con la redstone que a explorar o
-      hacer lo típico.
-    </p>
-    <p>Por cierto, uso Arch.</p>
 
     <p>
-      Si me quieres conocer un poco mas, te dejo mi maxima obra de sabiduría: <a
+      Desde mi segundo año de universidad, he fortalecido mis conocimientos como
+      <span>ayudante docente</span> en asignaturas de programación y desarrollo web
+      básico. Esta experiencia continua me ha permitido desarrollar no solo habilidades
+      técnicas, sino también la capacidad de transmitir conocimientos complejos de
+      manera accesible.
+    </p>
+
+    <p>
+      Actualmente, estoy desarrollando mis habilidades en desarrollo web
+      full-stack, creando proyectos que me permiten experimentar y aprender
+      nuevas tecnologías.
+    </p>
+
+    <p>
+      Soy un <span>apasionado del open source</span> y siempre busco herramientas
+      que promuevan la colaboración y la eficiencia. Ah, y por si te lo preguntas,
+      sí, uso Arch Linux, btw .
+    </p>
+
+    <p>
+      Si me quieres conocer un poco mas, te comparto mi obra maestra auditiva <a
         class="underline cursor-pointer"
         href="https://open.spotify.com/playlist/03gLwSeuCv12Vgnv9ce1Gt?si=3cd4eb7e7086426b"
         target="_blank">mi playlist de spotify</a
@@ -34,3 +49,9 @@ import me from "@/assets/avatar2.png";
     class="md:w-full rounded-full md:rounded-lg md:order-2 order-1 w-1/2 m-auto pb-4 md:pb-0 max-w-[360px]"
   />
 </div>
+
+<style>
+  span {
+    @apply underline;
+  }
+</style>
