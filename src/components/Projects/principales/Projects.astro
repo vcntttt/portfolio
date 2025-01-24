@@ -1,8 +1,8 @@
 ---
-import BentoImg from "./BentoImg.astro";
+import { Image } from "astro:assets";
 import ProjectItem from "./ProjectItem.astro";
 import { Icon } from "astro-icon/components";
-import { bestProjects } from "./projects";
+import { bestProjects } from "@/data/projects";
 ---
 
 <div
@@ -18,7 +18,14 @@ import { bestProjects } from "./projects";
       {...project}
       class={`col-span-12`}
       >
-        <BentoImg slot="image" imgPath={project.bgImage} />
+        <Image
+          loading="eager"
+          slot="image"
+          src={project.images[0]}
+          alt={`Demo ${project.title}`}
+          class="transition-scale absolute -z-10 h-full w-full rounded-xl opacity-90 duration-1000 ease-in-out group-hover:opacity-40  group-hover:scale-[110%] object-cover object-top"
+        />
+
         <p slot="description" class="text-balance">
           {project.description}
         </p>

@@ -1,13 +1,16 @@
 ---
 import Layout from "@/layouts/proyects-layout.astro";
 import Section from "@/components/Section.astro";
-import { projects } from "@/components/Projects/projects";
+import { projects } from "@/data/projects";
 import FullProjectCard from "@/components/Projects/FullProjectCard.astro";
 ---
 
-<Layout title="Proyectos | Vicente Rivera" description="Lista detallada de mis proyectos">
-  <main class="mx-4 md:mx-auto max-w-[70rem] w-full">
-    <Section >
+<Layout
+  title="Proyectos | Vicente Rivera"
+  description="Lista detallada de mis proyectos"
+>
+  <main class="mx-4 md:mx-auto max-w-[70rem]">
+    <Section>
       <a href="/" class="underline">Volver al inicio</a>
       <h1 class="text-4xl font-semibold mt-2 mb-8">
         Lista completa de mis proyectos
@@ -22,9 +25,7 @@ import FullProjectCard from "@/components/Projects/FullProjectCard.astro";
       >
         {
           projects.map((project) => {
-            return (
-              <FullProjectCard {...project} />
-            )
+            return <FullProjectCard {...project} />;
           })
         }
       </div>

@@ -1,6 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
-import type { Project } from "./projects";
+import type { Project } from "@/types";
 
 interface Props extends Project {
   class: string;
@@ -57,8 +57,10 @@ const map = {
     <div>
       <div class="flex justify-between items-center">
         <h2 class=`font-semibold`>{title}</h2>
-        <a aria-label=`Ir al repositorio del proyecto ${title}` href={github} target="_blank"
-          ><Icon name={"Github"} class="size-6" /></a
+        <a
+          aria-label=`Ir al repositorio del proyecto ${title}`
+          href={github}
+          target="_blank"><Icon name={"Github"} class="size-6" /></a
         >
       </div>
       <slot name="description" />

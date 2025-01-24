@@ -1,10 +1,10 @@
 ---
 import { Icon } from "astro-icon/components";
-import type { Project } from "./projects";
+import type { Project } from "@/types";
 import { Image } from "astro:assets";
 
 interface Props extends Project {}
-const { title, tags, image, status, link, github, features, longDescription, date } = Astro.props;
+const { title, tags, images, status, link, github, features, longDescription, date } = Astro.props;
 ---
 
 <article class="p-5 rounded-md bg-black/60 grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -12,7 +12,9 @@ const { title, tags, image, status, link, github, features, longDescription, dat
     <div>
       <div class="flex items-center gap-x-4">
         <h2 class="text-xl font-semibold">{title}</h2>
-        <a href={github}><Icon name="Github" size={20} class="text-white"/></a>
+        <a href={github} aria-label="Ir a repositorio">
+          <Icon name="Github" size={20} class="text-white" aria-label="Ir a repositorio"/>
+        </a>
       </div>
       <p class="mb-4 text-xs">{date}</p>
       <p class="text-balance">
@@ -44,8 +46,9 @@ const { title, tags, image, status, link, github, features, longDescription, dat
   </div>
   <div class="md:col-span-1 flex flex-col my-auto order-1 md:order-2">
     <Image
+    loading={"eager"}
       alt={title}
-      src={image}
+      src={images[1]}
       format="webp"
       width={350}
       height={350}
