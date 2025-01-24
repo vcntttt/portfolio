@@ -1,7 +1,30 @@
 ---
+import { Icon } from "astro-icon/components";
+
 const year = new Date().getFullYear();
+const { maxWidth = "max-w-[60rem]" } = Astro.props;
 ---
 
-<footer class="py-10">
-  <p class="text-center">© {year} Vicente Rivera. Algún derecho reservado.</p>
+<footer
+  class=`mx-4 md:mx-auto ${maxWidth} py-10 flex justify-between items-center w-full text-sm text-gray-300`
+>
+  <p class="text-center">
+    © {year} Vicente Rivera - Algún derecho reservado.
+  </p>
+  <div class="flex gap-x-4">
+    <a
+      href="https://github.com/vcntttt"
+      target="_blank"
+      aria-label="Ir a mi Github"
+    >
+      <Icon name="Github" />
+    </a>
+    <a
+      href="https://www.linkedin.com/in/vicente-rivera-67559328b/"
+      target="_blank"
+      aria-label="Ir a mi Linkedin"
+    >
+      <Icon name="Linkedin" />
+    </a>
+  </div>
 </footer>
