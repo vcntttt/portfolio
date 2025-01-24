@@ -1,11 +1,4 @@
-
-export interface Curso {
-  title: string;
-  instructor: string;
-  plataforma: string;
-  icon:string;
-  link: string
-}
+import type { Curso } from "@/types";
 
 export const cursos: Curso[] = [
   {

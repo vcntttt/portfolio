@@ -1,9 +1,4 @@
-export interface Tag {
-  name: string;
-  class: string;
-  icon: string;
-  iconClass: string;
-} []
+import type { Tag } from "@/types";
 
 export const TAGS: Record<string, Tag> = {
   NEXT: {
