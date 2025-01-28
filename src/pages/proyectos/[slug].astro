@@ -1,0 +1,32 @@
+---
+import type { GetStaticPaths } from "astro";
+import { projects } from "@/data/projects";
+import Layout from "@/layouts/proyects-layout.astro";
+import Section from "@/components/Section.astro";
+import { Image } from "astro:assets";
+
+export const getStaticPaths = (() => {
+  return projects.map((project) => ({
+    params: { slug: project.slug },
+    props: { project },
+  }));
+}) satisfies GetStaticPaths;
+
+const { project } = Astro.props;
+---
+
+<Layout
+  title="Proyectos | Vicente Rivera"
+  description="Lista detallada de mis proyectos"
+>
+  <main class="mx-4 md:mx-auto max-w-[70rem]">
+    <Section class:list={"h-[90vh] items-center flex flex-col justify-center gap-y-2"}>
+      <h1 class="text-4xl font-semibold mt-2 mb-8">
+        Página de {project.title}
+      </h1>
+      <Image src={project.images[1]} alt={project.title} width={350} height={200} class="rounded-md object-cover w-full" />
+      <h2>Proximamente...</h2>
+      <a href="/" class="underline">Volver al inicio</a>
+    </Section>
+  </main>
+</Layout>

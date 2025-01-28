@@ -2,7 +2,7 @@
 import { Image } from "astro:assets";
 import ProjectItem from "./ProjectItem.astro";
 import { Icon } from "astro-icon/components";
-import { bestProjects } from "@/data/projects";
+import { projects } from "@/data/projects";
 ---
 
 <div
@@ -13,7 +13,7 @@ import { bestProjects } from "@/data/projects";
 `
 >
   {
-    bestProjects.map((project) => (
+    projects.filter((project) => project.status === "live").map((project) => (
       <ProjectItem
       {...project}
       class={`col-span-12`}
@@ -45,5 +45,5 @@ import { bestProjects } from "@/data/projects";
 </div>
 
 <a href="/proyectos" class="flex w-full justify-end py-2 underline"
-  >Ver lista completa</a
+  >Ver más</a
 >

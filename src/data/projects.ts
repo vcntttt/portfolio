@@ -10,7 +10,7 @@ import sellifyPreview from "@/assets/sellify/preview.jpg";
 import EcommercePreview from "@/assets/ecommerce/preview.png";
 
 // images: [urlPreview, urlFull]
-export const bestProjects: Project[] = [
+export const projects: Project[] = [
   {
     title: "Url Shortener",
     date: "Febrero 2024",
@@ -49,22 +49,6 @@ export const bestProjects: Project[] = [
       "Funciones de administración (CRUD)",
     ],
   },
-  // {
-  //   title: "Agenda Medica",
-  //   description: "",
-  //   link: "",
-  //   github: "https://github.com/vcntttt/agenda-medica",
-  //   image: "on-develop.jpg",
-  //   slug: "",
-  //   class: "col-span-7",
-  //   status: "soon",
-  //   tags: [TAGS.NEXT, TAGS.TAILWIND, TAGS.TYPESCRIPT, TAGS.PRISMA, TAGS.SHADCN],
-  // },
-];
-
-export const projects: Project[] = [
-  ...bestProjects,
-
   {
     title: "Sellify",
     date: "Noviembre 2024",
