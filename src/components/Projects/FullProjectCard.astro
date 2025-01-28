@@ -51,26 +51,27 @@ const { title, tags, images, status, link, github, features, longDescription, da
     />
     <div class="flex mt-2 gap-x-2">
 
-{status === "live" && (
-        <a
-      href={link}
-      target="_blank"
-      class=" bg-[#121212]/50 px-2 py-1 rounded-md justify-center text-sm hover:underline flex items-center gap-x-2 flex-1 border border-white/20"
-    >
-    Ver demo
-    
-      <Icon name={"external-link"} class="size-4 inline" />
-    </a>
-)}
-      <a
+
+    <a
       href={github}
       target="_blank"
       class=" bg-[#121212]/50 px-2 py-1 rounded-md justify-center text-sm hover:underline flex items-center gap-x-2 flex-1 border border-white/20"
     >
     Ver repositorio
     
-      <Icon name={"external-link"} class="size-4 inline" />
+      <Icon name={"Github"} class="size-4 inline" />
     </a>
+    {
+    status === "live" && (
+      <a
+        href={link}
+        target="_blank"
+        class=" bg-[#121212]/50 px-2 py-1 rounded-md justify-center text-sm hover:underline flex items-center gap-x-2 flex-1 border border-white/20"
+      >
+        Ver demo
+        <Icon name={"external-link"} class="size-4 inline" />
+      </a>
+    )}
     </div>
   </div>
 </article>

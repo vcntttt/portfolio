@@ -51,7 +51,7 @@ export const projects: Project[] = [
   },
   {
     title: "Sellify",
-    date: "Noviembre 2024",
+    date: "Actualmente en desarrollo",
     description:
       "Sistema privado de gestión de ventas diseñado para ayudar a pymes a optimizar sus operaciones en puntos de venta físicos.",
     longDescription:
