@@ -2,12 +2,14 @@ import { TAGS } from "./tags";
 import type { Project } from "@/types";
 
 // images
-import url from "@/assets/url-shortener-full.png";
-import sellify from "@/assets/sellify-full.png";
-import Ecommerce from "@/assets/ecommerce-full.png";
-import url2 from "@/assets/url-shortenerv2.jpg";
-import sellify2 from "@/assets/sellifyv2.jpg";
+import urlFull from "@/assets/shortener/full.png";
+import sellifyFull from "@/assets/sellify/full.png";
+import EcommerceFull from "@/assets/ecommerce/full.png";
+import urlPreview from "@/assets/shortener/preview.jpg";
+import sellifyPreview from "@/assets/sellify/preview.jpg";
+import EcommercePreview from "@/assets/ecommerce/preview.png";
 
+// images: [urlPreview, urlFull]
 export const bestProjects: Project[] = [
   {
     title: "Url Shortener",
@@ -18,12 +20,34 @@ export const bestProjects: Project[] = [
       "Herramienta de código abierto para simplificar enlaces largos.",
     link: "https://url-shorteneer.vercel.app/",
     github: "https://github.com/vcntttt/url-shortener",
-    images: [url2, url],
+    images: [urlPreview, urlFull],
     slug: "url-shortener",
     class: "col-span-5",
     status: "live",
     tags: [TAGS.NEXT, TAGS.TAILWIND, TAGS.TYPESCRIPT, TAGS.PRISMA],
     features: ["NextUI", "SearchParams", "RESTful API Handlers"],
+  },
+  {
+    title: "Ecommerce",
+    date: "Enero 2025",
+    description: "Ecommerce basada en 'Teslo Shop'",
+    longDescription:
+      "Ecommerce basada en 'Teslo Shop', proyecto desarrollado en el curso de Next.js de Fernando Herrera. ",
+    link: "https://next14-ecommercee.vercel.app/",
+    github: "https://github.com/vcntttt/next14-ecommerce",
+    images: [EcommercePreview, EcommerceFull],
+    slug: "next14-ecommerce",
+    class: "col-span-5",
+    status: "live",
+    tags: [TAGS.NEXT, TAGS.TAILWIND, TAGS.TYPESCRIPT, TAGS.PRISMA],
+    features: [
+      "Server Actions",
+      "Busqueda indexada de productos",
+      "Carrito de compras",
+      "OAuth",
+      "Pasarela de Pago (Paypal)",
+      "Funciones de administración (CRUD)",
+    ],
   },
   // {
   //   title: "Agenda Medica",
@@ -40,28 +64,7 @@ export const bestProjects: Project[] = [
 
 export const projects: Project[] = [
   ...bestProjects,
-  {
-    title: "Ecommerce",
-    date: "Enero 2025",
-    description: "Ecommerce basada en 'Teslo Shop'",
-    longDescription:
-      "Ecommerce basada en 'Teslo Shop', proyecto desarrollado en el curso de Next.js de Fernando Herrera. ",
-    link: "https://next14-ecommercee.vercel.app/",
-    github: "https://github.com/vcntttt/next14-ecommerce",
-    images: [Ecommerce, Ecommerce],
-    slug: "cursos-web",
-    class: "col-span-5",
-    status: "live",
-    tags: [TAGS.NEXT, TAGS.TAILWIND, TAGS.TYPESCRIPT, TAGS.PRISMA],
-    features: [
-      "Server Actions",
-      "Busqueda indexada de productos",
-      "Carrito de compras",
-      "OAuth",
-      "Pasarela de Pago (Paypal)",
-      "Funciones de administración (CRUD)",
-    ],
-  },
+
   {
     title: "Sellify",
     date: "Noviembre 2024",
@@ -71,7 +74,7 @@ export const projects: Project[] = [
       "Sistema privado de gestión de ventas diseñado para ayudar a pymes a optimizar sus operaciones en puntos de venta físicos.",
     link: "",
     github: "https://github.com/vcntttt/Sellify-TI2",
-    images: [sellify2, sellify],
+    images: [sellifyPreview, sellifyFull],
     slug: "sellify",
     class: "col-span-7",
     status: "soon",
