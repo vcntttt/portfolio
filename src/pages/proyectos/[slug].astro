@@ -4,6 +4,7 @@ import { projects } from "@/data/projects";
 import Layout from "@/layouts/proyects-layout.astro";
 import Section from "@/components/Section.astro";
 import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
 
 export const getStaticPaths = (() => {
   return projects.map((project) => ({
@@ -25,8 +26,16 @@ const { project } = Astro.props;
         Página de {project.title}
       </h1>
       <Image src={project.images[1]} alt={project.title} width={350} height={200} class="rounded-md object-cover w-full" />
-      <h2>Proximamente...</h2>
-      <a href="/" class="underline">Volver al inicio</a>
+      <h2 class="mb-4">Proximamente...</h2>
+        {
+          project.link && (
+          <a href={project.link} class="underline">
+          Ver demo <Icon name={"external-link"} class="size-4 inline" />
+        </a>
+          )
+        }
+        <a href="/proyectos" class="underline">Volver a proyectos</a>
+        <a href="/" class="underline">Volver al inicio</a>
     </Section>
   </main>
 </Layout>
