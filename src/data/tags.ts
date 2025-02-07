@@ -15,7 +15,13 @@ export const TAGS: Record<string, Tag> = {
   },
   REACT: {
     name: "React",
-    class: "bg-green-950",
+    class: "bg-green-900/30",
+    icon: "React",
+    iconClass: "",
+  },
+  REACTNATIVE: {
+    name: "React Native",
+    class: "bg-green-900/30",
     icon: "React",
     iconClass: "",
   },
