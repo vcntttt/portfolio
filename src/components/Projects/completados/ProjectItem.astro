@@ -50,7 +50,8 @@ const { title, link, github, slug } = Astro.props;
     </div>
     <div>
       <div class="flex justify-between items-center">
-        <a class=`font-semibold underline` href=`/proyectos/${slug}`>{title}</a>
+        <!-- <a class=`font-semibold underline` href=`/proyectos/${slug}`>{title}</a> -->
+        <a class=`font-semibold underline` href=`${link}`>{title}</a>
       </div>
       <slot name="description" />
       <slot name="stack" />
