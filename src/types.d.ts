@@ -11,6 +11,7 @@ export interface Project {
   tags: Tag[];
   features?: string[];
   date: string;
+  info?: string;
 }
 
 export interface Tag {
