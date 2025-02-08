@@ -36,7 +36,7 @@ import { sections } from "@/data/sections";
 </nav>
 
 <script>
-  function handleIntersection(entries) {
+  function handleIntersection(entries: IntersectionObserverEntry[]) {
     entries.forEach((entry) => {
       const id = entry.target.getAttribute('id');
       const navLink = document.querySelector(`nav a[href="#${id}"]`);
