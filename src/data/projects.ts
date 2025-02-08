@@ -8,6 +8,7 @@ import EcommerceFull from "@/assets/ecommerce/full.png";
 import urlPreview from "@/assets/shortener/preview.jpg";
 import sellifyPreview from "@/assets/sellify/preview.jpg";
 import EcommercePreview from "@/assets/ecommerce/preview.png";
+import onDevelop from "@/assets/on-develop.jpg";
 
 // images: [urlPreview, urlFull]
 export const projects: Project[] = [
@@ -28,11 +29,40 @@ export const projects: Project[] = [
     features: ["NextUI", "SearchParams", "RESTful API Handlers"],
   },
   {
+    title: "Sellify",
+    date: "Noviembre 2024",
+    description: "",
+    longDescription:
+      "Sistema privado de gestión de ventas diseñado para ayudar a pymes a optimizar sus operaciones en puntos de venta físicos.",
+    link: "",
+    github: "https://github.com/vcntttt/Sellify-TI2",
+    images: [sellifyPreview, sellifyFull],
+    slug: "sellify",
+    class: "col-span-7",
+    status: "finished",
+    tags: [
+      TAGS.REACT,
+      TAGS.TYPESCRIPT,
+      TAGS.TANSTACKQUERY,
+      TAGS.TAILWIND,
+      TAGS.SHADCN,
+    ],
+    features: [
+      "Dashboard Administrativo",
+      "Rutas Privadas",
+      "Interfaz punto de venta",
+      "Sistema de fidelidad de clientes",
+      "Generación de boletas",
+      "Integración con API y aplicación móvil externa mediante WebSockets",
+    ],
+    info: "API y aplicación movil desarrollados por otro equipo."
+  },
+  {
     title: "Ecommerce",
     date: "Enero 2025",
-    description: "Ecommerce basada en 'Teslo Shop'",
+    description: "Ecommerce basada en productos de Tesla. Cuenta con autenticación, pagos, etc.",
     longDescription:
-      "Ecommerce basada en 'Teslo Shop', proyecto desarrollado en el curso de Next.js de Fernando Herrera. ",
+      "Ecommerce basada en productos de Tesla, idea original de Fernando Herrera.",
     link: "https://next14-ecommercee.vercel.app/",
     github: "https://github.com/vcntttt/next14-ecommerce",
     images: [EcommercePreview, EcommerceFull],
@@ -50,25 +80,22 @@ export const projects: Project[] = [
     ],
   },
   {
-    title: "Sellify",
-    date: "Actualmente en desarrollo",
-    description:
-      "Sistema privado de gestión de ventas diseñado para ayudar a pymes a optimizar sus operaciones en puntos de venta físicos.",
-    longDescription:
-      "Sistema privado de gestión de ventas diseñado para ayudar a pymes a optimizar sus operaciones en puntos de venta físicos.",
+    title: "Ponderador",
+    date: "Febrero 2025",
+    description: "",
+    longDescription: "",
     link: "",
-    github: "https://github.com/vcntttt/Sellify-TI2",
-    images: [sellifyPreview, sellifyFull],
-    slug: "sellify",
+    github: "https://github.com/vcntttt/ponderador-app",
+    images: [onDevelop, onDevelop],
+    slug: "ponderador",
     class: "col-span-7",
-    status: "soon",
+    status: "finished",
     tags: [
-      TAGS.REACT,
+      TAGS.REACTNATIVE,
       TAGS.TYPESCRIPT,
-      TAGS.TANSTACKQUERY,
       TAGS.TAILWIND,
-      TAGS.SHADCN,
     ],
-    features: ["soon..."],
+    features: [""],
+    info: "Proximamente en Play Store.",
   },
 ];
