@@ -1,8 +1,8 @@
 ---
 import { Icon } from "astro-icon/components";
-import clsx from "clsx";
-import { sections } from "../../data/sections";
+import { sections } from "@/data/sections";
 ---
+
 
 <!-- <header class="sticky top-0 w-full px-6 py-4 z-10">
   <nav class="max-w-7xl mx-auto flex items-center justify-end gap-x-12">
@@ -27,12 +27,41 @@ import { sections } from "../../data/sections";
       <a
         aria-label={section.name}
         href={`${section.href}`}
-        class={clsx("", {
-          // "text-cyan-500": Astro.url.pathname === section.href,
-        })}
+        class="transition-all duration-300 ease-in-out hover:text-blue-500 hover:scale-125"
       >
         <Icon name={section.icon} class="size-6" />
       </a>
     ))
   }
 </nav>
+
+<script>
+  function handleIntersection(entries) {
+    entries.forEach((entry) => {
+      const id = entry.target.getAttribute('id');
+      const navLink = document.querySelector(`nav a[href="#${id}"]`);
+      
+      if (navLink) {
+        if (entry.isIntersecting) {
+        document.querySelectorAll('nav a').forEach(link => {
+          link.classList.remove('text-blue-600', 'scale-125');
+        });
+        navLink.classList.add('text-blue-600', 'scale-125');
+      }
+    }
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const sections = document.querySelectorAll('section[id]');
+  
+  const observer = new IntersectionObserver(handleIntersection, {
+    threshold: 0.5,
+    rootMargin: '-10% 0px -10% 0px' 
+  });
+
+  sections.forEach((section) => {
+    observer.observe(section);
+  });
+});
+</script>
