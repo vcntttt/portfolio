@@ -6,7 +6,7 @@ interface Props extends Project {
   class: string;
 }
 
-const { title, link, github } = Astro.props;
+const { title, link, github, slug } = Astro.props;
 ---
 
 <article
@@ -37,15 +37,19 @@ const { title, link, github } = Astro.props;
         >
           Repositorio
           <Icon name={"Github"} class="size-4 inline" />
-        </a>
-        <a
-          href={link}
-          target="_blank"
-          class="bg-[#121212]/50 px-2 py-1 rounded-md text-sm hover:underline flex items-center gap-x-2"
-        >
-          Ver demo
-          <Icon name={"external-link"} class="size-4 inline" />
-        </a>
+          </a>
+          <!-- todo: quitar esta condicion cuando este en live -->
+          { 
+            slug !== "ponderador" &&
+              <a
+                href={link}
+                target="_blank"
+                class="bg-[#121212]/50 px-2 py-1 rounded-md text-sm hover:underline flex items-center gap-x-2"
+               >
+                Ver demo
+                <Icon name={"external-link"} class="size-4 inline" />
+              </a>
+         }
       </div>
     </div>
     <div>

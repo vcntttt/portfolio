@@ -23,9 +23,9 @@ import { projects } from "@/data/projects";
           slot="image"
           src={project.images[0]}
           alt={`Demo ${project.title}`}
-          class="transition-scale absolute -z-10 h-full w-full rounded-xl opacity-90 duration-1000 ease-in-out group-hover:opacity-40  group-hover:scale-[110%] object-cover object-top"
+          class:list={["transition-scale absolute -z-10 h-full w-full rounded-xl opacity-90 duration-1000 ease-in-out group-hover:opacity-40  group-hover:scale-[110%] object-cover", project.slug === "ponderador" ? "object-center" : "object-top"]}
         />
-
+      
         <p slot="description" class="text-balance">
           {project.description}
         </p>

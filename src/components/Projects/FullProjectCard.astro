@@ -61,8 +61,9 @@ const { title, tags, images, status, link, github, features, longDescription, da
     
       <Icon name={"Github"} class="size-4 inline" />
     </a>
+    <!-- todo: quitar esta condicion cuando este en live -->
     {
-    status === "live" && (
+    (status === "live" && slug !== "ponderador") && (
       <a
         href={link}
         target="_blank"

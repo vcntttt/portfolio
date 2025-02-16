@@ -8,7 +8,9 @@ import EcommerceFull from "@/assets/ecommerce/full.png";
 import urlPreview from "@/assets/shortener/preview.jpg";
 import sellifyPreview from "@/assets/sellify/preview.jpg";
 import EcommercePreview from "@/assets/ecommerce/preview.png";
-import onDevelop from "@/assets/on-develop.jpg";
+// import onDevelop from "@/assets/on-develop.jpg";
+import ponderadorPreview from "@/assets/ponderador/preview.png";
+import ponderadorFull from "@/assets/ponderador/full.png";
 
 // images: [urlPreview, urlFull]
 export const projects: Project[] = [
@@ -79,23 +81,23 @@ export const projects: Project[] = [
       "Funciones de administración (CRUD)",
     ],
   },
-  // {
-  //   title: "Ponderador",
-  //   date: "Febrero 2025",
-  //   description: "",
-  //   longDescription: "",
-  //   link: "",
-  //   github: "https://github.com/vcntttt/ponderador-app",
-  //   images: [onDevelop, onDevelop],
-  //   slug: "ponderador",
-  //   class: "col-span-7",
-  //   status: "finished",
-  //   tags: [
-  //     TAGS.REACTNATIVE,
-  //     TAGS.TYPESCRIPT,
-  //     TAGS.TAILWIND,
-  //   ],
-  //   features: [""],
-  //   info: "Proximamente en Play Store.",
-  // },
+  {
+    title: "Ponderador",
+    date: "Febrero 2025",
+    description: "Aplicacion movil con herramientas para estudiantes.",
+    longDescription: "Aplicacion movil con herramientas para estudiantes.",
+    link: "",
+    github: "https://github.com/vcntttt/ponderador-app",
+    images: [ponderadorPreview, ponderadorFull],
+    slug: "ponderador",
+    class: "col-span-7",
+    status: "live",
+    tags: [
+      TAGS.REACTNATIVE,
+      TAGS.TYPESCRIPT,
+      TAGS.TAILWIND,
+    ],
+    features: ["Calculadora de promedios", "Generador de Escala de Notas"],
+    info: "Proximamente en Play Store.",
+  },
 ];
