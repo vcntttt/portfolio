@@ -1,8 +1,14 @@
 import type { Tag } from "@/types";
 
 export const TAGS: Record<string, Tag> = {
-  NEXT: {
-    name: "Next.js",
+  NEXT14: {
+    name: "Next.js 14",
+    class: "bg-black",
+    icon: "NextJS",
+    iconClass: "text-black",
+  },
+  NEXT15: {
+    name: "Next.js 15",
     class: "bg-black",
     icon: "NextJS",
     iconClass: "text-black",
@@ -49,4 +55,10 @@ export const TAGS: Record<string, Tag> = {
     icon: "shadcn",
     iconClass: "",
   },
+  EXPO: {
+    name: "Expo",
+    class: "bg-zinc-200 !text-black",
+    icon: "expo",
+    iconClass: "",
+  }
 };

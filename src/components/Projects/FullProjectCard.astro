@@ -52,6 +52,8 @@ const { title, tags, images, status, link, github, features, longDescription, da
     <div class="flex mt-2 gap-x-2">
 
 
+  {
+    slug !== "ponderador" && (
     <a
       href={github}
       target="_blank"
@@ -61,6 +63,8 @@ const { title, tags, images, status, link, github, features, longDescription, da
     
       <Icon name={"Github"} class="size-4 inline" />
     </a>
+    )
+  }
     <!-- todo: quitar esta condicion cuando este en live -->
     {
     (status === "live" && slug !== "ponderador") && (
@@ -75,9 +79,8 @@ const { title, tags, images, status, link, github, features, longDescription, da
     )}
     </div>
     {info && (
-      <div class="flex items-center justify-center gap-x-2 bg-blue-900/50 p-2 rounded-md text-xs mt-2 text-white border border-white/20"><Icon name={"info"} class="size-4 inline"/>
+      <div class="flex items-center justify-center gap-x-2 bg-blue-900/50 p-2 rounded-md text-xs mt-2 text-white border border-white/20"><Icon name={slug === "ponderador" ? "play-store" : "info"} class="size-4 inline"/>
         <p>{info}</p>
-        {/* No disponible para despliegue. */}
       </div>
     )}
   </div>

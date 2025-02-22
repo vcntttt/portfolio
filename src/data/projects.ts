@@ -27,7 +27,7 @@ export const projects: Project[] = [
     slug: "url-shortener",
     class: "col-span-5",
     status: "live",
-    tags: [TAGS.NEXT, TAGS.TAILWIND, TAGS.TYPESCRIPT, TAGS.PRISMA],
+    tags: [TAGS.NEXT15, TAGS.TAILWIND, TAGS.TYPESCRIPT, TAGS.PRISMA],
     features: ["NextUI", "SearchParams", "RESTful API Handlers"],
   },
   {
@@ -71,7 +71,7 @@ export const projects: Project[] = [
     slug: "next14-ecommerce",
     class: "col-span-5",
     status: "live",
-    tags: [TAGS.NEXT, TAGS.TAILWIND, TAGS.TYPESCRIPT, TAGS.PRISMA],
+    tags: [TAGS.NEXT14, TAGS.TAILWIND, TAGS.TYPESCRIPT, TAGS.PRISMA, TAGS.SHADCN],
     features: [
       "Server Actions",
       "Busqueda indexada de productos",
@@ -87,13 +87,14 @@ export const projects: Project[] = [
     description: "Aplicacion movil con herramientas para estudiantes.",
     longDescription: "Aplicacion movil con herramientas para estudiantes.",
     link: "",
-    github: "https://github.com/vcntttt/ponderador-app",
+    github: "",
     images: [ponderadorPreview, ponderadorFull],
     slug: "ponderador",
     class: "col-span-7",
     status: "live",
     tags: [
       TAGS.REACTNATIVE,
+      TAGS.EXPO,
       TAGS.TYPESCRIPT,
       TAGS.TAILWIND,
     ],
