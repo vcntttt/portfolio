@@ -82,11 +82,11 @@ export const projects: Project[] = [
     ],
   },
   {
-    title: "Ponderador",
+    title: "PonderApp",
     date: "Febrero 2025",
     description: "Aplicacion movil con herramientas para estudiantes.",
     longDescription: "Aplicacion movil con herramientas para estudiantes.",
-    link: "",
+    link: "https://ponderappcl.netlify.app",
     github: "",
     images: [ponderadorPreview, ponderadorFull],
     slug: "ponderador",
