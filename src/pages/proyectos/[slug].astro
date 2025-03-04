@@ -15,7 +15,7 @@ export const getStaticPaths = (() => {
 
 const { project } = Astro.props;
 
-if (project.slug === "ponderapp") Astro.redirect("https://ponderappcl.netlify.app")
+if (project.slug === "ponderapp") return Astro.redirect("https://ponderappcl.netlify.app")
 ---
 
 <Layout

@@ -89,7 +89,7 @@ export const projects: Project[] = [
     link: "https://ponderappcl.netlify.app",
     github: "",
     images: [ponderadorPreview, ponderadorFull],
-    slug: "ponderador",
+    slug: "ponderapp",
     class: "col-span-7",
     status: "live",
     tags: [
