@@ -33,7 +33,7 @@ const { title, link, github, slug } = Astro.props;
 
           <!-- todo: quitar esta condicion cuando este en live -->
           { 
-            slug !== "ponderador" &&
+            slug !== "ponderapp" &&
             <a
           href={github}
           target="_blank"
@@ -52,7 +52,7 @@ const { title, link, github, slug } = Astro.props;
               </a>
          }
          {
-          slug === "ponderador" && (
+          slug === "ponderapp" && (
           <p
                 class="bg-[#121212]/50 px-2 py-1 rounded-md text-sm flex items-center gap-x-2"
                >

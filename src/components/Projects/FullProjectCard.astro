@@ -53,7 +53,7 @@ const { title, tags, images, status, link, github, features, longDescription, da
 
 
   {
-    slug !== "ponderador" && (
+    slug !== "ponderapp" && (
     <a
       href={github}
       target="_blank"
@@ -67,7 +67,7 @@ const { title, tags, images, status, link, github, features, longDescription, da
   }
     <!-- todo: quitar esta condicion cuando este en live -->
     {
-    (status === "live" && slug !== "ponderador") && (
+    (status === "live" && slug !== "ponderapp") && (
       <a
         href={link}
         target="_blank"
@@ -79,7 +79,7 @@ const { title, tags, images, status, link, github, features, longDescription, da
     )}
     </div>
     {info && (
-      <div class="flex items-center justify-center gap-x-2 bg-blue-900/50 p-2 rounded-md text-xs mt-2 text-white border border-white/20"><Icon name={slug === "ponderador" ? "play-store" : "info"} class="size-4 inline"/>
+      <div class="flex items-center justify-center gap-x-2 bg-blue-900/50 p-2 rounded-md text-xs mt-2 text-white border border-white/20"><Icon name={slug === "ponderapp" ? "play-store" : "info"} class="size-4 inline"/>
         <p>{info}</p>
       </div>
     )}
