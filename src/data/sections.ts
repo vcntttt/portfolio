@@ -2,7 +2,7 @@ export const sections = [
   {
     name: "Inicio",
     href: "#welcome",
-    icon: "Home",
+    icon: "home",
   },
   // {
   //   name: "Experiencia",
@@ -12,7 +12,7 @@ export const sections = [
   {
     name: "Proyectos",
     href: "#proyects",
-    icon: "Code",
+    icon: "code",
   },
   {
     name: "Cursos",
@@ -22,11 +22,11 @@ export const sections = [
   {
     name: "Acerca de mí",
     href: "#about",
-    icon: "User",
+    icon: "user",
   },
   {
     name: "Contacto",
     href: "#contact",
-    icon: "Mail",
+    icon: "mail",
   },
 ];

@@ -5,14 +5,14 @@ export const cursos: Curso[] = [
     title: "Next.js",
     instructor: "Fernando Herrera",
     plataforma: "Udemy",
-    icon: "NextJS",
+    icon: "nextjs",
     link: "https://www.udemy.com/certificate/UC-9e0f0c27-e4b1-44f0-8dca-b5c572e8f443/"
   },
   {
     title: "Astro",
     instructor: "Fernando Herrera",
     plataforma: "Udemy",
-    icon: "Astro",
+    icon: "astro",
     link: "https://www.udemy.com/certificate/UC-737be89c-1698-4aac-9c25-8d9c03ded0fa/"
   },
   {

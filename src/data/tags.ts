@@ -4,43 +4,43 @@ export const TAGS: Record<string, Tag> = {
   NEXT14: {
     name: "Next.js 14",
     class: "bg-black",
-    icon: "NextJS",
+    icon: "nextjs",
     iconClass: "text-black",
   },
   NEXT15: {
     name: "Next.js 15",
     class: "bg-black",
-    icon: "NextJS",
+    icon: "nextjs",
     iconClass: "text-black",
   },
   TAILWIND: {
     name: "Tailwind CSS",
     class: "bg-[#003159]",
-    icon: "TailwindCSS",
+    icon: "tailwindcss",
     iconClass: "",
   },
   REACT: {
     name: "React",
     class: "bg-green-900/30",
-    icon: "React",
+    icon: "react",
     iconClass: "",
   },
   REACTNATIVE: {
     name: "React Native",
     class: "bg-green-900/30",
-    icon: "React",
+    icon: "react",
     iconClass: "",
   },
   TYPESCRIPT: {
     name: "TypeScript",
     class: "bg-blue-950",
-    icon: "TypeScript",
+    icon: "typescript",
     iconClass: "",
   },
   PRISMA: {
     name: "Prisma",
     class: "bg-slate-900",
-    icon: "Prisma",
+    icon: "prisma",
     iconClass: "",
   },
   TANSTACKQUERY: {
@@ -59,6 +59,12 @@ export const TAGS: Record<string, Tag> = {
     name: "Expo",
     class: "bg-zinc-200 !text-black",
     icon: "expo",
+    iconClass: "",
+  },
+  SQLITE: {
+    name: "SQLite",
+    class: "bg-zinc-200 !text-black",
+    icon: "sqlite",
     iconClass: "",
   }
 };
