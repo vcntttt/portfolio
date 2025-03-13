@@ -13,34 +13,36 @@ import { projects } from "@/data/projects";
 `
 >
   {
-    projects.filter((project) => project.status === "live").map((project) => (
-      <ProjectItem
-      {...project}
-      class={`col-span-12`}
-      >
-        <Image
-          loading="eager"
-          slot="image"
-          src={project.images[0]}
-          alt={`Demo ${project.title}`}
-          class:list={["transition-scale absolute -z-10 h-full w-full rounded-xl opacity-90 duration-1000 ease-in-out group-hover:opacity-40  group-hover:scale-[110%] object-cover", project.slug === "ponderador" ? "object-center" : "object-top"]}
-        />
-      
-        <p slot="description" class="text-balance">
-          {project.description}
-        </p>
-        <div slot="stack" class="flex gap-2 flex-row my-2 flex-wrap">
-          {project.tags.map((tag) => (
-            <span
-              class={`flex gap-x-2 rounded-full text-xs text-white ${tag.class} py-1 px-2`}
-            >
-              <Icon name={tag.icon} class={`size-4 ${tag.iconClass}`} />
-              {tag.name}
-            </span>
-          ))}
-        </div>
-      </ProjectItem>
-    ))
+    projects
+      .filter((project) => project.status === "live")
+      .map((project) => (
+        <ProjectItem {...project} class={`col-span-12`}>
+          <Image
+            loading="eager"
+            slot="image"
+            src={project.images[0]}
+            alt={`Demo ${project.title}`}
+            class:list={[
+              "transition-scale absolute -z-10 h-full w-full rounded-xl opacity-90 duration-1000 ease-in-out group-hover:opacity-40  group-hover:scale-[110%] object-cover",
+              project.slug === "ponderapp" ? "object-center" : "object-top",
+            ]}
+          />
+
+          <p slot="description" class="text-balance">
+            {project.description}
+          </p>
+          <div slot="stack" class="flex gap-2 flex-row my-2 flex-wrap">
+            {project.tags.map((tag) => (
+              <span
+                class={`flex gap-x-2 rounded-full text-xs text-white ${tag.class} py-1 px-2`}
+              >
+                <Icon name={tag.icon} class={`size-4 ${tag.iconClass}`} />
+                {tag.name}
+              </span>
+            ))}
+          </div>
+        </ProjectItem>
+      ))
   }
 </div>
 
