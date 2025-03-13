@@ -2,6 +2,7 @@
 import Footer from "@/components/Footer.astro";
 import Header from "@/components/Navigation/Header.astro";
 import "@fontsource-variable/onest";
+import "./global.css";
 
 interface Props {
   title: string;
@@ -46,7 +47,7 @@ const imgUrl = `https://${domain}/${imgPath}`;
     <!-- Meta Tags Generated via https://www.opengraph.xyz -->
   </head>
   <body
-    class="bg-[conic-gradient(at_bottom,_var(--tw-gradient-stops))] from-[#0f172a] via-[#1e1a78] to-[#0f172a]"
+    class="bg-[#0f172a]"
   >
     <Header />
     <slot />
