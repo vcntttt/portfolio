@@ -50,3 +50,8 @@ import SocialSection from "@/components/Social/SocialSection.astro";
     </Section>
   </main>
 </Layout>
+
+<script>
+  import { op } from "@/op";
+  op.track("someone landed", { page: "home" });
+</script>

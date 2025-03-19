@@ -1,5 +1,5 @@
 ---
-import Layout from "@/layouts/proyects-layout.astro";
+import Layout from "@/layouts/projects-layout.astro";
 import Section from "@/components/Section.astro";
 import { projects } from "@/data/projects";
 import FullProjectCard from "@/components/Projects/FullProjectCard.astro";
@@ -41,3 +41,7 @@ import { Icon } from "astro-icon/components";
     </Section>
   </main>
 </Layout>
+<script>
+  import { op } from "@/op";
+  op.track("someone landed", { page: "projects" });
+</script>

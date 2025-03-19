@@ -1,11 +1,7 @@
 import { OpenPanel } from '@openpanel/web';
  
-const openPanelClientID = import.meta.env.OPEN_PANEL_CLIENT_ID
-
-// console.log("env", openPanelClientID)
-
 export const op = new OpenPanel({
-  clientId: openPanelClientID,
+  clientId: "d0993031-4ef7-4818-8801-90224ef450c0",
   trackScreenViews: true,
   trackOutgoingLinks: true,
   trackAttributes: true,

@@ -17,8 +17,6 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      OPEN_PANEL_CLIENT_ID: ${{ secrets.OPEN_PANEL_CLIENT_ID }}
     steps:
       - name: Checkout your repository using git
         uses: actions/checkout@v4
