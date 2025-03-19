@@ -1,5 +1,4 @@
 import { defineConfig } from "astro/config";
-import { loadEnv } from "vite";
 import tailwindcss from "@tailwindcss/vite";
 import icon from "astro-icon";
 
