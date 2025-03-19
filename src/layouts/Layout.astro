@@ -3,6 +3,9 @@ import Footer from "@/components/Footer.astro";
 import Header from "@/components/Navigation/Header.astro";
 import "@fontsource-variable/onest";
 import "./global.css";
+import { op } from "@/op";
+
+op.track("my_event", { foo: "bar" });
 
 interface Props {
   title: string;
@@ -46,9 +49,7 @@ const imgUrl = `https://${domain}/${imgPath}`;
 
     <!-- Meta Tags Generated via https://www.opengraph.xyz -->
   </head>
-  <body
-    class="bg-[#0f172a]"
-  >
+  <body class="bg-[#0f172a]">
     <Header />
     <slot />
     <Footer />
