@@ -44,7 +44,7 @@ export const TAGS: Record<string, Tag> = {
     iconClass: "",
   },
   TANSTACKQUERY: {
-    name: "TanStack Query",
+    name: "React Query",
     class: "bg-red-900",
     icon: "tanstack",
     iconClass: "",
@@ -61,10 +61,10 @@ export const TAGS: Record<string, Tag> = {
     icon: "expo",
     iconClass: "",
   },
-  SQLITE: {
-    name: "SQLite",
-    class: "bg-zinc-200 !text-black",
-    icon: "sqlite",
+  DRIZZLE: {
+    name: "Drizzle ORM",
+    class: "bg-black",
+    icon: "drizzle",
     iconClass: "",
   }
 };

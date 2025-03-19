@@ -97,6 +97,8 @@ export const projects: Project[] = [
       TAGS.EXPO,
       TAGS.TYPESCRIPT,
       TAGS.TAILWIND,
+      TAGS.DRIZZLE,
+      TAGS.TANSTACKQUERY
     ],
     features: ["Calculadora de promedios", "Generador de Escala de Notas"],
     info: "Proximamente en Play Store.",
