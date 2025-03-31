@@ -2,6 +2,7 @@
 import Footer from "@/components/Footer.astro";
 import "@fontsource-variable/onest";
 import "./global.css";
+import PostHog from "@/components/posthog.astro";
 
 interface Props {
   title: string;
@@ -42,10 +43,10 @@ const imgUrl = `https://${domain}/${basePath}/${imgPath}`;
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={imgUrl} />
+
+    <PostHog />
   </head>
-  <body
-    class="bg-[conic-gradient(at_bottom,_var(--tw-gradient-stops))] from-[#0f172a] via-[#1e1a78] to-[#0f172a]"
-  >
+  <body class="bg-[#0f172a]">
     <slot />
     <Footer maxWidth="max-w-[70rem]" />
   </body>

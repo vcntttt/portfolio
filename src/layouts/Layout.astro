@@ -3,6 +3,7 @@ import Footer from "@/components/Footer.astro";
 import Header from "@/components/Navigation/Header.astro";
 import "@fontsource-variable/onest";
 import "./global.css";
+import PostHog from "@/components/posthog.astro";
 
 interface Props {
   title: string;
@@ -45,6 +46,7 @@ const imgUrl = `https://${domain}/${imgPath}`;
     <meta name="twitter:image" content={imgUrl} />
 
     <!-- Meta Tags Generated via https://www.opengraph.xyz -->
+    <PostHog />
   </head>
   <body class="bg-[#0f172a]">
     <Header />
