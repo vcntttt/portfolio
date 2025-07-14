@@ -1,8 +1,8 @@
 ---
 import { Image } from "astro:assets";
-import ProjectItem from "./ProjectItem.astro";
 import { Icon } from "astro-icon/components";
 import { projects } from "@/data/projects";
+import ProjectItem from "./ProjectItem.astro";
 ---
 
 <div
@@ -14,7 +14,7 @@ import { projects } from "@/data/projects";
 >
   {
     projects
-      .filter((project) => project.status === "live")
+      .filter((project) => project.homepage === true)
       .map((project) => (
         <ProjectItem {...project} class={`col-span-12`}>
           <Image
@@ -32,7 +32,7 @@ import { projects } from "@/data/projects";
             {project.description}
           </p>
           <div slot="stack" class="flex gap-2 flex-row my-2 flex-wrap">
-            {project.tags.map((tag) => (
+            {project.tech.map((tag) => (
               <span
                 class={`flex gap-x-2 rounded-full text-xs text-white ${tag.class} py-1 px-2`}
               >

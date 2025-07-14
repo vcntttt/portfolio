@@ -1,0 +1,74 @@
+---
+import { Icon } from "astro-icon/components";
+import type { Project } from "@/types";
+
+interface Props extends Project {
+  class: string;
+}
+
+const { title, link, github, slug } = Astro.props;
+---
+
+<article
+  class=`
+    ${Astro.props.class}
+    relative rounded-xl
+    backdrop-blur-md
+    border border-white/20
+    shadow-inner shadow-white/10
+    overflow-hidden
+  `
+>
+  <div
+    class="absolute bottom-0 top-0 z-10 h-full w-full bg-gradient-to-b from-transparent from-40% via-[#121212]/20 to-[#121212]/100"
+  >
+  </div>
+  <slot name="image" />
+  <div
+    class="relative select-none flex flex-col gap-1 p-6 text-lg z-20 h-full justify-between transform transition-transform duration-700"
+  >
+    <div>
+      <div class="absolute right-5 flex gap-x-2">
+        {
+          github !== "private" && (
+            <a
+              href={github}
+              target="_blank"
+              class="bg-[#121212]/50 px-2 py-1 rounded-md text-sm hover:underline flex items-center gap-x-2"
+            >
+              Repositorio
+              <Icon name={"github"} class="size-4 inline" />
+            </a>
+          )
+        }
+        {
+          slug === "ponderapp" ? (
+            <a
+              href="https://play.google.com/store/apps/details?id=com.vrivera.ponderapp"
+              class="bg-[#121212]/50 px-2 py-1 rounded-md text-sm flex items-center gap-x-2 hover:underline"
+            >
+              Disponible en Play Store
+              <Icon name={"play-store"} class="size-4 inline" />
+            </a>
+          ) : (
+            <a
+              href={link}
+              target="_blank"
+              class="bg-[#121212]/50 px-2 py-1 rounded-md text-sm hover:underline flex items-center gap-x-2"
+            >
+              Ver demo
+              <Icon name={"external-link"} class="size-4 inline" />
+            </a>
+          )
+        }
+      </div>
+    </div>
+    <div>
+      <div class="flex justify-between items-center">
+        <a class=`font-semibold underline` href={link}>{title}</a>
+      </div>
+      <slot name="description" />
+      <slot name="stack" />
+    </div>
+  </div>
+</article>

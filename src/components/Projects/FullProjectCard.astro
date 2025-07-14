@@ -4,13 +4,13 @@ import { Icon } from "astro-icon/components";
 import type { Project } from "@/types";
 
 interface Props extends Project {}
-const { title, tags, images, status, link, github, features, longDescription, date, slug, info } = Astro.props;
+const { title, tech, images, status, link, github, features, longDescription, date, slug, info } = Astro.props;
 ---
 
 <article class="p-5 rounded-md bg-black/60 grid grid-cols-1 md:grid-cols-3 gap-6">
   <div class="flex flex-col gap-y-2 h-full justify-between md:col-span-2 order-2 md:order-1">
     <div>
-        <a class="text-xl font-semibold hover:underline" href={`/proyectos/${slug}`}>{title}</a>
+        <p class="text-xl font-semibold">{title}</p>
       <p class="mb-4 text-xs">{date}</p>
       <p class="text-balance">
         {longDescription}
@@ -27,7 +27,7 @@ const { title, tags, images, status, link, github, features, longDescription, da
     <div>
       <div class="flex gap-2 flex-row my-2 flex-wrap">
         {
-          tags.map((tag) => (
+          tech.map((tag) => (
             <span
               class={`flex gap-x-2 rounded-full text-xs text-white ${tag.class} py-1 px-2`}
             >
@@ -53,7 +53,7 @@ const { title, tags, images, status, link, github, features, longDescription, da
 
 
   {
-    slug !== "ponderapp" && (
+    github !== "private" && (
     <a
       href={github}
       target="_blank"
@@ -65,7 +65,6 @@ const { title, tags, images, status, link, github, features, longDescription, da
     </a>
     )
   }
-    <!-- todo: quitar esta condicion cuando este en live -->
     {
     (status === "live" && slug !== "ponderapp") && (
       <a
@@ -80,7 +79,15 @@ const { title, tags, images, status, link, github, features, longDescription, da
     </div>
     {info && (
       <div class="flex items-center justify-center gap-x-2 bg-blue-900/50 p-2 rounded-md text-xs mt-2 text-white border border-white/20"><Icon name={slug === "ponderapp" ? "play-store" : "info"} class="size-4 inline"/>
-        <p>{info}</p>
+        {
+          slug === "ponderapp" ? (
+            <a href="https://play.google.com/store/apps/details?id=com.vrivera.ponderapp" target="_blank" class="hover:underline">
+              {info}
+            </a>
+          ) : (
+            <p>{info}</p>
+          )
+        }
       </div>
     )}
   </div>

@@ -5,9 +5,10 @@ import { Icon } from "astro-icon/components";
 import AboutMe from "@/components/AboutMe.astro";
 import Cursos from "@/components/Cursos/Cursos.astro";
 import Hero from "@/components/Hero.astro";
-import Projects from "@/components/Projects/completados/ProjectSection.astro";
 import Section from "@/components/Section.astro";
 import SocialSection from "@/components/Social/SocialSection.astro";
+import Projects from "@/components/Projects/ProjectSection.astro";
+import RealWork from "@/components/Projects/RealWork.astro";
 ---
 
 <Layout
@@ -19,34 +20,47 @@ import SocialSection from "@/components/Social/SocialSection.astro";
       <Hero />
     </Section>
     <!-- <Section id="experience">
-      <h2 class="flex items-center gap-x-2 text-4xl font-semibold pb-2">
+      <h2 class="flex items-center gap-x-2 text-4xl font-semibold pb-4">
         <BriefcaseIcon class="size-8" /> Experiencia Laboral
       </h2>
       <Experience />
     </Section> -->
-    <Section id="proyects">
-      <h2 class="flex items-center gap-x-2 text-4xl font-semibold pb-2">
-        <Icon name={"code"} class="size-8" /> Proyectos
+    <Section id="work">
+      <h2 class="flex items-center gap-x-2 text-4xl font-semibold pb-4">
+        <Icon name={"users"} class="size-8" /> Trabajos
       </h2>
+      <h4 class="mb-2">
+        Proyectos remunerados solicitados por clientes reales.
+      </h4>
+      <RealWork />
+    </Section>
+    <Section id="proyects">
+      <h2 class="flex items-center gap-x-2 text-4xl font-semibold pb-4">
+        <Icon name={"code"} class="size-8" /> Proyectos Personales
+      </h2>
+      <h4 class="mb-2">
+        A pesar de no contar con experiencia laboral formal, he dedicado estos
+        años a crear proyectos personales que reflejan mi aprendizaje. Estos son los más destacados, también puedes <a href="/proyectos" class="underline">ver más</a>.
+      </h4>
       <Projects />
     </Section>
     <Section id="cursos">
-      <h2 class="flex items-center gap-x-2 text-4xl font-semibold pb-2">
+      <h2 class="flex items-center gap-x-2 text-4xl font-semibold pb-4">
         <Icon name={"notebook"} class="size-8" /> Certificados
       </h2>
       <Cursos />
     </Section>
     <Section id="about">
-      <h2 class="flex items-center gap-x-2 text-4xl font-semibold pb-2">
+      <h2 class="flex items-center gap-x-2 text-4xl font-semibold pb-4">
         <Icon name={"user"} class="size-8" /> Acerca de mí
       </h2>
       <AboutMe />
     </Section>
     <Section id="contact">
-      <h2 class="flex items-center gap-x-2 text-4xl font-semibold pb-2">
+      <h2 class="flex items-center gap-x-2 text-4xl font-semibold pb-4">
         <Icon name={"send"} class="size-8" />Contacto
       </h2>
-      <SocialSection class="md:py-4" />
+     <SocialSection class="!py-0 !md:py-0" />
     </Section>
   </main>
 </Layout>

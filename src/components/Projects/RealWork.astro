@@ -1,0 +1,36 @@
+---
+import WorkItem from "./WorkItem.astro";
+import { Image } from "astro:assets";
+import { work } from "@/data/work";
+---
+
+<div
+  class=`
+  w-full max-w-[1400px]
+  grid grid-cols-12 auto-rows-[25rem] gap-4
+  mx-auto
+`
+>
+  {
+    work
+      .map((project) => (
+        <WorkItem {...project} class={`col-span-12`}>
+          <Image
+            loading="eager"
+            slot="image"
+            src={project.images[0]}
+            alt={`Demo ${project.title}`}
+            class:list={[
+              "transition-scale absolute -z-10 h-full w-full rounded-xl opacity-90 duration-1000 ease-in-out group-hover:opacity-40  group-hover:scale-[110%] object-cover",
+              project.slug === "ponderapp" ? "object-center" : "object-top",
+            ]}
+          />
+
+          <p slot="description" class="text-balance">
+            {project.description}
+          </p>
+          {/* <p slot="client" class="text-balance italic text-sm mt-2">Desarrollado para: {project.client}</p> */}
+        </WorkItem>
+      ))
+  }
+</div>

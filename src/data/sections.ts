@@ -10,7 +10,12 @@ export const sections = [
   //   icon: "Briefcase"
   // },
   {
-    name: "Proyectos",
+    name: "Trabajos",
+    href: "#work",
+    icon: "users",
+  },
+  {
+    name: "Proyectos Personales",
     href: "#proyects",
     icon: "code",
   },

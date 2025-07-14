@@ -1,6 +1,6 @@
-import type { Tag } from "@/types";
+import type { Tech } from "@/types";
 
-export const TAGS: Record<string, Tag> = {
+export const TAGS: Record<string, Tech> = {
   NEXT14: {
     name: "Next.js 14",
     class: "bg-black",
@@ -45,7 +45,7 @@ export const TAGS: Record<string, Tag> = {
   },
   TANSTACKQUERY: {
     name: "React Query",
-    class: "bg-red-900",
+    class: "bg-red-950",
     icon: "tanstack",
     iconClass: "",
   },
@@ -57,7 +57,7 @@ export const TAGS: Record<string, Tag> = {
   },
   EXPO: {
     name: "Expo",
-    class: "bg-zinc-200 !text-black",
+    class: "bg-zinc-300 !text-black",
     icon: "expo",
     iconClass: "",
   },
@@ -65,6 +65,12 @@ export const TAGS: Record<string, Tag> = {
     name: "Drizzle ORM",
     class: "bg-black",
     icon: "drizzle",
+    iconClass: "",
+  },
+  REDIS: {
+    name: "Redis",
+    class: "bg-red-950",
+    icon: "redis",
     iconClass: "",
   }
 };
