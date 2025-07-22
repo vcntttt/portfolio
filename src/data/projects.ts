@@ -17,6 +17,7 @@ import ponderadorPreview from "@/assets/ponderador/preview.png";
 import ponderadorFull from "@/assets/ponderador/full.png";
 // myno
 import mynoPreview from "@/assets/myno/preview.png";
+import mynoFull from "@/assets/myno/full.png";
 
 export const projects: Project[] = [
     {
@@ -27,7 +28,7 @@ export const projects: Project[] = [
     longDescription: "Ecommerce mayorista orientado a minimarkets y almacenes. Su principal diferencial es el motor de recomendación: cada usuario recibe sugerencias personalizadas en la portada, productos y carrito, en base a compras previas, popularidad global y similitud de productos.",
     link: "https://myno.vercel.app/",
     github: "https://github.com/vcntttt/myno",
-    images: [mynoPreview, mynoPreview],
+    images: [mynoPreview, mynoFull],
     slug: "myno",
     class: "col-span-7",
     status: "live",
