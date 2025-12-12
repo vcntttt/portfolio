@@ -31,7 +31,7 @@ export const projects: Project[] = [
     images: [mynoPreview, mynoFull],
     slug: "myno",
     class: "col-span-7",
-    status: "live",
+    status: "finished",
     tech: [
       TAGS.NEXT15,
       TAGS.TANSTACKQUERY,
@@ -48,14 +48,14 @@ export const projects: Project[] = [
     "UI responsiva con skeletons y feedback visual",
     "Rutas protegidas según autenticación",
   ],
-    homepage: true
+    homepage: false
   },
     {
     title: "PonderApp",
     date: "Febrero 2025",
     description: "Aplicacion movil con herramientas para estudiantes.",
     longDescription: "Aplicacion movil con herramientas para estudiantes.",
-    link: "https://ponderappcl.netlify.app",
+    link: "https://play.google.com/store/apps/details?id=com.vrivera.ponderapp",
     github: "private",
     images: [ponderadorPreview, ponderadorFull],
     slug: "ponderapp",
@@ -85,7 +85,7 @@ export const projects: Project[] = [
     images: [urlPreview, urlFull],
     slug: "url-shortener",
     class: "col-span-5",
-    status: "live",
+    status: "finished",
     tech: [TAGS.NEXT15, TAGS.TAILWIND, TAGS.TYPESCRIPT, TAGS.PRISMA],
     features: ["NextUI", "SearchParams", "RESTful API Handlers"],
     homepage: false
