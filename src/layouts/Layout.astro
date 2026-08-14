@@ -13,17 +13,19 @@ interface Props {
 const { title, description } = Astro.props;
 const domain = "vrivera.is-a.dev";
 const websiteUrl = `https://${domain}`;
+const canonicalUrl = new URL(Astro.url.pathname, websiteUrl).toString();
 const imgPath = "overview.jpg";
 const imgUrl = `https://${domain}/${imgPath}`;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
     <meta name="generator" content={Astro.generator} />
+    <link rel="canonical" href={canonicalUrl} />
 
     <!-- HTML Meta Tags -->
     <title>{title}</title>
