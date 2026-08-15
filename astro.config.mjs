@@ -9,4 +9,11 @@ export default defineConfig({
   },
   integrations: [icon()],
   site: "https://vrivera.is-a.dev",
+  redirects: {
+    "/linkedin": "https://www.linkedin.com/in/vriverainf/",
+    "/in": "https://www.linkedin.com/in/vriverainf/",
+    "/github": "https://github.com/vcntttt",
+    "/cv": "/cv-vicente-rivera.pdf",
+    "/resume": "/cv-vicente-rivera.pdf",
+  },
 });
