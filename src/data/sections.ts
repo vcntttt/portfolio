@@ -4,20 +4,25 @@ export const sections = [
     href: "#welcome",
     icon: "home",
   },
-  // {
-  //   name: "Experiencia",
-  //   href: "#experience",
-  //   icon: "Briefcase"
-  // },
+  {
+    name: "Experiencia",
+    href: "#experience",
+    icon: "briefcase",
+  },
   {
     name: "Trabajos",
     href: "#work",
     icon: "users",
   },
   {
-    name: "Proyectos Personales",
+    name: "Proyectos personales",
     href: "#proyects",
     icon: "code",
+  },
+  {
+    name: "Investigación",
+    href: "#research",
+    icon: "notebook",
   },
   {
     name: "Cursos",

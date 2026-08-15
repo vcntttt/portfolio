@@ -1,0 +1,14 @@
+---
+import type { PortfolioEntry } from "@/types";
+import EntryCard from "./EntryCard.astro";
+
+interface Props {
+  entries: PortfolioEntry[];
+}
+
+const { entries } = Astro.props;
+---
+
+<div class="grid w-full max-w-full grid-cols-12 auto-rows-[25rem] gap-4">
+  {entries.map((entry) => <EntryCard entry={entry} />)}
+</div>

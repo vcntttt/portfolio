@@ -1,36 +1,57 @@
-export interface Project {
-  title: string;
-  description: string;
-  longDescription: string;
-  link: string;
-  github: string | "private";
-  images: ImageMetadata[];
+export type PortfolioCategory =
+  | "professional"
+  | "product"
+  | "academic"
+  | "research";
+
+export type PortfolioStatus =
+  | "live"
+  | "delivered"
+  | "in-progress"
+  | "finished"
+  | "private";
+
+export interface PortfolioLink {
+  label: string;
+  href: string;
+}
+
+export interface PortfolioEntry {
   slug: string;
-  class: string;
-  status: "live" | "soon" | "finished";
-  tech: Tech[];
-  features?: string[];
-  date: string;
-  info?: string;
-  homepage: boolean
-}
-
-export type Work = Omit<Project, "homepage" | "tech" | "longDescription"> & {
-  client: string;
-};
-
-export interface Tech {
-  name: string;
-  class: string;
-  icon: string;
-  iconClass: string;
-}
-[];
-
-export interface Curso {
   title: string;
-  instructor: string;
-  plataforma: string;
-  icon: string;
-  link: string;
+  category: PortfolioCategory;
+  status: PortfolioStatus;
+  date: string;
+  summary: string;
+  context?: string;
+  role?: string;
+  scope?: string;
+  outcome?: string;
+  highlights?: string[];
+  technologies?: string[];
+  links?: PortfolioLink[];
+  image?: ImageMetadata;
+  detailImage?: ImageMetadata;
+  featured?: boolean;
+}
+
+export interface Experience {
+  title: string;
+  organization: string;
+  organizationUrl?: string;
+  date: string;
+  location?: string;
+  description: string;
+  current?: boolean;
+}
+
+export interface Credential {
+  title: string;
+  issuer: string;
+  icon?: string;
+  date?: string;
+  detail?: string;
+  description?: string;
+  link?: string;
+  featured?: boolean;
 }

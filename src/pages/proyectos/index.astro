@@ -1,43 +1,64 @@
 ---
-import Layout from "@/layouts/projects-layout.astro";
-import Section from "@/components/Section.astro";
-import { projects } from "@/data/projects";
-import FullProjectCard from "@/components/Projects/FullProjectCard.astro";
 import { Icon } from "astro-icon/components";
+import ProjectCatalog from "@/components/Portfolio/ProjectCatalog.astro";
+import Section from "@/components/Section.astro";
+import Layout from "@/layouts/projects-layout.astro";
+import {
+  academicPortfolio,
+  personalPortfolio,
+  researchPortfolio,
+  workPortfolio,
+} from "@/data/portfolio";
+
+const catalogSections = [
+  { id: "work", title: "Trabajos y productos", entries: workPortfolio },
+  { id: "personal", title: "Proyectos personales", entries: personalPortfolio },
+  { id: "academic", title: "Proyectos académicos", entries: academicPortfolio },
+  { id: "research", title: "Investigación y análisis", entries: researchPortfolio },
+];
 ---
 
 <Layout
   title="Proyectos | Vicente Rivera"
-  description="Lista detallada de mis proyectos"
+  description="Índice de proyectos profesionales, personales, académicos y de investigación de Vicente Rivera."
 >
-  <main class="mx-4 md:mx-auto max-w-[70rem]">
-    <Section>
-      <a href="/" class="underline flex items-center gap-x-1"
-        ><Icon name="arrow-left" /> Volver al inicio</a
-      >
-      <h1 class="text-4xl font-semibold mt-2 mb-8">
-        Lista completa de mis proyectos
-      </h1>
-      <div
-        class=`
-        grid grid-cols-1 gap-4
-        w-full max-w-[1400px]
-        mx-auto
-        mb-2
-        `
-      >
-        {
-          projects.map((project) => {
-            return <FullProjectCard {...project} />;
-          })
-        }
+  <main class="mx-4 max-w-6xl md:mx-auto">
+    <Section class="pb-20 pt-10 md:pb-28 md:pt-16">
+      <a href="/" class="flex items-center gap-x-1 underline">
+        <Icon name="arrow-left" /> Volver al inicio
+      </a>
+
+      <header class="mt-16 max-w-3xl">
+        <h1 class="text-5xl font-semibold md:text-6xl">Proyectos</h1>
+        <p class="mt-5 text-lg leading-8 opacity-80">
+          Un índice de trabajos con distinto contexto y alcance. Puedes abrir cada
+          entrada para ver qué hice y cómo se construyó.
+        </p>
+      </header>
+
+      <nav class="mt-10 flex flex-wrap gap-2" aria-label="Secciones de proyectos">
+        {catalogSections.map((section) => (
+          <a href={`#${section.id}`} class="rounded-full border border-white/20 px-3 py-1.5 text-sm transition hover:border-white/60">
+            {section.title}
+          </a>
+        ))}
+      </nav>
+
+      <div class="mt-14 space-y-16">
+        {catalogSections.map((section) => (
+          <section id={section.id}>
+            <div class="mb-5 flex items-baseline justify-between gap-4">
+              <h2 class="text-2xl font-semibold">{section.title}</h2>
+              <span class="text-sm opacity-60">{section.entries.length} proyectos</span>
+            </div>
+            <ProjectCatalog entries={section.entries} />
+          </section>
+        ))}
       </div>
-      <a
-        href="/"
-        class="underline w-full justify-end flex items-center gap-x-1"
-      >
-        Volver al inicio <Icon name="arrow-right" /></a
-      >
+
+      <a href="/" class="mt-12 flex w-full items-center justify-end gap-x-1 underline">
+        Volver al inicio <Icon name="arrow-right" />
+      </a>
     </Section>
   </main>
 </Layout>

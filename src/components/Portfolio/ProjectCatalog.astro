@@ -1,0 +1,76 @@
+---
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
+import type { PortfolioEntry } from "@/types";
+
+interface Props {
+  entries: PortfolioEntry[];
+}
+
+const { entries } = Astro.props;
+
+const categoryLabels = {
+  professional: "Trabajo",
+  product: "Proyecto personal",
+  academic: "Académico",
+  research: "Investigación",
+} as const;
+
+const statusLabels = {
+  live: "En uso",
+  delivered: "Prototipo entregado",
+  "in-progress": "En desarrollo",
+  finished: "Completado",
+  private: "Repositorio privado",
+} as const;
+
+const containedImage = (slug: string) =>
+  ["library", "triangle", "truckly", "clasificador-bayesiano"].includes(slug);
+---
+
+<div class="border-y border-white/20">
+  {entries.map((entry, index) => (
+    <article class="group grid gap-4 border-b border-white/10 py-5 last:border-b-0 md:grid-cols-[2.5rem_9rem_minmax(0,1fr)_auto] md:items-center md:gap-6">
+      <span class="font-mono text-sm text-white/40">{String(index + 1).padStart(2, "0")}</span>
+
+      {
+        entry.image ? (
+          <Image
+            src={entry.image}
+            alt={`Vista previa de ${entry.title}`}
+            class:list={[
+              "h-24 w-full rounded-md bg-[#0f172a] object-cover opacity-80 transition duration-300 group-hover:opacity-100",
+              containedImage(entry.slug) ? "object-contain p-2" : "object-top",
+            ]}
+            loading="lazy"
+          />
+        ) : (
+          <div class="flex h-24 items-center justify-center rounded-md bg-[#111827] text-3xl font-semibold text-white/20" aria-hidden="true">
+            {entry.title.slice(0, 1)}
+          </div>
+        )
+      }
+
+      <div class="min-w-0">
+        <div class="mb-1 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm opacity-70">
+          <span>{categoryLabels[entry.category]}</span>
+          <span>·</span>
+          <span>{statusLabels[entry.status]}</span>
+        </div>
+        <h2 class="text-2xl font-semibold">
+          <a href={`/proyectos/${entry.slug}`} class="underline decoration-white/30 underline-offset-4 transition hover:decoration-white">
+            {entry.title}
+          </a>
+        </h2>
+        <p class="mt-1 max-w-3xl text-sm leading-6 opacity-80">{entry.summary}</p>
+      </div>
+
+      <div class="flex items-center justify-between gap-4 text-sm md:flex-col md:items-end">
+        <span class="opacity-60">{entry.date}</span>
+        <a href={`/proyectos/${entry.slug}`} class="flex items-center gap-x-1 underline underline-offset-4">
+          Abrir <Icon name="arrow-right" class="size-4" />
+        </a>
+      </div>
+    </article>
+  ))}
+</div>

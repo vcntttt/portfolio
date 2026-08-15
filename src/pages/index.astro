@@ -1,66 +1,88 @@
 ---
-import Layout from "@/layouts/Layout.astro";
 import { Icon } from "astro-icon/components";
-// import Experience from "@/components/Experience/Experience.astro";
 import AboutMe from "@/components/AboutMe.astro";
-import Cursos from "@/components/Cursos/Cursos.astro";
+import Credentials from "@/components/Portfolio/Credentials.astro";
+import EntryGrid from "@/components/Portfolio/EntryGrid.astro";
+import ExperienceList from "@/components/Portfolio/ExperienceList.astro";
 import Hero from "@/components/Hero.astro";
+import Layout from "@/layouts/Layout.astro";
 import Section from "@/components/Section.astro";
 import SocialSection from "@/components/Social/SocialSection.astro";
-import Projects from "@/components/Projects/ProjectSection.astro";
-import RealWork from "@/components/Projects/RealWork.astro";
+import { academicPortfolio, personalPortfolio, researchPortfolio, workPortfolio } from "@/data/portfolio";
+import { credentials } from "@/data/credentials";
+import { experience } from "@/data/experience";
 ---
 
 <Layout
-  title="Vicente Rivera | Desarrollador y Programador Web"
-  description="Portfolio de Vicente Rivera, Desarrollador web Frontend. Temuco, Chile."
+  title="Vicente Rivera | Desarrollador de software"
+  description="Portfolio de Vicente Rivera, estudiante de Ingeniería Civil en Informática. Proyectos web, móviles, académicos y de análisis de datos."
 >
-  <main class="mx-4 md:mx-auto max-w-[60rem]">
+  <main class="mx-4 max-w-6xl md:mx-auto">
     <Section class="py-40 md:pt-64" id="welcome">
       <Hero />
     </Section>
-    <!-- <Section id="experience">
-      <h2 class="flex items-center gap-x-2 text-4xl font-semibold pb-4">
-        <BriefcaseIcon class="size-8" /> Experiencia Laboral
+
+    <Section id="experience">
+      <h2 class="flex items-center gap-x-2 pb-4 text-4xl font-semibold">
+        <Icon name="briefcase" class="size-8" /> Experiencia
       </h2>
-      <Experience />
-    </Section> -->
+      <p class="mb-4">Desarrollo de sistemas y apoyo docente.</p>
+      <ExperienceList items={experience} />
+    </Section>
+
     <Section id="work">
-      <h2 class="flex items-center gap-x-2 text-4xl font-semibold pb-4">
-        <Icon name={"users"} class="size-8" /> Trabajos
+      <h2 class="flex items-center gap-x-2 pb-4 text-4xl font-semibold">
+        <Icon name="users" class="size-8" /> Trabajos
       </h2>
-      <h4 class="mb-2">
-        Proyectos remunerados solicitados por clientes reales.
-      </h4>
-      <RealWork />
+      <p class="mb-4">Proyectos desarrollados para clientes o a partir de una necesidad concreta.</p>
+      <EntryGrid entries={workPortfolio} />
     </Section>
+
     <Section id="proyects">
-      <h2 class="flex items-center gap-x-2 text-4xl font-semibold pb-4">
-        <Icon name={"code"} class="size-8" /> Proyectos Personales
+      <h2 class="flex items-center gap-x-2 pb-4 text-4xl font-semibold">
+        <Icon name="code" class="size-8" /> Proyectos personales
       </h2>
-      <h4 class="mb-2">
-        A pesar de no contar con experiencia laboral formal, he dedicado estos
-        años a crear proyectos personales que reflejan mi aprendizaje. Estos son los más destacados, también puedes <a href="/proyectos" class="underline">ver más</a>.
-      </h4>
-      <Projects />
+      <p class="mb-4">
+        Proyectos que he desarrollado para probar ideas y aprender.
+      </p>
+      <EntryGrid entries={personalPortfolio} />
     </Section>
+
+    <Section id="academic">
+      <h2 class="flex items-center gap-x-2 pb-4 text-4xl font-semibold">
+        <Icon name="notebook" class="size-8" /> Proyectos académicos
+      </h2>
+      <p class="mb-4">Trabajos realizados para asignaturas de la carrera, con alcance acotado.</p>
+      <EntryGrid entries={academicPortfolio} />
+    </Section>
+
+    <Section id="research">
+      <h2 class="flex items-center gap-x-2 pb-4 text-4xl font-semibold">
+        <Icon name="notebook" class="size-8" /> Investigación y análisis
+      </h2>
+      <p class="mb-4">Proyectos relacionados con análisis estadístico, clasificación y optimización.</p>
+      <EntryGrid entries={researchPortfolio} />
+    </Section>
+
     <Section id="cursos">
-      <h2 class="flex items-center gap-x-2 text-4xl font-semibold pb-4">
-        <Icon name={"notebook"} class="size-8" /> Certificados
+      <h2 class="flex items-center gap-x-2 pb-4 text-4xl font-semibold">
+        <Icon name="notebook" class="size-8" /> Certificados
       </h2>
-      <Cursos />
+      <Credentials items={credentials} />
     </Section>
+
     <Section id="about">
-      <h2 class="flex items-center gap-x-2 text-4xl font-semibold pb-4">
-        <Icon name={"user"} class="size-8" /> Acerca de mí
+      <h2 class="flex items-center gap-x-2 pb-4 text-4xl font-semibold">
+        <Icon name="user" class="size-8" /> Acerca de mí
       </h2>
       <AboutMe />
     </Section>
+
     <Section id="contact">
-      <h2 class="flex items-center gap-x-2 text-4xl font-semibold pb-4">
-        <Icon name={"send"} class="size-8" />Contacto
+      <h2 class="flex items-center gap-x-2 pb-4 text-4xl font-semibold">
+        <Icon name="send" class="size-8" /> Contacto
       </h2>
-     <SocialSection class="!py-0 !md:py-0" />
+      <SocialSection class="!py-0" />
     </Section>
   </main>
 </Layout>

@@ -1,29 +1,28 @@
 ---
 import SocialSection from "@/components/Social/SocialSection.astro";
+import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
 import avatar from "@/assets/avatar.jpg";
 ---
 
 <Image
   src={avatar}
-  alt="yo"
-  class="w-32 h-32 rounded-full mb-6"
+  alt="Vicente Rivera"
+  class="mb-6 size-32 rounded-full"
   width={128}
   height={128}
-  loading={"eager"}
+  loading="eager"
 />
 
-<h1 class="text-4xl md:text-5xl font-bold flex gap-x-4 pb-4">Hola!, me llamo Vicente Rivera.</h1>
-<h2 class="text-xl text-wrap opacity-80 max-w-3xl">
-  <span class="">Desarrollador de Software.</span>
-  Estudiante de Ingeniería Civil en Informática. 2 años de experiencia desarrollando
-  aplicaciones interactivas desde Temuco, Chile <Image
-    alt="Chile"
-    src="https://purecatamphetamine.github.io/country-flag-icons/3x2/CL.svg"
-    class="size-8 inline-block"
-    width={24}
-    height={24}
-    loading={"eager"}
-  /> .
+<h1 class="flex gap-x-4 pb-4 text-4xl font-bold md:text-5xl">Hola, me llamo Vicente Rivera.</h1>
+<h2 class="max-w-3xl text-xl text-wrap opacity-80">
+  <span>Desarrollador de software.</span> Estudiante de Ingeniería Civil en Informática,
+  interesado en desarrollo web, aplicaciones móviles y análisis de datos desde Temuco, Chile.
 </h2>
+<a
+  href="/proyectos"
+  class="mt-6 inline-flex items-center gap-2 rounded-md border border-white/15 px-4 py-2 text-sm transition hover:border-white/40 hover:bg-white/5"
+>
+  Explorar todos mis proyectos <Icon name="arrow-right" class="size-4" />
+</a>
 <SocialSection />
