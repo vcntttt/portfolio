@@ -1,6 +1,18 @@
 ---
 import { Icon } from "astro-icon/components";
 import { render, type CollectionEntry } from "astro:content";
+import BackLink from "@/components/Navigation/BackLink.astro";
+import {
+  categoryLabels,
+  getTechnologyGroups,
+  linkDescriptions,
+  linkIcons,
+  resolveProjectSummary,
+  statusLabels,
+  technologyIconClass,
+  technologyIconSources,
+  technologyIcons,
+} from "@/data/project-presentation";
 import type { PortfolioEntry } from "@/types";
 
 interface Props {
@@ -10,94 +22,88 @@ interface Props {
 
 const { entry, project } = Astro.props;
 const { Content } = project ? await render(project) : { Content: undefined };
-const technologies = project?.data.technologies ?? [];
-
-const technologyIcons: Record<string, string> = {
-  React: "react",
-  "React Native": "react",
-  "Next.js": "nextjs",
-  "Next.js 15": "nextjs",
-  TypeScript: "typescript",
-  Expo: "expo",
-  Drizzle: "drizzle-orm",
-  "TanStack Query": "tanstack",
-  "TanStack Router": "tanstack",
-  TanStack: "tanstack",
-  Redis: "redis",
-  Tailwind: "tailwindcss",
-  "shadcn/ui": "shadcn",
-  tRPC: "trpc",
-  PostgreSQL: "postgresql",
-  FastAPI: "fastapi",
-};
-
-const categoryLabels = {
-  professional: "Trabajo",
-  product: "Proyecto personal",
-  academic: "Proyecto académico",
-  research: "Investigación",
-} as const;
-
-const statusLabels = {
-  live: "Activo",
-  delivered: "Prototipo entregado",
-  "in-progress": "En desarrollo",
-  finished: "Completado",
-  private: "Repositorio privado",
-} as const;
+const summary = resolveProjectSummary(entry, project);
+const technologySections = getTechnologyGroups(project);
 ---
 
 <main class="mx-auto w-[calc(100%-2rem)] max-w-6xl">
   <div class="py-10 md:py-16">
-    <a href="/proyectos" class="inline-flex items-center gap-x-1 text-sm text-white/70 underline decoration-white/25 underline-offset-4 transition hover:text-white hover:decoration-white">
-      <Icon name="arrow-left" /> Volver a proyectos
-    </a>
+    <BackLink href="/proyectos" label="Volver a proyectos" />
 
     <header class="mt-8 max-w-4xl">
       <p class="mb-3 text-sm text-sky-200/75">{categoryLabels[entry.category]} · {statusLabels[entry.status]} · {entry.date}</p>
       <h1 class="text-4xl font-semibold tracking-tight md:text-6xl">{entry.title}</h1>
-      <p class="mt-5 max-w-3xl text-lg leading-8 text-white/75">{entry.summary}</p>
+      <p class="mt-5 max-w-3xl text-lg leading-8 text-white/75">{summary}</p>
     </header>
 
     <div class="mt-12 grid gap-10 lg:grid-cols-[minmax(0,1fr)_18rem] lg:gap-16">
       <article class="project-content min-w-0">
-        {Content ? <Content /> : <p>{entry.summary}</p>}
+        {Content ? <Content /> : <p>{summary}</p>}
       </article>
 
       <aside class="space-y-8 lg:pt-2">
-        {technologies.length > 0 && (
+        {technologySections.length > 0 && (
           <section class="tech-stack border-t border-white/15 pt-4">
             <div class="flex items-baseline justify-between gap-3">
               <h2 class="text-sm font-medium uppercase tracking-[0.16em] text-white/55">Tecnologías</h2>
-              <span class="font-mono text-[0.65rem] uppercase tracking-[0.12em] text-cyan-200/55">
-                {technologies.length} {technologies.length === 1 ? "herramienta" : "herramientas"}
-              </span>
             </div>
 
-            <ul class="mt-4 grid grid-cols-2 gap-x-3 gap-y-2 lg:grid-cols-1">
-              {technologies.map((technology) => (
-                <li class="flex min-w-0 items-center gap-2 border-b border-white/10 pb-2 text-sm text-white/80">
-                  {
-                    technologyIcons[technology] ? (
-                      <Icon name={technologyIcons[technology]} class="size-5 shrink-0" aria-hidden="true" />
-                    ) : (
-                      <span class="flex size-5 shrink-0 items-center justify-center rounded-sm bg-cyan-200/10 text-[0.6rem] font-semibold text-cyan-100/80" aria-hidden="true">
-                        {technology.charAt(0).toUpperCase()}
-                      </span>
-                    )
-                  }
-                  <span class="truncate">{technology}</span>
-                </li>
+            <div class="mt-4 space-y-5">
+              {technologySections.map((group) => (
+                <div>
+                  {group.name && <h3 class="mb-2 text-[0.68rem] font-medium uppercase tracking-[0.14em] text-sky-200/60">{group.name}</h3>}
+                  <ul class="grid grid-cols-2 gap-x-3 gap-y-2 lg:grid-cols-1">
+                    {group.items.map((technology) => (
+                      <li class="flex min-w-0 items-center gap-2 border-b border-white/10 pb-2 text-sm text-white/80">
+                        {
+                          technologyIconSources[technologyIcons[technology]] ? (
+                            <img
+                              src={technologyIconSources[technologyIcons[technology]]}
+                              class={technologyIconClass(technology)}
+                              alt=""
+                              aria-hidden="true"
+                            />
+                          ) : technologyIcons[technology] ? (
+                            <Icon name={technologyIcons[technology]} class={technologyIconClass(technology)} aria-hidden="true" />
+                          ) : (
+                            <span class="flex size-5 shrink-0 items-center justify-center rounded-sm bg-cyan-200/10 text-[0.6rem] font-semibold text-cyan-100/80" aria-hidden="true">
+                              {technology.charAt(0).toUpperCase()}
+                            </span>
+                          )
+                        }
+                        <span class="truncate">{technology}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               ))}
-            </ul>
+            </div>
           </section>
         )}
 
         {entry.links && entry.links.length > 0 && (
           <section class="border-t border-white/15 pt-4">
-            <h2 class="mb-3 text-sm font-medium uppercase tracking-[0.16em] text-white/50">Enlaces</h2>
-            <ul class="space-y-1">
-              {entry.links.map((link) => <li><a href={link.href} target="_blank" rel="noreferrer" class="inline-flex items-center gap-1.5 text-sm text-white/80 underline decoration-white/25 underline-offset-4 transition hover:text-white hover:decoration-white">{link.label} <Icon name="external-link" class="size-3.5" /></a></li>)}
+            <h2 class="text-sm font-medium uppercase tracking-[0.16em] text-white/50">Enlaces</h2>
+            <ul class="mt-4 grid gap-2">
+              {entry.links.map((link) => (
+                <li>
+                  <a
+                    href={link.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    class="group flex items-center gap-3 rounded-lg border border-white/10 bg-white/[0.025] px-3 py-2.5 transition-colors hover:border-sky-200/35 hover:bg-sky-200/[0.06]"
+                  >
+                    <span class="flex size-8 shrink-0 items-center justify-center rounded-md bg-white/[0.08] text-white/85 transition-colors group-hover:bg-sky-200/15 group-hover:text-sky-100">
+                      <Icon name={linkIcons[link.label] ?? "external-link"} class="size-4" aria-hidden="true" />
+                    </span>
+                    <span class="min-w-0 flex-1">
+                      <span class="block text-sm text-white/85">{link.label}</span>
+                      <span class="mt-0.5 block truncate text-xs text-white/45">{linkDescriptions[link.label] ?? "Abrir enlace externo"}</span>
+                    </span>
+                    <Icon name="arrow-right" class="size-4 shrink-0 text-white/45 transition-transform group-hover:translate-x-0.5 group-hover:text-sky-100" aria-hidden="true" />
+                  </a>
+                </li>
+              ))}
             </ul>
           </section>
         )}

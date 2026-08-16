@@ -1,6 +1,11 @@
 ---
 import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
+import {
+  categoryLabels,
+  isContainedPreview,
+  statusLabels,
+} from "@/data/project-presentation";
 import type { PortfolioEntry } from "@/types";
 
 interface Props {
@@ -9,23 +14,7 @@ interface Props {
 }
 
 const { entry, compact = false } = Astro.props;
-
-const categoryLabels = {
-  professional: "Trabajo",
-  product: "Proyecto personal",
-  academic: "Proyecto académico",
-  research: "Investigación",
-} as const;
-
-const statusLabels = {
-  live: "Activo",
-  delivered: "Prototipo entregado",
-  "in-progress": "En desarrollo",
-  finished: "Completado",
-  private: "Repositorio privado",
-} as const;
-
-const containedImage = ["library", "triangle", "truckly", "clasificador-bayesiano"].includes(entry.slug);
+const containedImage = isContainedPreview(entry.slug);
 ---
 
 <article
@@ -83,7 +72,7 @@ const containedImage = ["library", "triangle", "truckly", "clasificador-bayesian
         </h3>
         <span class="rounded-md bg-[#121212]/60 px-2 py-1 text-xs text-white/80">{statusLabels[entry.status]}</span>
       </div>
-      <p class="max-w-3xl text-balance text-base text-white md:text-lg">{entry.summary}</p>
+      <p class="max-w-3xl text-balance text-base text-white md:text-lg">{entry.summary ?? ""}</p>
       <p class="text-sm text-white/70">{entry.date}</p>
     </div>
   </div>

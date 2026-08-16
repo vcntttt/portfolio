@@ -12,14 +12,15 @@ import SocialSection from "@/components/Social/SocialSection.astro";
 import { homePortfolio } from "@/data/portfolio";
 import { credentials } from "@/data/credentials";
 import { experience } from "@/data/experience";
+import { indexProjectContent } from "@/data/project-presentation";
 
 const projectContent = await getCollection("projects");
-const projectContentBySlug = new Map(projectContent.map((project) => [project.id, project]));
+const projectContentBySlug = indexProjectContent(projectContent);
 ---
 
 <Layout
   title="Vicente Rivera | Desarrollador de software"
-  description="Portfolio de Vicente Rivera, estudiante de Ingeniería Civil en Informática. Proyectos web, móviles, académicos y de análisis de datos."
+  description="Portfolio de Vicente Rivera, estudiante de Ingeniería Civil en Informática. Proyectos web, móviles, universitarios y de análisis de datos."
 >
   <main class="mx-auto w-[calc(100%-2rem)] max-w-6xl">
     <Section class="py-40 md:pt-64" id="welcome">

@@ -1,44 +1,32 @@
 ---
 import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
-import type { CollectionEntry } from "astro:content";
+import {
+  categoryLabels,
+  getProjectSummary,
+  getProjectTechnologies,
+  linkIcons,
+  statusLabels,
+  technologyIcons,
+} from "@/data/project-presentation";
+import type { ProjectContentBySlug } from "@/data/project-presentation";
 import type { PortfolioEntry } from "@/types";
 
 interface Props {
   entries: PortfolioEntry[];
-  contentBySlug: Map<string, CollectionEntry<"projects">>;
+  contentBySlug: ProjectContentBySlug;
 }
 
 const { entries, contentBySlug } = Astro.props;
 const [featured, secondary] = entries;
-const technologiesFor = (entry: PortfolioEntry) => contentBySlug.get(entry.slug)?.data.technologies ?? [];
 const imageFor = (entry: PortfolioEntry) => entry.spotlightImage ?? entry.image;
 const featuredImage = featured ? imageFor(featured) : undefined;
 const secondaryImage = secondary ? imageFor(secondary) : undefined;
-const featuredSummary = featured?.slug === "ponderapp"
-  ? "Producto web y móvil para calcular promedios con evaluaciones anidadas y generar escalas de notas."
-  : featured?.summary ?? "";
-
-const technologyIcons: Record<string, string> = {
-  "Next.js": "nextjs",
-  TypeScript: "typescript",
-  tRPC: "trpc",
-};
-
-const categoryLabels = {
-  professional: "Trabajo",
-  product: "Proyecto personal",
-  academic: "Proyecto académico",
-  research: "Investigación",
-} as const;
-
-const statusLabels = {
-  live: "Activo",
-  delivered: "Prototipo entregado",
-  "in-progress": "En desarrollo",
-  finished: "Completado",
-  private: "Repositorio privado",
-} as const;
+const featuredSummary = featured ? getProjectSummary(featured, contentBySlug) : "";
+const secondarySummary = secondary ? getProjectSummary(secondary, contentBySlug) : "";
+const secondaryTechnologies = secondary
+  ? getProjectTechnologies(secondary, contentBySlug)
+  : [];
 ---
 
 {featured && (
@@ -80,7 +68,7 @@ const statusLabels = {
             <div class="pointer-events-auto flex shrink-0 flex-wrap gap-2.5 text-sm">
               {featured.links?.map((link) => (
                 <a href={link.href} target="_blank" rel="noreferrer" class="relative z-30 inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-3.5 py-2.5 text-white/85 backdrop-blur transition hover:border-white/45 hover:bg-white/20">
-                  <Icon name={link.label === "Play Store" ? "play-store" : "globe"} class="size-4" />
+                  <Icon name={linkIcons[link.label] ?? "external-link"} class="size-4" />
                   <span>{link.label}</span>
                   <Icon name="external-link" class="size-3.5 text-white/55" />
                 </a>
@@ -101,7 +89,7 @@ const statusLabels = {
 
         <div class="pointer-events-none relative z-20">
           <div class="flex items-center justify-between gap-3 text-[0.68rem] uppercase tracking-[0.16em] text-white/50">
-            <span>Trabajo</span>
+            <span>{categoryLabels[secondary.category]}</span>
             <span class="font-mono text-xs text-white/50">{secondary.date}</span>
           </div>
 
@@ -117,13 +105,13 @@ const statusLabels = {
           </div>
 
           <h3 class="mt-6 text-2xl font-semibold transition group-hover:underline group-hover:decoration-white/30 group-hover:underline-offset-4">{secondary.title}</h3>
-          <p class="mt-3 leading-7 text-white/70">{secondary.summary}</p>
+          <p class="mt-3 leading-7 text-white/70">{secondarySummary}</p>
 
-          {technologiesFor(secondary).length > 0 && (
+          {secondaryTechnologies.length > 0 && (
             <div class="mt-6 border-t border-white/10 pt-4">
               <p class="text-[0.65rem] font-medium uppercase tracking-[0.16em] text-white/40">Construido con</p>
               <div class="mt-3 flex flex-wrap gap-x-4 gap-y-2 text-sm text-white/65">
-                {technologiesFor(secondary).slice(0, 3).map((technology) => (
+                {secondaryTechnologies.slice(0, 3).map((technology) => (
                   <span class="inline-flex items-center gap-1.5">
                     {technologyIcons[technology] ? (
                       <Icon name={technologyIcons[technology]} class="size-4 shrink-0" aria-hidden="true" />

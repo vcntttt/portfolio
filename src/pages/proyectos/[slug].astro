@@ -4,15 +4,17 @@ import { getCollection, type CollectionEntry } from "astro:content";
 import Layout from "@/layouts/projects-layout.astro";
 import EntryDetail from "@/components/Projects/EntryDetail.astro";
 import { getPortfolioEntry, portfolio } from "@/data/portfolio";
+import { indexProjectContent } from "@/data/project-presentation";
 
 export const getStaticPaths = (async () => {
   const projectContent = await getCollection("projects");
+  const projectContentBySlug = indexProjectContent(projectContent);
 
   return portfolio.map((entry) => ({
     params: { slug: entry.slug },
     props: {
       entry,
-      project: projectContent.find((project) => project.id === entry.slug),
+      project: projectContentBySlug.get(entry.slug),
     },
   }));
 }) satisfies GetStaticPaths;
@@ -30,7 +32,7 @@ if (!currentEntry) {
 
 <Layout
   title={`${currentEntry.title} | Vicente Rivera`}
-  description={currentEntry.summary}
+  description={project?.data.summary ?? currentEntry.summary ?? ""}
 >
   <EntryDetail entry={currentEntry} project={project} />
 </Layout>
