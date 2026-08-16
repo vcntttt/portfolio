@@ -22,7 +22,7 @@ export interface PortfolioEntry {
   category: PortfolioCategory;
   status: PortfolioStatus;
   date: string;
-  summary: string;
+  summary?: string;
   context?: string;
   role?: string;
   scope?: string;

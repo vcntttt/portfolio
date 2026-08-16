@@ -4,7 +4,10 @@ import cuestionariosSpotlightPreview from "@/assets/cuestionarios/quiz-card.png"
 import mynoPreview from "@/assets/myno/preview.png";
 import ponderadorPreview from "@/assets/ponderador/preview.png";
 import sellifyPreview from "@/assets/sellify/preview.jpg";
+import trucklyPreview from "@/assets/truckly/diagramauml.png";
 
+// Presentation and navigation metadata. Project prose belongs in content/projects/*.md.
+// `summary` remains only as a migration fallback for entries without Markdown frontmatter.
 export const portfolio: PortfolioEntry[] = [
   {
     slug: "ponderapp",
@@ -12,26 +15,13 @@ export const portfolio: PortfolioEntry[] = [
     category: "product",
     status: "live",
     date: "2025 — actualidad",
-    summary:
-      "Aplicación móvil para calcular promedios con evaluaciones anidadas y generar escalas de notas.",
-    context:
-      "La desarrollé a partir de necesidades que encontraba al calcular mis propias notas.",
-    role: "Diseño y desarrollo de la aplicación.",
-    scope:
-      "Prototipos, pruebas con compañeros, funcionamiento offline y publicación en Play Store.",
-    outcome: "Disponible para estudiantes en Play Store.",
-    highlights: [
-      "Modelo claro de asignaturas, evaluaciones y subnotas",
-      "Historial editable por semestre",
-      "Funcionamiento 100 % offline",
-      "UX diseñada específicamente para estudiantes",
-    ],
     links: [
       {
         label: "Play Store",
         href: "https://play.google.com/store/apps/details?id=com.vrivera.ponderapp",
       },
-      { label: "Sitio web", href: "https://ponderapp.cl" },
+      { label: "Landing page", href: "https://ponderapp.cl" },
+      { label: "Aplicación web", href: "https://app.ponderapp.cl" },
     ],
     image: ponderadorPreview,
     featured: true,
@@ -114,7 +104,7 @@ export const portfolio: PortfolioEntry[] = [
     title: "Myno",
     category: "academic",
     status: "finished",
-    date: "2025",
+    date: "1.er semestre · 2025",
     summary:
       "Ecommerce B2B con recomendaciones personalizadas a partir del historial y comportamiento de compra.",
     context: "Proyecto académico desarrollado para un ramo de la carrera.",
@@ -129,40 +119,39 @@ export const portfolio: PortfolioEntry[] = [
     ],
     links: [
       { label: "Repositorio", href: "https://github.com/vcntttt/myno" },
-      { label: "Demo", href: "https://myno-vr.vercel.app" },
     ],
     image: mynoPreview,
   },
-  // {
-  //   slug: "truckly",
-  //   title: "Truckly",
-  //   category: "academic",
-  //   status: "finished",
-  //   date: "2025",
-  //   summary:
-  //     "Plataforma web para gestionar flotas vehiculares, asignaciones y mantenimientos según el rol del usuario.",
-  //   context: "Proyecto académico desarrollado para un ramo de la carrera.",
-  //   scope:
-  //     "Sistema full-stack con alcance acotado a una demostración funcional para pequeñas y medianas empresas.",
-  //   outcome: "Aplicación desplegada con usuarios de prueba para presentar los flujos principales.",
-  //   highlights: [
-  //     "Roles de administrador y conductor",
-  //     "Gestión de vehículos, usuarios y mantenimientos",
-  //     "Asignaciones por período de tiempo",
-  //     "Arquitectura full-stack con API tipada",
-  //   ],
-  //   links: [
-  //     { label: "Repositorio", href: "https://github.com/vcntttt/truckly" },
-  //     { label: "Demo", href: "https://truckly.netlify.app" },
-  //   ],
-  //   image: trucklyPreview,
-  // },
+  {
+    slug: "truckly",
+    title: "Truckly",
+    category: "academic",
+    status: "finished",
+    date: "1.er semestre · 2025",
+    summary:
+      "Plataforma full-stack para gestionar flotas vehiculares con roles, asignaciones y mantenimiento, respaldada por una arquitectura de servicios tipada.",
+    context:
+      "Proyecto desarrollado para el ramo de Desarrollo de Aplicaciones Empresariales.",
+    scope:
+      "Frontend React/Vite y servidor Hono/tRPC conectados a PostgreSQL mediante Drizzle, con autenticación y permisos diferenciados.",
+    outcome: "Aplicación desplegada con usuarios de prueba para presentar los flujos principales.",
+    highlights: [
+      "Arquitectura full-stack con API tipada y persistencia relacional",
+      "Integración de TanStack Router/Query, Hono/tRPC, Better Auth y Drizzle",
+      "Carga fluida con prefetch, Suspense, skeletons e invalidación de queries",
+      "Paneles diferenciados para administradores y conductores",
+    ],
+    links: [
+      { label: "Repositorio", href: "https://github.com/vcntttt/truckly" },
+    ],
+    image: trucklyPreview,
+  },
   {
     slug: "sellify",
     title: "Sellify",
     category: "academic",
     status: "finished",
-    date: "2024",
+    date: "2.º semestre · 2024",
     summary:
       "Sistema de ventas para pequeñas empresas, con panel administrativo y punto de venta.",
     context: "Proyecto grupal desarrollado para un ramo de la carrera.",
