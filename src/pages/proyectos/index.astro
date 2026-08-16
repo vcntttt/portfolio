@@ -1,6 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
-import ProjectCatalog from "@/components/Portfolio/ProjectCatalog.astro";
+import ProjectCatalog from "@/components/Projects/ProjectCatalog.astro";
 import Section from "@/components/Section.astro";
 import Layout from "@/layouts/projects-layout.astro";
 import {
@@ -16,6 +16,7 @@ const catalogSections = [
   { id: "academic", title: "Proyectos académicos", entries: academicPortfolio },
   { id: "research", title: "Investigación y análisis", entries: researchPortfolio },
 ];
+const visibleCatalogSections = catalogSections.filter((section) => section.entries.length > 0);
 ---
 
 <Layout
@@ -37,7 +38,7 @@ const catalogSections = [
       </header>
 
       <nav class="mt-10 flex flex-wrap gap-2" aria-label="Secciones de proyectos">
-        {catalogSections.map((section) => (
+        {visibleCatalogSections.map((section) => (
           <a href={`#${section.id}`} class="rounded-full border border-white/20 px-3 py-1.5 text-sm transition hover:border-white/60">
             {section.title}
           </a>
@@ -45,7 +46,7 @@ const catalogSections = [
       </nav>
 
       <div class="mt-14 space-y-16">
-        {catalogSections.map((section) => (
+        {visibleCatalogSections.map((section) => (
           <section id={section.id}>
             <div class="mb-5 flex items-baseline justify-between gap-4">
               <h2 class="text-2xl font-semibold">{section.title}</h2>

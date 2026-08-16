@@ -28,10 +28,9 @@ export interface PortfolioEntry {
   scope?: string;
   outcome?: string;
   highlights?: string[];
-  technologies?: string[];
   links?: PortfolioLink[];
   image?: ImageMetadata;
-  detailImage?: ImageMetadata;
+  spotlightImage?: ImageMetadata;
   featured?: boolean;
 }
 

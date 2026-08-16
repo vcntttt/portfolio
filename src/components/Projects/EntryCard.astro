@@ -5,9 +5,10 @@ import type { PortfolioEntry } from "@/types";
 
 interface Props {
   entry: PortfolioEntry;
+  compact?: boolean;
 }
 
-const { entry } = Astro.props;
+const { entry, compact = false } = Astro.props;
 
 const categoryLabels = {
   professional: "Trabajo",
@@ -17,7 +18,7 @@ const categoryLabels = {
 } as const;
 
 const statusLabels = {
-  live: "En uso",
+  live: "Activo",
   delivered: "Prototipo entregado",
   "in-progress": "En desarrollo",
   finished: "Completado",
@@ -28,7 +29,10 @@ const containedImage = ["library", "triangle", "truckly", "clasificador-bayesian
 ---
 
 <article
-  class="group relative col-span-12 overflow-hidden rounded-xl border border-white/20 shadow-inner shadow-white/10"
+  class:list={[
+    "group relative overflow-hidden rounded-xl border border-white/20 shadow-inner shadow-white/10",
+    compact ? "col-span-12 md:col-span-6" : "col-span-12",
+  ]}
 >
   <div class="absolute inset-0 z-10 h-full w-full bg-gradient-to-b from-transparent from-35% via-[#121212]/20 to-[#121212]" aria-hidden="true"></div>
 
@@ -80,14 +84,7 @@ const containedImage = ["library", "triangle", "truckly", "clasificador-bayesian
         <span class="rounded-md bg-[#121212]/60 px-2 py-1 text-xs text-white/80">{statusLabels[entry.status]}</span>
       </div>
       <p class="max-w-3xl text-balance text-base text-white md:text-lg">{entry.summary}</p>
-      {entry.technologies && (
-        <div class="my-3 flex flex-wrap gap-2">
-          {entry.technologies.slice(0, 5).map((technology) => (
-            <span class="rounded-full bg-[#121212]/65 px-2 py-1 text-xs text-white/90">{technology}</span>
-          ))}
-        </div>
-      )}
-      <p class="text-sm text-white/70">{entry.date} · Ver caso →</p>
+      <p class="text-sm text-white/70">{entry.date}</p>
     </div>
   </div>
 </article>

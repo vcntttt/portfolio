@@ -1,23 +1,27 @@
 ---
 import { Icon } from "astro-icon/components";
+import { getCollection } from "astro:content";
 import AboutMe from "@/components/AboutMe.astro";
-import Credentials from "@/components/Portfolio/Credentials.astro";
-import EntryGrid from "@/components/Portfolio/EntryGrid.astro";
-import ExperienceList from "@/components/Portfolio/ExperienceList.astro";
+import Credentials from "@/components/Cursos/Credentials.astro";
+import ExperienceList from "@/components/Experience/ExperienceList.astro";
 import Hero from "@/components/Hero.astro";
 import Layout from "@/layouts/Layout.astro";
+import ProjectSpotlight from "@/components/Projects/ProjectSpotlight.astro";
 import Section from "@/components/Section.astro";
 import SocialSection from "@/components/Social/SocialSection.astro";
-import { academicPortfolio, personalPortfolio, researchPortfolio, workPortfolio } from "@/data/portfolio";
+import { homePortfolio } from "@/data/portfolio";
 import { credentials } from "@/data/credentials";
 import { experience } from "@/data/experience";
+
+const projectContent = await getCollection("projects");
+const projectContentBySlug = new Map(projectContent.map((project) => [project.id, project]));
 ---
 
 <Layout
   title="Vicente Rivera | Desarrollador de software"
   description="Portfolio de Vicente Rivera, estudiante de Ingeniería Civil en Informática. Proyectos web, móviles, académicos y de análisis de datos."
 >
-  <main class="mx-4 max-w-6xl md:mx-auto">
+  <main class="mx-auto w-[calc(100%-2rem)] max-w-6xl">
     <Section class="py-40 md:pt-64" id="welcome">
       <Hero />
     </Section>
@@ -30,38 +34,22 @@ import { experience } from "@/data/experience";
       <ExperienceList items={experience} />
     </Section>
 
-    <Section id="work">
-      <h2 class="flex items-center gap-x-2 pb-4 text-4xl font-semibold">
-        <Icon name="users" class="size-8" /> Trabajos
-      </h2>
-      <p class="mb-4">Proyectos desarrollados para clientes o a partir de una necesidad concreta.</p>
-      <EntryGrid entries={workPortfolio} />
-    </Section>
-
-    <Section id="proyects">
-      <h2 class="flex items-center gap-x-2 pb-4 text-4xl font-semibold">
-        <Icon name="code" class="size-8" /> Proyectos personales
-      </h2>
-      <p class="mb-4">
-        Proyectos que he desarrollado para probar ideas y aprender.
-      </p>
-      <EntryGrid entries={personalPortfolio} />
-    </Section>
-
-    <Section id="academic">
-      <h2 class="flex items-center gap-x-2 pb-4 text-4xl font-semibold">
-        <Icon name="notebook" class="size-8" /> Proyectos académicos
-      </h2>
-      <p class="mb-4">Trabajos realizados para asignaturas de la carrera, con alcance acotado.</p>
-      <EntryGrid entries={academicPortfolio} />
-    </Section>
-
-    <Section id="research">
-      <h2 class="flex items-center gap-x-2 pb-4 text-4xl font-semibold">
-        <Icon name="notebook" class="size-8" /> Investigación y análisis
-      </h2>
-      <p class="mb-4">Proyectos relacionados con análisis estadístico, clasificación y optimización.</p>
-      <EntryGrid entries={researchPortfolio} />
+    <Section id="projects">
+      <div class="flex flex-wrap items-end justify-between gap-4 pb-4">
+        <div>
+          <h2 class="flex items-center gap-x-2 text-4xl font-semibold">
+            <Icon name="code" class="size-8" /> Selección de proyectos
+          </h2>
+          <p class="mt-3 max-w-2xl">Una muestra breve de productos, trabajos y sistemas que he desarrollado.</p>
+        </div>
+        <a
+          href="/proyectos"
+          class="group inline-flex shrink-0 items-center gap-2 pb-1 text-sm text-white/65 transition hover:text-white"
+        >
+          Ver todos los proyectos <Icon name="arrow-right" class="size-4 transition-transform duration-200 group-hover:translate-x-1" />
+        </a>
+      </div>
+      <ProjectSpotlight entries={homePortfolio} contentBySlug={projectContentBySlug} />
     </Section>
 
     <Section id="cursos">

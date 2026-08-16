@@ -4,6 +4,17 @@ import icon from "astro-icon";
 
 // https://astro.build/config
 export default defineConfig({
+  image: {
+    service: {
+      entrypoint: "astro/assets/services/sharp",
+      config: {
+        webp: {
+          lossless: true,
+          quality: 100,
+        },
+      },
+    },
+  },
   vite: {
     plugins: [tailwindcss()],
   },

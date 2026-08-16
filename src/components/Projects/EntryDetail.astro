@@ -1,0 +1,175 @@
+---
+import { Icon } from "astro-icon/components";
+import { render, type CollectionEntry } from "astro:content";
+import type { PortfolioEntry } from "@/types";
+
+interface Props {
+  entry: PortfolioEntry;
+  project?: CollectionEntry<"projects">;
+}
+
+const { entry, project } = Astro.props;
+const { Content } = project ? await render(project) : { Content: undefined };
+const technologies = project?.data.technologies ?? [];
+
+const technologyIcons: Record<string, string> = {
+  React: "react",
+  "React Native": "react",
+  "Next.js": "nextjs",
+  "Next.js 15": "nextjs",
+  TypeScript: "typescript",
+  Expo: "expo",
+  Drizzle: "drizzle-orm",
+  "TanStack Query": "tanstack",
+  "TanStack Router": "tanstack",
+  TanStack: "tanstack",
+  Redis: "redis",
+  Tailwind: "tailwindcss",
+  "shadcn/ui": "shadcn",
+  tRPC: "trpc",
+  PostgreSQL: "postgresql",
+  FastAPI: "fastapi",
+};
+
+const categoryLabels = {
+  professional: "Trabajo",
+  product: "Proyecto personal",
+  academic: "Proyecto académico",
+  research: "Investigación",
+} as const;
+
+const statusLabels = {
+  live: "Activo",
+  delivered: "Prototipo entregado",
+  "in-progress": "En desarrollo",
+  finished: "Completado",
+  private: "Repositorio privado",
+} as const;
+---
+
+<main class="mx-auto w-[calc(100%-2rem)] max-w-6xl">
+  <div class="py-10 md:py-16">
+    <a href="/proyectos" class="inline-flex items-center gap-x-1 text-sm text-white/70 underline decoration-white/25 underline-offset-4 transition hover:text-white hover:decoration-white">
+      <Icon name="arrow-left" /> Volver a proyectos
+    </a>
+
+    <header class="mt-8 max-w-4xl">
+      <p class="mb-3 text-sm text-sky-200/75">{categoryLabels[entry.category]} · {statusLabels[entry.status]} · {entry.date}</p>
+      <h1 class="text-4xl font-semibold tracking-tight md:text-6xl">{entry.title}</h1>
+      <p class="mt-5 max-w-3xl text-lg leading-8 text-white/75">{entry.summary}</p>
+    </header>
+
+    <div class="mt-12 grid gap-10 lg:grid-cols-[minmax(0,1fr)_18rem] lg:gap-16">
+      <article class="project-content min-w-0">
+        {Content ? <Content /> : <p>{entry.summary}</p>}
+      </article>
+
+      <aside class="space-y-8 lg:pt-2">
+        {technologies.length > 0 && (
+          <section class="tech-stack border-t border-white/15 pt-4">
+            <div class="flex items-baseline justify-between gap-3">
+              <h2 class="text-sm font-medium uppercase tracking-[0.16em] text-white/55">Tecnologías</h2>
+              <span class="font-mono text-[0.65rem] uppercase tracking-[0.12em] text-cyan-200/55">
+                {technologies.length} {technologies.length === 1 ? "herramienta" : "herramientas"}
+              </span>
+            </div>
+
+            <ul class="mt-4 grid grid-cols-2 gap-x-3 gap-y-2 lg:grid-cols-1">
+              {technologies.map((technology) => (
+                <li class="flex min-w-0 items-center gap-2 border-b border-white/10 pb-2 text-sm text-white/80">
+                  {
+                    technologyIcons[technology] ? (
+                      <Icon name={technologyIcons[technology]} class="size-5 shrink-0" aria-hidden="true" />
+                    ) : (
+                      <span class="flex size-5 shrink-0 items-center justify-center rounded-sm bg-cyan-200/10 text-[0.6rem] font-semibold text-cyan-100/80" aria-hidden="true">
+                        {technology.charAt(0).toUpperCase()}
+                      </span>
+                    )
+                  }
+                  <span class="truncate">{technology}</span>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
+
+        {entry.links && entry.links.length > 0 && (
+          <section class="border-t border-white/15 pt-4">
+            <h2 class="mb-3 text-sm font-medium uppercase tracking-[0.16em] text-white/50">Enlaces</h2>
+            <ul class="space-y-1">
+              {entry.links.map((link) => <li><a href={link.href} target="_blank" rel="noreferrer" class="inline-flex items-center gap-1.5 text-sm text-white/80 underline decoration-white/25 underline-offset-4 transition hover:text-white hover:decoration-white">{link.label} <Icon name="external-link" class="size-3.5" /></a></li>)}
+            </ul>
+          </section>
+        )}
+      </aside>
+    </div>
+  </div>
+</main>
+
+<style is:global>
+  .project-content {
+    max-width: none;
+    color: rgb(255 255 255 / 0.82);
+    font-size: 1.0625rem;
+    line-height: 1.85;
+  }
+
+  .project-content h2,
+  .project-content p:not(:has(> img)),
+  .project-content ul,
+  .project-content blockquote {
+    max-width: 44rem;
+  }
+
+  .project-content p:has(> img) {
+    max-width: 52rem;
+  }
+
+  .project-content img {
+    display: block;
+    width: 100%;
+    border: 1px solid rgb(255 255 255 / 0.15);
+    border-radius: 0.75rem;
+  }
+
+  .project-content h2 {
+    margin-top: 2.75rem;
+    margin-bottom: 0.75rem;
+    color: rgb(255 255 255 / 0.96);
+    font-size: 1.65rem;
+    font-weight: 600;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+  }
+
+  .project-content h2:first-child {
+    margin-top: 0;
+  }
+
+  .project-content p {
+    margin-top: 1rem;
+  }
+
+  .project-content ul {
+    margin-top: 1rem;
+    padding-left: 1.25rem;
+    list-style: disc;
+  }
+
+  .project-content li + li {
+    margin-top: 0.4rem;
+  }
+
+  .project-content blockquote {
+    margin: 1.5rem 0;
+    border-left: 2px solid rgb(125 211 252 / 0.55);
+    padding-left: 1rem;
+    color: rgb(255 255 255 / 0.68);
+  }
+
+  .project-content a {
+    color: rgb(186 230 253 / 0.9);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+</style>

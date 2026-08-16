@@ -1,0 +1,143 @@
+---
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
+import type { CollectionEntry } from "astro:content";
+import type { PortfolioEntry } from "@/types";
+
+interface Props {
+  entries: PortfolioEntry[];
+  contentBySlug: Map<string, CollectionEntry<"projects">>;
+}
+
+const { entries, contentBySlug } = Astro.props;
+const [featured, secondary] = entries;
+const technologiesFor = (entry: PortfolioEntry) => contentBySlug.get(entry.slug)?.data.technologies ?? [];
+const imageFor = (entry: PortfolioEntry) => entry.spotlightImage ?? entry.image;
+const featuredImage = featured ? imageFor(featured) : undefined;
+const secondaryImage = secondary ? imageFor(secondary) : undefined;
+const featuredSummary = featured?.slug === "ponderapp"
+  ? "Producto web y móvil para calcular promedios con evaluaciones anidadas y generar escalas de notas."
+  : featured?.summary ?? "";
+
+const technologyIcons: Record<string, string> = {
+  "Next.js": "nextjs",
+  TypeScript: "typescript",
+  tRPC: "trpc",
+};
+
+const categoryLabels = {
+  professional: "Trabajo",
+  product: "Proyecto personal",
+  academic: "Proyecto académico",
+  research: "Investigación",
+} as const;
+
+const statusLabels = {
+  live: "Activo",
+  delivered: "Prototipo entregado",
+  "in-progress": "En desarrollo",
+  finished: "Completado",
+  private: "Repositorio privado",
+} as const;
+---
+
+{featured && (
+  <div class="grid gap-4 md:grid-cols-[minmax(0,1.35fr)_minmax(18rem,0.65fr)] md:items-stretch">
+    <article class="group relative isolate min-h-[37rem] overflow-hidden rounded-[1.6rem] border border-white/20 bg-[#0b1021] shadow-2xl shadow-black/25">
+      {featuredImage && (
+        <Image
+          src={featuredImage}
+          alt={`Vista previa de ${featured.title}`}
+          class="absolute inset-0 -z-20 h-full w-full object-cover object-center transition duration-1000 group-hover:scale-105"
+          loading="lazy"
+        />
+      )}
+      <div class="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(6,8,20,.05)_0%,rgba(6,8,20,.08)_32%,rgba(6,8,20,.94)_84%,#060814_100%)]" aria-hidden="true"></div>
+      <div class="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_78%_12%,rgba(129,92,246,.32),transparent_28%)] mix-blend-screen" aria-hidden="true"></div>
+
+      <a
+        href={`/proyectos/${featured.slug}`}
+        class="absolute inset-0 z-10 rounded-[1.6rem] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-inset"
+        aria-label={`Abrir caso de ${featured.title}`}
+      ></a>
+
+      <div class="pointer-events-none relative z-20 flex min-h-[37rem] flex-col justify-between p-6 text-white md:p-9">
+        <div class="flex items-start justify-between gap-5">
+          <div class="flex flex-wrap items-center gap-3">
+            <span class="rounded-full border border-white/25 bg-black/25 px-3 py-1 text-sm text-white/85 backdrop-blur-sm">{categoryLabels[featured.category]}</span>
+            <span class="inline-flex items-center gap-2 text-sm text-white/70"><span class="size-1.5 rounded-full bg-lime-300"></span>{statusLabels[featured.status]}</span>
+          </div>
+          <span class="text-right font-mono text-xs uppercase tracking-[0.22em] text-white/65">Web + móvil</span>
+        </div>
+
+        <div class="max-w-3xl">
+          <div class="mb-5 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-white/65">
+            <span class="font-mono uppercase tracking-[0.18em] text-sky-200/80">{featured.date}</span>
+          </div>
+          <h3 class="text-[clamp(4rem,10vw,8rem)] font-semibold leading-[0.82] tracking-[-0.08em] text-white">{featured.title}</h3>
+          <div class="mt-8 flex flex-col gap-6 border-t border-white/20 pt-5 md:flex-row md:items-end md:justify-between">
+            <p class="max-w-xl text-lg leading-8 text-white/80">{featuredSummary}</p>
+            <div class="pointer-events-auto flex shrink-0 flex-wrap gap-2.5 text-sm">
+              {featured.links?.map((link) => (
+                <a href={link.href} target="_blank" rel="noreferrer" class="relative z-30 inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-3.5 py-2.5 text-white/85 backdrop-blur transition hover:border-white/45 hover:bg-white/20">
+                  <Icon name={link.label === "Play Store" ? "play-store" : "globe"} class="size-4" />
+                  <span>{link.label}</span>
+                  <Icon name="external-link" class="size-3.5 text-white/55" />
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    {secondary && (
+      <article class="group relative flex min-h-[37rem] flex-col justify-between overflow-hidden rounded-[1.6rem] border border-white/15 bg-[#111827] p-6 shadow-2xl shadow-black/20">
+        <a
+          href={`/proyectos/${secondary.slug}`}
+          class="absolute inset-0 z-10 rounded-[1.6rem] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-inset"
+          aria-label={`Abrir caso de ${secondary.title}`}
+        ></a>
+
+        <div class="pointer-events-none relative z-20">
+          <div class="flex items-center justify-between gap-3 text-[0.68rem] uppercase tracking-[0.16em] text-white/50">
+            <span>Trabajo</span>
+            <span class="font-mono text-xs text-white/50">{secondary.date}</span>
+          </div>
+
+          <div class="mt-6 overflow-hidden rounded-xl border border-white/10 bg-black/20">
+            {secondaryImage && (
+              <Image
+                src={secondaryImage}
+                alt={`Vista previa de ${secondary.title}`}
+                class="h-44 w-full object-cover opacity-90 transition duration-500 group-hover:scale-[1.03] group-hover:opacity-100"
+                loading="lazy"
+              />
+            )}
+          </div>
+
+          <h3 class="mt-6 text-2xl font-semibold transition group-hover:underline group-hover:decoration-white/30 group-hover:underline-offset-4">{secondary.title}</h3>
+          <p class="mt-3 leading-7 text-white/70">{secondary.summary}</p>
+
+          {technologiesFor(secondary).length > 0 && (
+            <div class="mt-6 border-t border-white/10 pt-4">
+              <p class="text-[0.65rem] font-medium uppercase tracking-[0.16em] text-white/40">Construido con</p>
+              <div class="mt-3 flex flex-wrap gap-x-4 gap-y-2 text-sm text-white/65">
+                {technologiesFor(secondary).slice(0, 3).map((technology) => (
+                  <span class="inline-flex items-center gap-1.5">
+                    {technologyIcons[technology] ? (
+                      <Icon name={technologyIcons[technology]} class="size-4 shrink-0" aria-hidden="true" />
+                    ) : (
+                      <span class="flex size-4 shrink-0 items-center justify-center rounded-sm bg-white/10 text-[0.6rem]" aria-hidden="true">{technology.charAt(0)}</span>
+                    )}
+                    {technology}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      </article>
+    )}
+  </div>
+)}

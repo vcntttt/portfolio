@@ -10,19 +10,9 @@ export const sections = [
     icon: "briefcase",
   },
   {
-    name: "Trabajos",
-    href: "#work",
-    icon: "users",
-  },
-  {
-    name: "Proyectos personales",
-    href: "#proyects",
+    name: "Proyectos",
+    href: "#projects",
     icon: "code",
-  },
-  {
-    name: "Investigación",
-    href: "#research",
-    icon: "notebook",
   },
   {
     name: "Cursos",

@@ -1,16 +1,26 @@
 ---
 import type { GetStaticPaths } from "astro";
+import { getCollection, type CollectionEntry } from "astro:content";
 import Layout from "@/layouts/projects-layout.astro";
-import EntryDetail from "@/components/Portfolio/EntryDetail.astro";
+import EntryDetail from "@/components/Projects/EntryDetail.astro";
 import { getPortfolioEntry, portfolio } from "@/data/portfolio";
 
-export const getStaticPaths = (() =>
-  portfolio.map((entry) => ({
-    params: { slug: entry.slug },
-    props: { entry },
-  }))) satisfies GetStaticPaths;
+export const getStaticPaths = (async () => {
+  const projectContent = await getCollection("projects");
 
-const { entry } = Astro.props;
+  return portfolio.map((entry) => ({
+    params: { slug: entry.slug },
+    props: {
+      entry,
+      project: projectContent.find((project) => project.id === entry.slug),
+    },
+  }));
+}) satisfies GetStaticPaths;
+
+const { entry, project } = Astro.props as {
+  entry?: (typeof portfolio)[number];
+  project?: CollectionEntry<"projects">;
+};
 const currentEntry = entry ?? getPortfolioEntry(Astro.params.slug ?? "");
 
 if (!currentEntry) {
@@ -22,5 +32,5 @@ if (!currentEntry) {
   title={`${currentEntry.title} | Vicente Rivera`}
   description={currentEntry.summary}
 >
-  <EntryDetail entry={currentEntry} />
+  <EntryDetail entry={currentEntry} project={project} />
 </Layout>
