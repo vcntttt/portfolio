@@ -36,11 +36,11 @@ const secondaryTechnologies = secondary
         <Image
           src={featuredImage}
           alt={`Vista previa de ${featured.title}`}
-          class="absolute inset-0 -z-20 h-full w-full object-cover object-center transition duration-1000 group-hover:scale-105"
+          class="absolute inset-0 -z-20 h-full w-full object-cover object-center brightness-110 saturate-[1.08] transition duration-1000 group-hover:scale-105"
           loading="lazy"
         />
       )}
-      <div class="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(6,8,20,.05)_0%,rgba(6,8,20,.08)_32%,rgba(6,8,20,.94)_84%,#060814_100%)]" aria-hidden="true"></div>
+      <div class="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(6,8,20,.02)_0%,rgba(6,8,20,.05)_42%,rgba(6,8,20,.58)_78%,rgba(6,8,20,.92)_100%)]" aria-hidden="true"></div>
       <div class="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_78%_12%,rgba(129,92,246,.32),transparent_28%)] mix-blend-screen" aria-hidden="true"></div>
 
       <a
@@ -63,9 +63,9 @@ const secondaryTechnologies = secondary
             <span class="font-mono uppercase tracking-[0.18em] text-sky-200/80">{featured.date}</span>
           </div>
           <h3 class="text-[clamp(4rem,10vw,8rem)] font-semibold leading-[0.82] tracking-[-0.08em] text-white">{featured.title}</h3>
-          <div class="mt-8 flex flex-col gap-6 border-t border-white/20 pt-5 md:flex-row md:items-end md:justify-between">
+          <div class="mt-8 flex flex-col gap-5 border-t border-white/20 pt-5">
             <p class="max-w-xl text-lg leading-8 text-white/80">{featuredSummary}</p>
-            <div class="pointer-events-auto flex shrink-0 flex-wrap gap-2.5 text-sm">
+            <div class="pointer-events-auto flex w-full flex-wrap gap-2.5 text-sm md:justify-end">
               {featured.links?.map((link) => (
                 <a href={link.href} target="_blank" rel="noreferrer" class="relative z-30 inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-3.5 py-2.5 text-white/85 backdrop-blur transition hover:border-white/45 hover:bg-white/20">
                   <Icon name={linkIcons[link.label] ?? "external-link"} class="size-4" />
