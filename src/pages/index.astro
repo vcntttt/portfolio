@@ -1,66 +1,77 @@
 ---
-import Layout from "@/layouts/Layout.astro";
 import { Icon } from "astro-icon/components";
-// import Experience from "@/components/Experience/Experience.astro";
+import { getCollection } from "astro:content";
 import AboutMe from "@/components/AboutMe.astro";
-import Cursos from "@/components/Cursos/Cursos.astro";
+import Credentials from "@/components/Cursos/Credentials.astro";
+import ExperienceList from "@/components/Experience/ExperienceList.astro";
 import Hero from "@/components/Hero.astro";
+import Layout from "@/layouts/Layout.astro";
+import ProjectSpotlight from "@/components/Projects/ProjectSpotlight.astro";
 import Section from "@/components/Section.astro";
 import SocialSection from "@/components/Social/SocialSection.astro";
-import Projects from "@/components/Projects/ProjectSection.astro";
-import RealWork from "@/components/Projects/RealWork.astro";
+import { homePortfolio } from "@/data/portfolio";
+import { credentials } from "@/data/credentials";
+import { experience } from "@/data/experience";
+import { indexProjectContent } from "@/data/project-presentation";
+
+const projectContent = await getCollection("projects");
+const projectContentBySlug = indexProjectContent(projectContent);
 ---
 
 <Layout
-  title="Vicente Rivera | Desarrollador y Programador Web"
-  description="Portfolio de Vicente Rivera, Desarrollador web Frontend. Temuco, Chile."
+  title="Vicente Rivera | Desarrollador de software"
+  description="Portfolio de Vicente Rivera, estudiante de Ingeniería Civil en Informática. Proyectos web, móviles, universitarios y de análisis de datos."
 >
-  <main class="mx-4 md:mx-auto max-w-[60rem]">
+  <main class="mx-auto w-[calc(100%-2rem)] max-w-6xl">
     <Section class="py-40 md:pt-64" id="welcome">
       <Hero />
     </Section>
-    <!-- <Section id="experience">
-      <h2 class="flex items-center gap-x-2 text-4xl font-semibold pb-4">
-        <BriefcaseIcon class="size-8" /> Experiencia Laboral
+
+    <Section id="experience">
+      <h2 class="flex items-center gap-x-2 pb-4 text-4xl font-semibold">
+        <Icon name="briefcase" class="size-8" /> Experiencia
       </h2>
-      <Experience />
-    </Section> -->
-    <Section id="work">
-      <h2 class="flex items-center gap-x-2 text-4xl font-semibold pb-4">
-        <Icon name={"users"} class="size-8" /> Trabajos
-      </h2>
-      <h4 class="mb-2">
-        Proyectos remunerados solicitados por clientes reales.
-      </h4>
-      <RealWork />
+      <p class="mb-4">Desarrollo de sistemas y apoyo docente.</p>
+      <ExperienceList items={experience} />
     </Section>
-    <Section id="proyects">
-      <h2 class="flex items-center gap-x-2 text-4xl font-semibold pb-4">
-        <Icon name={"code"} class="size-8" /> Proyectos Personales
-      </h2>
-      <h4 class="mb-2">
-        A pesar de no contar con experiencia laboral formal, he dedicado estos
-        años a crear proyectos personales que reflejan mi aprendizaje. Estos son los más destacados, también puedes <a href="/proyectos" class="underline">ver más</a>.
-      </h4>
-      <Projects />
+
+    <Section id="projects">
+      <div class="flex flex-wrap items-end justify-between gap-4 pb-4">
+        <div>
+          <h2 class="flex items-center gap-x-2 text-4xl font-semibold">
+            <Icon name="code" class="size-8" /> Selección de proyectos
+          </h2>
+          <p class="mt-3 max-w-2xl">Una muestra breve de productos, trabajos y sistemas que he desarrollado.</p>
+        </div>
+        <a
+          href="/proyectos"
+          class="group inline-flex shrink-0 items-center gap-2 pb-1 text-sm text-white/65 transition hover:text-white"
+        >
+          Ver todos los proyectos <Icon name="arrow-right" class="size-4 transition-transform duration-200 group-hover:translate-x-1" />
+        </a>
+      </div>
+      <ProjectSpotlight entries={homePortfolio} contentBySlug={projectContentBySlug} />
     </Section>
+
     <Section id="cursos">
-      <h2 class="flex items-center gap-x-2 text-4xl font-semibold pb-4">
-        <Icon name={"notebook"} class="size-8" /> Certificados
+      <h2 class="flex items-center gap-x-2 pb-4 text-4xl font-semibold">
+        <Icon name="notebook" class="size-8" /> Certificados
       </h2>
-      <Cursos />
+      <Credentials items={credentials} />
     </Section>
+
     <Section id="about">
-      <h2 class="flex items-center gap-x-2 text-4xl font-semibold pb-4">
-        <Icon name={"user"} class="size-8" /> Acerca de mí
+      <h2 class="flex items-center gap-x-2 pb-4 text-4xl font-semibold">
+        <Icon name="user" class="size-8" /> Acerca de mí
       </h2>
       <AboutMe />
     </Section>
+
     <Section id="contact">
-      <h2 class="flex items-center gap-x-2 text-4xl font-semibold pb-4">
-        <Icon name={"send"} class="size-8" />Contacto
+      <h2 class="flex items-center gap-x-2 pb-4 text-4xl font-semibold">
+        <Icon name="send" class="size-8" /> Contacto
       </h2>
-     <SocialSection class="!py-0 !md:py-0" />
+      <SocialSection class="!py-0" />
     </Section>
   </main>
 </Layout>

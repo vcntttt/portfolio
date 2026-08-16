@@ -4,7 +4,7 @@ import { Icon } from "astro-icon/components";
 import Section from "@/components/Section.astro";
 ---
 
-<Section class:list={["flex flex-wrap gap-4 w-full", Astro.props.class]}>
+<Section class:list={["flex w-full flex-wrap gap-4", Astro.props.class]}>
   <SocialCard href="https://github.com/vcntttt">
     <Icon name={"github"} class="size-8" />
     <span class="ml-2">vcntttt</span>
@@ -12,9 +12,9 @@ import Section from "@/components/Section.astro";
   <SocialCard href="https://www.linkedin.com/in/vriverainf/" aria-label="Ir a mi Linkedin">
     <Icon name={"linkedin"} class="size-8" />
   </SocialCard>
-  <SocialCard href="mailto:vrivera.dev@gmail.com">
+  <SocialCard href="mailto:vicenterivera225@gmail.com">
     <Icon name={"mail"} class="size-8" />
-    <span class="ml-2">vrivera.dev@gmail.com</span>
+    <span class="ml-2">vicenterivera225@gmail.com</span>
   </SocialCard>
   <SocialCard href="cv-vicente-rivera.pdf" download="cv-vicente-rivera.pdf">
     <Icon name={"cv"} class="size-8" />

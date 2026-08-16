@@ -1,52 +1,38 @@
 ---
 import type { GetStaticPaths } from "astro";
-import { projects } from "@/data/projects";
+import { getCollection, type CollectionEntry } from "astro:content";
 import Layout from "@/layouts/projects-layout.astro";
-import Section from "@/components/Section.astro";
-import { Image } from "astro:assets";
-import { Icon } from "astro-icon/components";
+import EntryDetail from "@/components/Projects/EntryDetail.astro";
+import { getPortfolioEntry, portfolio } from "@/data/portfolio";
+import { indexProjectContent } from "@/data/project-presentation";
 
-export const getStaticPaths = (() => {
-  return projects.map((project) => ({
-    params: { slug: project.slug },
-    props: { project },
+export const getStaticPaths = (async () => {
+  const projectContent = await getCollection("projects");
+  const projectContentBySlug = indexProjectContent(projectContent);
+
+  return portfolio.map((entry) => ({
+    params: { slug: entry.slug },
+    props: {
+      entry,
+      project: projectContentBySlug.get(entry.slug),
+    },
   }));
 }) satisfies GetStaticPaths;
 
-const { project } = Astro.props;
+const { entry, project } = Astro.props as {
+  entry?: (typeof portfolio)[number];
+  project?: CollectionEntry<"projects">;
+};
+const currentEntry = entry ?? getPortfolioEntry(Astro.params.slug ?? "");
 
-if (project.slug === "ponderapp")
-  return Astro.redirect("https://ponderappcl.netlify.app");
+if (!currentEntry) {
+  return Astro.redirect("/proyectos");
+}
 ---
 
 <Layout
-  title="Proyectos | Vicente Rivera"
-  description="Lista detallada de mis proyectos"
+  title={`${currentEntry.title} | Vicente Rivera`}
+  description={project?.data.summary ?? currentEntry.summary ?? ""}
 >
-  <main class="mx-4 md:mx-auto max-w-[70rem]">
-    <Section
-      class:list={"h-[90vh] items-center flex flex-col justify-center gap-y-2"}
-    >
-      <h1 class="text-4xl font-semibold mt-2 mb-8">
-        Página de {project.title}
-      </h1>
-      <Image
-        src={project.images[1]}
-        alt={project.title}
-        width={350}
-        height={200}
-        class="rounded-md object-cover w-full"
-      />
-      <h2 class="mb-4">Proximamente...</h2>
-      {
-        project.link && (
-          <a href={project.link} class="underline">
-            Ver demo <Icon name={"external-link"} class="size-4 inline" />
-          </a>
-        )
-      }
-      <a href="/proyectos" class="underline">Volver a proyectos</a>
-      <a href="/" class="underline">Volver al inicio</a>
-    </Section>
-  </main>
+  <EntryDetail entry={currentEntry} project={project} />
 </Layout>

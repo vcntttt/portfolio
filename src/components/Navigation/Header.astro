@@ -11,7 +11,8 @@ import { sections } from "@/data/sections";
       <a
         aria-label={section.name}
         href={`${section.href}`}
-        class="transition-all duration-300 ease-in-out hover:text-blue-500 hover:scale-125"
+        data-nav-link
+        class="transition-all duration-300 ease-in-out hover:scale-125 hover:text-blue-500"
       >
         <Icon name={section.icon} class="size-6" />
       </a>
@@ -20,32 +21,38 @@ import { sections } from "@/data/sections";
 </nav>
 
 <script>
-  function handleIntersection(entries: IntersectionObserverEntry[]) {
-    entries.forEach((entry) => {
-      const id = entry.target.getAttribute("id");
-      const navLink = document.querySelector(`nav a[href="#${id}"]`);
+  function setupSectionNavigation() {
+    const sectionElements = Array.from(document.querySelectorAll("main section[id]"));
+    const links = Array.from(document.querySelectorAll<HTMLAnchorElement>("[data-nav-link]"));
 
-      if (navLink) {
-        if (entry.isIntersecting) {
-          document.querySelectorAll("nav a").forEach((link) => {
-            link.classList.remove("scale-130");
-          });
-          navLink.classList.add("scale-130");
-        }
+    if (!sectionElements.length || !links.length) return;
+
+    const updateActiveSection = () => {
+      const marker = window.innerHeight * 0.35;
+      let activeSection = sectionElements[0];
+
+      for (const section of sectionElements) {
+        if (section.getBoundingClientRect().top <= marker) activeSection = section;
       }
-    });
+
+      const activeId = activeSection.id;
+      links.forEach((link) => {
+        const isActive = link.getAttribute("href") === `#${activeId}`;
+        link.classList.toggle("scale-125", isActive);
+        link.classList.toggle("text-blue-500", isActive);
+        if (isActive) link.setAttribute("aria-current", "location");
+        else link.removeAttribute("aria-current");
+      });
+    };
+
+    window.addEventListener("scroll", updateActiveSection, { passive: true });
+    window.addEventListener("resize", updateActiveSection);
+    updateActiveSection();
   }
 
-  document.addEventListener("DOMContentLoaded", () => {
-    const sections = document.querySelectorAll("section[id]");
-
-    const observer = new IntersectionObserver(handleIntersection, {
-      threshold: 0.5,
-      rootMargin: "-10% 0px -10% 0px",
-    });
-
-    sections.forEach((section) => {
-      observer.observe(section);
-    });
-  });
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", setupSectionNavigation);
+  } else {
+    setupSectionNavigation();
+  }
 </script>

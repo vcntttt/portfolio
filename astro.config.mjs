@@ -4,9 +4,27 @@ import icon from "astro-icon";
 
 // https://astro.build/config
 export default defineConfig({
+  image: {
+    service: {
+      entrypoint: "astro/assets/services/sharp",
+      config: {
+        webp: {
+          lossless: true,
+          quality: 100,
+        },
+      },
+    },
+  },
   vite: {
     plugins: [tailwindcss()],
   },
   integrations: [icon()],
   site: "https://vrivera.is-a.dev",
+  redirects: {
+    "/linkedin": "https://www.linkedin.com/in/vriverainf/",
+    "/in": "https://www.linkedin.com/in/vriverainf/",
+    "/github": "https://github.com/vcntttt",
+    "/cv": "/cv-vicente-rivera.pdf",
+    "/resume": "/cv-vicente-rivera.pdf",
+  },
 });
