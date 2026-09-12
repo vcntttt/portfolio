@@ -2,6 +2,16 @@ import type { Experience } from "@/types";
 
 export const experience: Experience[] = [
   {
+    title: "Webmaster - Ingeniería Civil en Informática",
+    organization: "Universidad Católica de Temuco",
+    organizationUrl: "https://uct.cl",
+    date: "ago 2026 — actualidad",
+    location: "Temuco, Chile",
+    description:
+      "Tomé a cargo la recuperación y modernización del sitio web de mi carrera: mantengo WordPress como CMS para la gestión editorial mientras migro su frontend a Astro SSG, tras rescatar una plataforma WordPress/Elementor abandonada en el clúster de Kubernetes. La nueva arquitectura usa imágenes Nginx inmutables y despliegues reproducibles.",
+    current: true,
+  },
+  {
     title: "Practicante de desarrollo de sistemas",
     organization: "Softus SpA",
     organizationUrl: "https://softus.cl",
