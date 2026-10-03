@@ -8,7 +8,7 @@ export const experience: Experience[] = [
     date: "ago 2026 — actualidad",
     location: "Temuco, Chile",
     description:
-      "Tomé a cargo la recuperación y modernización del sitio web de mi carrera: mantengo WordPress como CMS para la gestión editorial mientras migro su frontend a Astro SSG, tras rescatar una plataforma WordPress/Elementor abandonada en el clúster de Kubernetes. La nueva arquitectura usa imágenes Nginx inmutables y despliegues reproducibles.",
+      "Tomé a cargo el sitio web de mi carrera, una plataforma WordPress/Elementor abandonada, y la reconstruí como una plataforma institucional que otras unidades de la universidad puedan reutilizar. Payload administra el contenido, con acceso mediante Google Workspace, y Astro SSG genera el sitio público. Los perfiles académicos integran publicaciones desde OpenAlex y ORCID. GitHub Actions construye las imágenes y las publica en Kubero con Nginx; el sitio ya funciona en producción mientras se prepara el cambio de dominio.",
     current: true,
   },
   {
