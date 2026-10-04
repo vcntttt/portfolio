@@ -21,3 +21,13 @@ mantiene temporalmente como fallback para los proyectos que todavía no tienen u
 resumen en su frontmatter; debe desaparecer a medida que cada proyecto se migre.
 La lista plana `technologies` cumple el mismo rol transitorio para proyectos que
 aún no están agrupados.
+
+## Marketing y marca personal
+
+Antes de trabajar en copy, textos del portfolio, SEO, meta tags, imagen OG,
+redes sociales o contenido de marca personal, lee la skill `marketing`, aunque
+el pedido no mencione «marketing». Este sitio no es un producto con usuarios que
+pagan: usa solo las guías de copy (`copywriting`, `copy-editing`), SEO
+(`seo-audit`, `schema`), contenido (`content-strategy`), `social` y, para el
+posicionamiento personal, `product-marketing`. Ignora las de precios,
+cobro, retención, fichas de tienda y similares.
