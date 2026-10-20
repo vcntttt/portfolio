@@ -1,8 +1,10 @@
 import type { PortfolioEntry } from "@/types";
 import cuestionariosCardPreview from "@/assets/cuestionarios/original.png";
 import cuestionariosSpotlightPreview from "@/assets/cuestionarios/quiz-card.png";
+import infuctPreview from "@/assets/infuct/home.png";
+import infuctSpotlightPreview from "@/assets/infuct/spotlight.webp";
 import mynoPreview from "@/assets/myno/preview.png";
-import ponderadorPreview from "@/assets/ponderador/preview.png";
+import ponderappPreview from "@/assets/ponderapp/preview.webp";
 import sellifyPreview from "@/assets/sellify/preview.jpg";
 import trucklyPreview from "@/assets/truckly/diagramauml.png";
 
@@ -23,7 +25,18 @@ export const portfolio: PortfolioEntry[] = [
       { label: "Landing page", href: "https://ponderapp.cl" },
       { label: "Aplicación web", href: "https://app.ponderapp.cl" },
     ],
-    image: ponderadorPreview,
+    image: ponderappPreview,
+    featured: true,
+  },
+  {
+    slug: "infuct",
+    title: "Sitio web de Informática UCT",
+    category: "professional",
+    status: "live",
+    date: "2026 — actualidad",
+    links: [{ label: "Sitio web", href: "https://inf.uct.cl" }],
+    image: infuctPreview,
+    spotlightImage: infuctSpotlightPreview,
     featured: true,
   },
   {
@@ -232,7 +245,7 @@ export const portfolio: PortfolioEntry[] = [
 
 export const featuredPortfolio = portfolio.filter((entry) => entry.featured);
 export const homePortfolio = portfolio.filter((entry) =>
-  ["ponderapp", "cuestionarios"].includes(entry.slug),
+  ["ponderapp", "infuct"].includes(entry.slug),
 );
 export const workPortfolio = portfolio.filter(
   (entry) => entry.category === "professional" || entry.slug === "ponderapp",

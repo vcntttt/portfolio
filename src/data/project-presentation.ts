@@ -14,7 +14,7 @@ export type TechnologyGroup = {
 };
 
 export const categoryLabels: Record<PortfolioCategory, string> = {
-  professional: "Trabajo Remunerado",
+  professional: "Trabajo remunerado",
   product: "Proyecto personal",
   academic: "Proyecto universitario",
   research: "Investigación",
@@ -33,6 +33,7 @@ export const linkIcons: Record<string, string> = {
   "Landing page": "home",
   "Aplicación web": "globe",
   Demo: "globe",
+  "Sitio web": "globe",
   Repositorio: "github",
 };
 
@@ -41,10 +42,13 @@ export const linkDescriptions: Record<string, string> = {
   "Landing page": "Conocer PonderApp y sus funciones",
   "Aplicación web": "Usar PonderApp desde el navegador",
   Demo: "Abrir la demostración en el navegador",
+  "Sitio web": "Visitar el sitio publicado",
   Repositorio: "Ver el código fuente del proyecto",
 };
 
 export const technologyIcons: Record<string, string> = {
+  Astro: "astro",
+  "GitHub Actions": "github",
   React: "react",
   "React Native": "react",
   "Next.js": "nextjs",

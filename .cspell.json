@@ -1,26 +1,33 @@
 {
   "version": "0.2",
-  "import": ["@cspell/dict-es-es/cspell-ext.json"],
-  "language": "es,es-ES",
+  "import": [
+    "@cspell/dict-es-es/cspell-ext.json"
+  ],
+  "language": "en,es,es-ES",
   "words": [
     "Astro",
     "CINAP",
+    "copywriting",
+    "editing",
     "Elementor",
+    "experience",
     "Experience",
+    "infuct",
     "Kubernetes",
     "Kubero",
     "Learning",
     "Nginx",
     "OpenAlex",
     "ORCID",
-    "SSG",
+    "PonderApp",
+    "RevenueCat",
     "Softus",
+    "SSG",
+    "strategy",
+    "subevaluaciones",
     "Temuco",
     "Webmaster",
-    "WordPress",
-    "copywriting",
-    "editing",
-    "experience",
-    "strategy"
+    "webmaster",
+    "WordPress"
   ]
 }

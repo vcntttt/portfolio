@@ -8,7 +8,7 @@ export const experience: Experience[] = [
     date: "ago 2026 — actualidad",
     location: "Temuco, Chile",
     description:
-      "Tomé a cargo el sitio web de mi carrera, una plataforma WordPress/Elementor abandonada, y la reconstruí como una plataforma institucional que otras unidades de la universidad puedan reutilizar. Payload administra el contenido, con acceso mediante Google Workspace, y Astro SSG genera el sitio público. Los perfiles académicos integran publicaciones desde OpenAlex y ORCID. GitHub Actions construye las imágenes y las publica en Kubero con Nginx; el sitio ya funciona en producción mientras se prepara el cambio de dominio.",
+      "Tomé a cargo el sitio web de mi carrera, una instalación WordPress/Elementor abandonada, y lo reconstruí como una plataforma institucional que otras unidades de la universidad puedan reutilizar. Payload administra el contenido, con acceso mediante Google Workspace, y Astro genera el sitio público como páginas estáticas. Los perfiles académicos sincronizan sus publicaciones desde OpenAlex y ORCID. GitHub Actions construye y despliega cada cambio en Kubero; el sitio está publicado en el dominio oficial, inf.uct.cl.",
     current: true,
   },
   {
