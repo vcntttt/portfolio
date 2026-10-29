@@ -21,3 +21,6 @@ pnpm-debug.log*
 .DS_Store
 
 astro.config.mjs
+
+# LaTeX build output
+cv/.build/

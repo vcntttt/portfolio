@@ -31,3 +31,7 @@ pagan: usa solo las guías de copy (`copywriting`, `copy-editing`), SEO
 (`seo-audit`, `schema`), contenido (`content-strategy`), `social` y, para el
 posicionamiento personal, `product-marketing`. Ignora las de precios,
 cobro, retención, fichas de tienda y similares.
+
+## Currículum
+
+El CV se genera con LaTeX: `cv/cv.cls` define la plantilla (estilo Harvard, IBM Plex Serif, una página A4) y cada variante es un `.tex` propio con su contenido. `cv/es.tex` y `cv/en.tex` son las versiones fijas; `bun run cv` las compila a `public/cv-vicente-rivera.pdf` y `public/cv-vicente-rivera-en.pdf`, que enlaza el sitio. Los PDF se versionan; no los edites a mano. Una variante por postulación es otro `.tex` con `\documentclass[spanish|english]{cv}`; no la copies a `public/`, porque se publicaría.

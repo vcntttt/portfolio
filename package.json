@@ -7,7 +7,8 @@
     "start": "astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "cv": "cd cv && latexmk -pdf -interaction=nonstopmode -halt-on-error -outdir=.build es.tex en.tex && cp .build/es.pdf ../public/cv-vicente-rivera.pdf && cp .build/en.pdf ../public/cv-vicente-rivera-en.pdf"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.10",
