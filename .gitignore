@@ -24,3 +24,6 @@ astro.config.mjs
 
 # LaTeX build output
 cv/.build/
+
+# Variantes por postulación: internas, el repo es público
+cv/variante-*.tex
